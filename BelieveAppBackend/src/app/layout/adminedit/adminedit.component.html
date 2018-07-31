@@ -1,0 +1,153 @@
+<div class="content_area">
+
+    <div class="tables_area">
+        <h2>Add Manager</h2>
+        <div class="white_box">
+            <form [formGroup]="myForm" novalidate (ngSubmit)="EditManager(myForm.valid)">
+                <div class="add_formarea">
+
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Email*</label>
+                                <input readonly type="text" id="email" value="" [pattern]="emailValidate" placeholder="Enter Email" class="form-control"
+                                    formControlName="emailCheck" [attr.maxlength]="50" required/>
+                                <!-- <span ng-show="myForm.submitted || myForm.group_name.touched">
+                                        <span ng-show="myForm.group_name.error.required"><font class="error">Current Password is required.</font></span>
+                                    </span> -->
+                            </div>
+                            <!-- <div *ngIf="myForm.get('emailCheck').hasError('required') && myForm.get('emailCheck').touched">
+                                <div class="error" *ngIf="myForm.get('emailCheck').hasError('required')  && myForm.get('emailCheck').touched ">
+                                    Email is required
+                                </div>
+                            </div> -->
+                            <!-- <div *ngIf="myForm.get('emailCheck').hasError('pattern') && myForm.get('emailCheck').touched">
+                                <div class="error" *ngIf="myForm.get('emailCheck').hasError('pattern')  && myForm.get('emailCheck').touched ">
+                                    Invalid Email-Id
+                                </div>
+                            </div> -->
+                        </aside>
+                    </div>
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Name*</label>
+                                <input type="text" id="name" value="" placeholder="Enter Name" class="form-control" formControlName="adminname" [attr.maxlength]="50"
+                                    required/>
+                            </div>
+                            <div *ngIf="myForm.get('adminname').hasError('required') && myForm.get('adminname').touched">
+                                <div class="error" *ngIf="myForm.get('adminname').hasError('required')  && myForm.get('adminname').touched ">
+                                    Name is required
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Phone*</label>
+                                <input type="text" id="phone" value="" placeholder="Enter Name" class="form-control" formControlName="adminphone" [attr.maxlength]="50"
+                                    required/>
+                            </div>
+                            <div *ngIf="myForm.get('adminphone').hasError('required') && myForm.get('adminphone').touched">
+                                <div class="error" *ngIf="myForm.get('adminphone').hasError('required')  && myForm.get('adminphone').touched ">
+                                    Phone is required
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <div class="row">
+                        <aside class="col-sm-12">
+                            <div class="form-group">
+                                <label class="text-uppercase">Add Permissions*</label>
+                                <div class="select_users">
+                                    <div *ngFor="let test of this.newdata">
+                                        <div *ngIf="test.select == true">
+                                            <label>{{test.name}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="select_users" *ngIf = "formdata" >
+										<div *ngFor="let test of this.newdata">
+												<div *ngIf="test.select == true">
+													<label>{{test.name}}</label>
+												</div>
+											</div>
+									</div> -->
+                                <p class="add_user">
+                                    <a data-toggle="modal" data-target="#addadmin">
+                                        <i class="fa fa-plus"></i>Add Permissions</a>
+                                </p>
+                            </div>
+
+                            <!-- <div class="error" *ngIf="!user_valid" >
+                                     <div class="error" [hidden]="user_valid"> 
+                                   Add Users is required 
+                                  </div>
+                              </div> -->
+
+                        </aside>
+                    </div>
+                    <div class="modal fade" id="addadmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button> -->
+                                    <h4 class="modal-title" id="myModalLabel">Select</h4>
+                                </div>
+
+                                <div class="modal-body select_users" style="max-height: 500px;
+                                  overflow: auto;">
+                                    <label *ngFor="let test of this.newdata">
+                                        <input type="checkbox" [checked]="test.select == true" name="data" value="test" (change)="getuserVal(test._id,test.name,  $event.target.checked)"> {{test.name}}</label>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="okValue()">OK</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Select Status</label>
+                                <div class="custom_select">
+                                    <select formControlName="status">
+                                        <option value="" [disabled]="true" [selected]="true">Select</option>
+                                        <option Value="A">Enable</option>
+                                        <option Value="D">Disable</option>
+                                        <!-- <option value="C">Closed</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+
+
+                    <button type="submit" class="blue_btn yellow_btn  text-uppercase">Save</button>
+                    <button class="blue_btn yellow_btn  text-uppercase" (click)="CAncel()">Cancel</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<style type="text/css">
+    .error {
+        color: red;
+    }
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

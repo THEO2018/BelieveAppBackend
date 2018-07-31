@@ -1,0 +1,39 @@
+<ul class="requests">
+	<li class="alert alert-success"  *ngFor="let grouplist of data"><a [routerLink]="['/user', grouplist.user_id._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{grouplist.user_id.first_name}}</a> has requested to add into this group
+		 <div class="success_action">
+			<a class="accept_request" (click)="acceptModal(grouplist._id,grouplist.user_id._id)">Accept</a>
+				<a  (click)="rejectModal(grouplist._id,grouplist.user_id._id)">Reject</a>
+		 </div>
+ 
+		 <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			    <div class="modal-dialog" role="document">
+				    <div class="modal-content">  
+				        <div class="modal-body text-center">
+				           <p>Are you sure you want to accept the request?</p>
+				             <a class="blue_btn" (click)="actionRequests('Y')">Yes</a>
+				      	     <a class="blue_btn" data-dismiss="modal">No</a>
+				        </div>
+				    </div>
+				</div>
+		  </div>
+
+		<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+				    <div class="modal-content">  
+				        <div class="modal-body text-center">
+				      	    <p>Are you sure you want to reject the request?</p>
+				      	      <a class="blue_btn" (click)="actionRequests('N')">OK</a>
+				      	      <a class="blue_btn" data-dismiss="modal">Cancel</a>
+				        </div>
+				    </div>
+			    </div>
+		 </div>
+    </li>
+</ul>
+
+
+
+
+
+
+

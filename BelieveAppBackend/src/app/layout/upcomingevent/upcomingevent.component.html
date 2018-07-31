@@ -1,0 +1,48 @@
+	<div class="content_area">
+			
+			<div class="tables_area">
+				<h2 class="pull-left">Upcoming Events</h2>
+				<div class="clear"></div>
+				<div class="white_box">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0">
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Venue</th>
+									<th>Group</th>
+									<th>Date</th>
+									<th>ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let eventlist of data">
+									<td>{{eventlist.title}}</td>
+									<td>{{eventlist.venue}}</td>
+									<td>{{eventlist.group_id}}</td>
+									<td>{{eventlist.date}}</td>
+									
+									<td>
+										<a class="action_btn"><i class="fa fa-trash" aria-hidden="true" data-toggle="modal" data-target="#request"></i></a>
+									</td>
+
+									<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									      	<p>Are you sure you want to Delete?</p>
+									      	<a class="blue_btn" (click)="RemoveComm(eventlist._id)">Yes</a>
+									      	<a data-dismiss="modal" class="blue_btn">No</a>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>

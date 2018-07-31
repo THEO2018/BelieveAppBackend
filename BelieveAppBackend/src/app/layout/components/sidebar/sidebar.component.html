@@ -1,0 +1,80 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <div class="list-group">
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+        </a>
+       <div class="nested-menu" *ngIf="cont">
+            <a  class="list-group-item" (click)="addExpandClass('pages')">
+                <span><i class="fa fa-plus"></i>{{ 'Content Management' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages'">
+                <ul class="submenu">
+                    <li>
+                        <a  routerLink="/groups" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-users"></i>&nbsp; {{ 'Groups' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/smallgroup" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-user-plus"></i>&nbsp; {{ 'Small Groups' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/events" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-calendar"></i>&nbsp; {{ 'Events' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/music" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-music"></i>&nbsp; {{ 'Music' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/marriage" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-venus-mars" ></i>&nbsp; {{ 'Marriage' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/birthday" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-birthday-cake" ></i>&nbsp; {{ 'Birthday' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/media" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-picture-o" ></i>&nbsp; {{ 'Media' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/blog" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-th-large" ></i>&nbsp; {{ 'Blogs' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/classifiedlist" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-newspaper-o" ></i>&nbsp; {{ 'Classifieds' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/onlinestore" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-link" ></i>&nbsp; {{ 'Online Store' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/news" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-newspaper-o" ></i>&nbsp; {{ 'News' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/contact" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-address-book" ></i>&nbsp; {{ 'Contact Us' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/aboutpage" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-info-circle" ></i>&nbsp; {{ 'About Us' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="/servicehour" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-map-marker" ></i>&nbsp; {{ 'Service Hours' | translate }}</span></a>
+                    </li>
+                      <!--  <li>
+                        <a routerLink="/socialshare" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-share-square-o" ></i>&nbsp; {{ 'Share Content' | translate }}</span></a>
+                    </li> -->
+                </ul>
+            </li>
+        </div>
+        <a routerLink="/library" [routerLinkActive]="['router-link-active']" class="list-group-item"><span><i class="fa fa-picture-o" ></i>&nbsp; {{ 'Library' | translate }}</span></a>
+        <a *ngIf="poll" [routerLink]="['/polls']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;Polls
+        </a>
+        <a class="list-group-item" routerLink="/giving" [routerLinkActive]="['router-link-active']">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;Giving
+        </a>
+        <a *ngIf="reco" [routerLink]="['/recommdations']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-comments"></i>&nbsp;{{ 'Recommendations' | translate }}
+        </a>
+        <a *ngIf="set" [routerLink]="['/setting']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'Settings' | translate }}
+        </a>
+        <a *ngIf="appo" [routerLink]="['/appointment']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-o"></i>&nbsp;{{ 'Appointments' | translate }}
+        </a>
+        <a  *ngIf="sup" [routerLink]="['/contactsupport']" [routerLinkActive]="['router-link-active']" class="list-group-item more-themes">
+            <i class="fa fa-address-card"></i>&nbsp;{{ 'Contact Support' | translate }}
+        </a>
+    </div>
+</nav>

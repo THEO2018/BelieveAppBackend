@@ -1,0 +1,50 @@
+	<div class="content_area">
+			
+			<div class="tables_area">
+				<h2 class="pull-left">Users</h2>
+				<div class="clear"></div>
+				<div class="white_box">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0" id="example">
+							<thead>
+								<tr>
+									<th width="15%">Name</th>
+									<th width="15%">Gender</th>
+									<th width="20%">Email</th>
+									<th width="15%">Profile</th>
+									<th width="20%">Profession</th>
+									<th width="15%">ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  *ngFor="let grouplist of data">
+									<td>{{grouplist.first_name}} {{grouplist.last_name}}</td>
+									<td *ngIf="grouplist.gender=='M'">Male</td>
+									<td *ngIf="grouplist.gender=='F'">Female</td>
+									<td>{{grouplist.email}}</td>
+									<td *ngIf="grouplist.profile_image"><img src="{{grouplist.profile_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td *ngIf="!grouplist.profile_image"><img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td>{{grouplist.profession}}</td>
+										<td><a  class="blue_btn yellow_btn text-center small_btn text-uppercase" data-toggle="modal" data-target="#request">Make Allumni</a></td>
+
+										<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									      	<p>Are you sure you want to add this user to Allumni?</p>
+									      	<a class="blue_btn" (click)="AddAllumni(grouplist._id)">Yes</a>
+									      	<a data-dismiss="modal" class="blue_btn">No</a>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>

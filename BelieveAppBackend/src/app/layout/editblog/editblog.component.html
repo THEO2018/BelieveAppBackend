@@ -1,0 +1,70 @@
+<div class="content_area">
+  <div class="tables_area">
+        <h2>Blog Detail</h2>
+  <div class="clear"></div>     
+<div class="white_box">
+  <form [formGroup]="addBlogPost" novalidate>
+    <div class="add_formarea">
+
+      <div class="row">
+        <aside class="col-sm-5">
+          <div class="form-group">
+            <label class="text-uppercase">Blog Title</label>
+            <input readonly type="text" value="" placeholder="" class="form-control" formControlName="blog_title" />
+          </div>
+
+        </aside>
+      </div>
+
+      <div class="row">
+              <aside class="col-sm-6">
+                <div class="form-group">
+                  <label class="text-uppercase">Category*</label>
+                  <div class="custom_select">
+                  	<!-- <input readonly type="text" value="" placeholder="Blog Title" class="form-control" formControlName="category" /> -->
+                    <select formControlName="category">
+                      <option *ngFor="let item of data1" [ngValue]="item._id">{{item.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </aside>
+
+              <aside class="col-sm-6">
+                <div class="form-group">
+                  <label class="text-uppercase">Blog Image*</label>
+                <img src="{{api_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"/>
+                  <!--  <input type="file" 
+                   #fileupload 
+                   (change)="onFileChange($event)"
+                   id="blog_image" 
+                   /> -->
+                </div>
+
+              </aside>
+                          
+            </div>
+
+      <div class="blog_editor">
+          <div class="form-group">
+              <label class="text-uppercase">Blog*</label>
+              <textarea [froalaEditor] type="text" value="" placeholder="Enter Name" class="form-control" formControlName="blog" readonly></textarea>
+          </div>
+      </div>
+      <div>
+  <!--       <button type="submit" class="blue_btn yellow_btn text-uppercase">Save</button>
+        <button type="submit" class="blue_btn yellow_btn text-uppercase">Cancel</button> -->
+      </div>
+      </div>
+  </form>
+  </div>
+   </div>
+    </div>
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

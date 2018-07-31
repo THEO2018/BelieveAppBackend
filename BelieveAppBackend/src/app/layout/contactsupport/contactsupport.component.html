@@ -1,0 +1,89 @@
+		<div class="content_area">
+			
+			<div class="tables_area">
+				<h2>Contact support</h2>
+				
+				<div class="clear"></div>
+				<div class="white_box">
+					<form [formGroup]="newEvent" novalidate (ngSubmit)="SendContactRequest(newEvent.valid)">
+					<div class="add_formarea">
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Title*</label>
+									<input id="name" type="text" value="" placeholder="Enter Title Here" class="form-control" formControlName="title" [attr.maxlength]="50"/>
+								</div>
+								<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+							</aside>
+							
+						</div>
+
+						<div class="row">
+							
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Select Category of the issue*</label>
+									<div class="custom_select">
+									<select formControlName="issue_category">
+										<option value=null disabled selected hidden >Select Category</option>
+										<!-- <option value="" [disabled]="true" [selected]="true">Select</option> -->
+											<option value="{{grouplist.name}}" 
+											*ngFor="let grouplist of cat_data">{{grouplist.name}}</option>
+										</select>
+										</div>
+								</div>
+								<div *ngIf="newEvent.get('issue_category').hasError('required') && newEvent.get('issue_category').touched">
+			                        <div class="error" *ngIf="newEvent.get('issue_category').hasError('required')  && newEvent.get('issue_category').touched ">
+			                        Category is required
+			                        </div> 
+		                    	</div>
+							</aside>
+						</div>
+
+
+				
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Description*</label>
+									<textarea id="des" value="" placeholder="Enter Description" class="form-control" formControlName="description" [attr.maxlength]="500"></textarea>
+								</div>
+								<div *ngIf="newEvent.get('description').hasError('required') && newEvent.get('description').touched">
+			                        <div class="error" *ngIf="newEvent.get('description').hasError('required')  && newEvent.get('description').touched ">
+			                        Description is required
+			                        </div> 
+		                    	</div>
+							</aside>
+							
+						</div>
+
+
+
+
+						
+				<button type="submit" class="blue_btn yellow_btn big_yellow text-uppercase" >Submit</button>
+			
+					</div>
+			</form>
+				</div>
+			</div>
+				</div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

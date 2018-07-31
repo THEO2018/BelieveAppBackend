@@ -1,0 +1,57 @@
+<a class="blue_btn yellow_btn pull-right text-uppercase" routerLink="/newmedia" [routerLinkActive]="['router-link-active']">New Media</a>
+<a class="blue_btn yellow_btn pull-right text-uppercase" routerLink="/newlink" [routerLinkActive]="['router-link-active']">New Link</a>
+		<div class="clear"></div>
+<mat-tab-group color="primary">
+    <mat-tab label="Media">
+		<mat-tab-group color="primary">
+			<mat-tab label="Images">
+			    <ul class="gallery_images">
+					<li  *ngFor="let image of arryData.libraryImages; let i=index" >
+						<div class="uppre">
+							<div class="img_outer" >
+								<img src="{{image.image_name}}"/>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</mat-tab>
+			<mat-tab label="Videos">
+					    <ul class="gallery_images">
+		                    <li *ngFor="let video of arryData.libraryVideos; let i=index">
+		                        <div class="uppre">
+		                            <div class="img_outer">
+		                                <img src = "{{video.thumbnail}}"/>
+		                            </div>
+		                        </div>
+		                    </li>
+		                </ul>
+			</mat-tab>
+			<mat-tab label="Audios">
+					    <ul class="gallery_images">
+		                     <li *ngFor="let songs of arryData.libraryAudio; let i=index">
+		                         <div class="uppre">
+		                             <div class="img_outer">
+		                                 <img src = "../../assets/images/music.png"/>
+		                            </div>
+		                        </div>
+		                      <p>{{songs.title}}</p>
+		                    </li>
+		                 </ul>
+			</mat-tab>
+        </mat-tab-group>
+	</mat-tab>
+	<mat-tab label="Links">
+	<ul class="gallery_images">
+		                     <li *ngFor="let songs of linkData; let i=index">
+		                         <div class="uppre">
+		                             <div class="img_outer">
+		                                 <img src = "../../assets/images/url.png"/>
+		                            </div>
+		                        </div>
+		                      <p>{{songs.title}}</p>
+		                    </li>
+		                 </ul>
+		
+	</mat-tab>
+
+</mat-tab-group>

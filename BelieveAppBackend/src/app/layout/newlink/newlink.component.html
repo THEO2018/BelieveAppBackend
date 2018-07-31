@@ -1,0 +1,56 @@
+<div class="content_area">
+			
+<div class="tables_area">
+	<div class="bg_area" >
+			<h2 class="title_head">New Link</h2>
+				<div>
+					 <form  [formGroup]="rForm" (ngSubmit)="AddLink(rForm.valid,rForm.value)">
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value="" placeholder="Title*" formControlName="title" [attr.maxlength]="50" id="name"/>
+								</div>
+								<div *ngIf="rForm.get('title').hasError('required') && rForm.get('title').touched">
+				                        <div class="error" *ngIf="rForm.get('title').hasError('required')  && rForm.get('title').touched ">
+				                        Title is required
+				                        </div> 
+			                    	</div>
+							</aside>
+							
+						</div>
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value="" placeholder="Url to website*" [pattern] ="urlPattern" formControlName="url" id="web"/>
+								  </div>
+								    <div *ngIf="rForm.get('url').hasError('required') && rForm.get('url').touched">
+				                        <div class="error" *ngIf="rForm.get('url').hasError('required')  && rForm.get('url').touched ">
+				                        Url is required
+				                        </div> 
+			                    	</div>
+			                    <div *ngIf="rForm.get('url').hasError('pattern') && rForm.get('url').touched">
+			                        <div class="error" *ngIf="rForm.get('url').hasError('pattern')  && rForm.get('url').touched ">
+			                       Invalid Url 
+			                        </div> 
+		                    	</div>
+							</aside>
+						</div>
+				        <div class="row">
+							<aside class="col-sm-12">
+								<button type="submit" class="blue_btn yellow_btn text-uppercase">Save</button>
+								<button (click)="cancel()" class="blue_btn yellow_btn text-uppercase">Cancel</button>
+							</aside>
+				        </div>
+					</form>
+				</div>
+		</div>
+     </div>
+</div>
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

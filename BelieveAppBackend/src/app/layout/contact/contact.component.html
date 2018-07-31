@@ -1,0 +1,94 @@
+		<div class="content_area">
+			
+			<div class="tables_area">
+				<h2>Contact</h2>
+				<div class="white_box">
+					 <form  [formGroup]="myForm" (ngSubmit)="Editcontact(myForm.valid,myForm.value)">
+					<div class="add_formarea">
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Location</label>
+									<input type="text" value="" placeholder="" class="form-control" formControlName="location" [attr.maxlength]="200" autocorrect="off" autocapitalize="off" spellcheck="off" id="ven"  #search />
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Phone</label><input type="text" value="" placeholder="" class="form-control" formControlName="phone" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+	                        
+						</div>
+
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Mail</label><input type="text" value="" placeholder="" class="form-control" formControlName="mail" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+							
+						</div>
+
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Website Link </label><input type="text" value="" placeholder="" class="form-control" formControlName="website_link" [attr.maxlength]="50"/>
+								</div>
+							</aside>		
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Facebook Link </label>
+									<input type="text" value="" placeholder="" class="form-control" formControlName="facebook_link" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Twitter Link</label>
+									<input type="text" value="" placeholder="" class="form-control" formControlName="twitter_link" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Instagram Link </label>
+									<input type="text" value="" placeholder="" class="form-control" formControlName="instagram_link" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+						</div>
+						
+						<button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+						<!-- <button class="blue_btn yellow_btn  text-uppercase" (click)="CAncel()">Cancel</button> -->
+
+					</div>
+				</form>
+				</div>
+			</div>
+				</div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

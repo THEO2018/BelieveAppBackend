@@ -1,0 +1,152 @@
+        <div class="content_area">
+            
+            <div class="tables_area">
+                <h2>Church</h2>
+                <div class="white_box">
+                     <form  [formGroup]="myForm" (ngSubmit)="EditChurch(myForm.valid)">
+                    <div class="add_formarea">
+
+                        <div class="row">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase">Church Name</label>
+                                    <input type="text" value="" placeholder="" class="form-control" formControlName="church_name" [attr.maxlength]="50"/>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <div class="row">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase">Church Address</label>
+                                    <input id="ven" type="text" value="" placeholder="Select Venue" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  #search formControlName="church_address"/>
+                                    
+                                </div>
+                            </aside>
+                            
+                        </div>
+
+
+                        <div class="row">
+                            <aside class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="text-uppercase"> Start Timings</label>
+                                    <div class="icon_input">
+                                        <input class="form-control" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="timer"formControlName="church_timing_from" placeholder="">
+                                         <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="text-uppercase"> End Timings</label>
+                                    <div class="icon_input">
+                                        <input class="form-control" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" [(ngModel)]="timer1" formControlName="church_timing_to" placeholder="">
+                                         <owl-date-time [pickerType]="'timer'" #dt5></owl-date-time>
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </aside>
+                            
+                        </div>
+
+
+                        <div class="row">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase">Website </label><input type="text" value="" placeholder="" class="form-control" formControlName="website" [attr.maxlength]="50"/>
+                                </div>
+                            </aside>        
+                        </div>
+
+                        <div class="row">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase">Phone </label>
+                                    <input type="text" value="" placeholder="" class="form-control" formControlName="phone" [attr.maxlength]="50"/>
+                                </div>
+                            </aside>
+                        </div>
+
+                     
+
+                        <div class="row">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase">Logo*</label>
+                                <p  data-backdrop="static" data-keyboard="false" class="add_user" (click)="openModal()">
+                                    <img *ngIf="api_image && !imageSrc && !image" src="{{api_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"
+                                    />
+                                    <img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+                                    />
+                                    <img *ngIf="image" src="{{this.imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+                                </p>
+                            </div>
+
+                            <div class="error" *ngIf="!img">
+                                <div class="error" [hidden]="img">
+                                    Only png/Jpeg Allowed
+                                </div>
+                                </div>
+                            </aside>
+                        </div>
+                        
+                        <button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+                        <button class="blue_btn yellow_btn  text-uppercase" (click)="CAncel()">Cancel</button>
+
+                    </div>
+                </form>
+                </div>
+            </div>
+                </div>
+
+             <!-- gallery modal -->
+
+
+                    <div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body select_users" style="height: 100%;overflow: auto;">
+                                    <mat-tab-group color="primary">
+                                        <mat-tab  label="Upload files"  >
+                                            <div class="table_box">
+                                                <div class="table_inner">
+                                                    <p>Browse your file here</p>
+                                                    <input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+                                                </div>
+                                            </div>
+                                            <div class="bottom_box text-right"><button class="blue_btn" data-dismiss="modal">OK</button></div>
+                                        </mat-tab>
+                                        <mat-tab label="Media library">
+                                            <ul class="gallery_images">
+                                                <li  *ngFor="let image of arryData.libraryImages; let i=index" >
+                                                    <div class="uppre">
+                                                        <div class="img_outer" >
+                                                            <img src="{{image.image_name}}" (click)="checking(i,image.image_name)" 
+                                                             >
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="bottom_box text-right"><button class="blue_btn" data-dismiss="modal">OK</button></div>
+                                        </mat-tab>
+                                    </mat-tab-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

@@ -1,0 +1,196 @@
+<div class="content_area">
+  <div class="tables_area">
+    <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="PublishList()" *ngIf="saved">Published</a>
+       <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="SavedList()" *ngIf="publish">Saved</a>
+        <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add New</a>
+        <div class="clear"></div>
+      <div *ngIf="add_new" style="background:#eaeaea;padding:15px;
+    margin: 15px 0;">
+    <h2>Add New Song</h2>
+  
+        <form [formGroup]="myForm" >
+         <div class="row">
+           <aside class="col-sm-4">
+             <div class="form-group">
+                 <input type="text"  class="form-control"  value="" placeholder="Song Title" formControlName="song_title" id="title"/>
+             </div>
+            <div *ngIf="myForm.get('song_title').hasError('required') && myForm.get('song_title').touched">
+                <div class="error" *ngIf="myForm.get('song_title').hasError('required')  && myForm.get('song_title').touched ">
+               Title is required
+           </div> 
+           </div>
+
+           </aside>
+         </div>
+         <div class="row">
+          <aside class="col-sm-6">
+            <div class="form-group">
+              <label class="text-uppercase">Song</label>
+              <p class="add_user">
+                <a data-backdrop="static" data-keyboard="false" (click)="openModal()">Browse</a>&nbsp;
+                <p *ngIf="browse">{{imageSrc}}
+                <p *ngIf="image">{{imageTitle}}</p>
+            </div>
+            <div class="error" *ngIf="!img_valid">
+              <div class="error" [hidden]="img_valid">
+                Song is required
+              </div>
+            </div>
+
+            <div class="error" *ngIf="!img">
+              <div class="error" [hidden]="img">
+                Only mp3 are allowed
+              </div>
+            </div>
+          </aside>
+         </div>
+         <!-- gallery modal -->
+<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body select_users" style="height: 100%;overflow: auto;">
+        <mat-tab-group>
+          <mat-tab label="Upload files">
+            <div class="table_box">
+              <div class="table_inner">
+                <p>Browse your file here</p>
+                   <input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+                   <audio id="audio" hidden></audio>
+                   <p hidden>
+                  <label>Song Duration:</label>
+                  <span id="duration"></span>
+                </p>
+               </div>
+              <div class="error" *ngIf="!img">
+            <div class="error" [hidden]="img">
+                  Only Media Are Allowed
+            </div>
+            </div>
+            </div>
+            <div class="bottom_box text-right">
+              <button class="blue_btn" data-dismiss="modal">OK</button>
+            </div>
+          </mat-tab>
+          <mat-tab label="Media library">
+            <ul class="gallery_images">
+              <li *ngFor="let songs of arryData.libraryAudio; let i=index">
+                <div class="uppre">
+                  <div class="img_outer">
+                    <img src = "../../assets/images/music.png" (click)="checking(i,songs.image_name,songs.title)">
+                  </div>
+                </div>
+                <p>{{songs.title}}</p>
+              </li>
+            </ul>
+            <div class="bottom_box text-right">
+              <button class="blue_btn" data-dismiss="modal">OK</button>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+         <div class="row">
+           <aside class="col-sm-12">
+              <button (click)="AddSong(myForm.valid,'S')" class="blue_btn text-uppercase">Save</button>
+                <button (click)="AddSong(myForm.valid,'A')" class="blue_btn  text-uppercase">Publish</button>
+                  <button (click)="cancel()" class="blue_btn  text-uppercase">Cancel</button>
+           </aside>
+         </div>
+       </form>
+       </div>
+   <h2 *ngIf="saved">Saved Song List</h2>
+  <h2 *ngIf="publish">Published Song List</h2>
+  <!-- <h2 style="margin-top:10px;">Song List</h2> -->
+    <div class="clear"></div>
+
+    <div class="white_box" *ngIf="publish">
+      <div class="table-responsive">
+        <table width="100%" cellspacing="0" cellpadding="0" id=""
+         class="display">
+          <thead>
+            <tr>
+              <th width="10%">#</th>
+              <th width="15%">Title</th>
+              <th width="50%">Song</th>
+              <th width="15%">Artist</th>
+              <th width="10%">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let albums of data">
+              <td>{{albums.serial_no}}</td>
+              <td>{{albums.song_title}}</td>
+               <td style="max-height: 150px;overflow: auto;"><a target="_blank" href="{{albums.song_file}}">{{albums.song_file}}</a></td>
+               <td>{{albums.album_id.artist.artist_name}}</td>
+              <td>
+                <a  class="action_btn" (click)="RemoveClick(albums._id)"><i class="fa fa-trash" aria-hidden="true" ></i></a>
+              </td>
+              <div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                     <div class="modal-body text-center">
+                      <p>Are you sure you want to remove this Song?</p>
+                      <a class="blue_btn" (click)="RemoveComm()">OK</a>
+                      <a class="blue_btn" data-dismiss="modal" >Cancel</a>
+                    </div>
+                     </div>
+                  </div>
+                  </div>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+<!-- /********************************************************/     -->
+
+    <div class="white_box" *ngIf="saved">
+      <div class="table-responsive">
+        <table width="100%" cellspacing="0" cellpadding="0" id="" class="display">
+          <thead>
+            <tr>
+              <th width="25%">Title</th>
+              <th width="65%">Song</th>
+              <th width="10%">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let albums of data1">
+              <td>{{albums.song_title}}</td>
+               <td style="max-height: 150px;overflow: auto;"><a target="_blank" href="{{albums.song_file}}">{{albums.song_file}}</a></td>
+              <td>
+                <a  class="blue_btn yellow_btn text-uppercase" (click)="publishModal(albums._id)">Publish</a>
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+  <div class="modal fade" id="publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                     <div class="modal-body text-center">
+                      <p>Are you sure you want to Publish this Song?</p>
+                      <a class="blue_btn" (click)="PublishDrafts()">OK</a>
+                      <a class="blue_btn" data-dismiss="modal" >Cancel</a>
+                    </div>
+                     </div>
+                  </div>
+                  </div>
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

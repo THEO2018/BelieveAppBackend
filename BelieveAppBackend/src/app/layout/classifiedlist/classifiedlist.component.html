@@ -1,0 +1,266 @@
+<div class="content_area">
+  
+  <div class="tables_area">
+      <a  class="blue_btn yellow_btn pull-right text-uppercase" data-toggle="modal" data-target="#addcat">Add Category</a>
+  <a  class="blue_btn yellow_btn pull-right text-uppercase" data-toggle="modal" data-target="#categry">Show Category</a>
+  <div class="tables_area">
+      <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add New</a>
+        <div class="clear"></div>
+    <div class="bg_area" *ngIf="add_new">
+    <h2>Classified</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="AddClassifieds(myForm.valid)">
+         <div class="row">
+          <aside class="col-sm-4">
+                <div class="form-group">
+                  <label class="text-uppercase">Title*</label>
+                    <input type="text"  class="form-control"  value="" placeholder="Enter Title" formControlName="classified_title" id="web"/>
+                    
+                </div>
+                <div *ngIf="myForm.get('classified_title').hasError('required') && myForm.get('classified_title').touched">
+                              <div class="error" *ngIf="myForm.get('classified_title').hasError('required')  && myForm.get('classified_title').touched ">
+                              Title is required
+                              </div> 
+                          </div>
+              </aside>
+           <aside class="col-sm-4">
+                    <div class="form-group">
+                      <label class="text-uppercase">Classified Image*</label>
+                      <p class="add_user">
+                        <a data-backdrop="static" data-keyboard="false" (click)="openModal()">Browse</a>&nbsp;
+                        <img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+                        />
+                        <img *ngIf="image" src="{{imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+                      </p>
+                    </div>
+                    <div class="error" *ngIf="!img_valid">
+                      <div class="error" [hidden]="img_valid">
+                        picture is required
+                      </div>
+                    </div>
+      
+                    <div class="error" *ngIf="!img">
+                      <div class="error" [hidden]="img">
+                        Only png/Jpeg Allowed
+                      </div>
+                    </div>
+                  </aside>
+
+<aside class="col-sm-4">
+                   <div class="form-group">
+                  <label class="text-uppercase">Category*</label>
+                  <div class="custom_select">
+                    <select formControlName="category">
+                     <option value=null disabled selected hidden >Select Category</option>
+                      <option *ngFor="let item of cat_dataa" [ngValue]="item._id">{{item.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                  <div *ngIf="myForm.get('category').hasError('required') && myForm.get('category').touched">
+                              <div class="error" *ngIf="myForm.get('category').hasError('required')  && myForm.get('category').touched ">
+                              Category is required
+                              </div> 
+                          </div>
+                   </aside>
+          
+          
+         </div>
+
+          <!-- gallery modal -->
+          <div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body select_users" style="height: 100%;
+                  
+    overflow: auto;">
+                    <mat-tab-group>
+                      <mat-tab label="Upload files">
+                        <div class="table_box">
+                          <div class="table_inner">
+                            <p>Browse your file here</p>
+                          
+                          <input type="file" #fileupload (change)="onFileChange($event)" id="classified_image" />
+                          </div>
+                          <div class="error" *ngIf="!img">
+                            <div class="error" [hidden]="img">
+                              Only png/Jpeg Allowed
+                            </div>
+                          </div>
+                        </div>
+                        <div class="bottom_box text-right">
+                          <button class="blue_btn" data-dismiss="modal">OK</button>
+                        </div>
+                      </mat-tab>
+                      <mat-tab label="Media library">
+                        <ul class="gallery_images">
+                          <li *ngFor="let image of arryData.libraryImages; let i=index">
+                            <div class="uppre">
+                              <div class="img_outer">
+                                <img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                        <div class="bottom_box text-right">
+                          <button class="blue_btn" data-dismiss="modal">OK</button>
+                        </div>
+                      </mat-tab>
+                    </mat-tab-group>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="row">
+           <aside class="col-sm-12">
+        <div class="form-group">
+          <label class="text-uppercase">Classified*</label>
+            <textarea id="des" value="" placeholder="Enter Description" class="form-control" formControlName="classified" [attr.maxlength]="500"></textarea>
+            </div>
+              <div *ngIf="myForm.get('classified').hasError('required') && myForm.get('classified').touched">
+                              <div class="error" *ngIf="myForm.get('classified').hasError('required')  && myForm.get('classified').touched ">
+                              Classified is required
+                              </div> 
+                          </div>
+              </aside>
+         </div>
+
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Save</button>
+              <button (click)="Cancel()" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Cancel</button>
+           </aside>
+         </div>
+       </form>
+        </div>
+       </div>
+   
+       <h2 style="margin-top:10px;">Classified List</h2>
+    <div class="clear"></div>
+    <div class="white_box">
+      <div class="table-responsive">
+        <table width="100%" cellspacing="0" cellpadding="0" id="example">
+          <thead>
+            <tr>
+              <th width="25%">Title</th>
+              <th width="45%">Classified</th>
+              <!-- <th width="15%">Category</th> -->
+              <th width="20%">Blog Image</th>
+              <th width="10%">ACTION</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor ="let albums of data">
+              <td>{{albums.classified_title}}</td>
+              <td>{{albums.classified}}</td>
+               <!-- <td>{{albums.category}}</td> -->
+               <td><img src="{{albums.classified_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+               
+              <td>
+                <a  class="action_btn"  (click)="RemoveClick(albums._id)"><i class="fa fa-trash" aria-hidden="true" ></i></a>
+              </td>
+
+              <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">  
+                       <div class="modal-body text-center">
+                          <p>Are you sure you want to Delete?</p>
+                          <a class="blue_btn" (click)="RemoveComm()">Yes</a>
+                          <a data-dismiss="modal" class="blue_btn">No</a>
+                        </div>
+                         </div>
+                    </div>
+                  </div>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <Category show> -->
+
+
+    <div class="modal fade" id="categry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title" id="myModalLabel">All Categories</h4> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+ 
+      <div class="modal-body select_users" style="max-height: 500px;
+    overflow: auto;">
+        <div class="table-responsive">
+            <table width="100%" cellspacing="0" cellpadding="0" >
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let test of cat_dataa">
+                  <td><label>{{test.name}}</label></td>
+                <td><a  class="action_btn" *ngIf="!test.disableStatus">
+                  <i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(test._id)"></i>
+                </a></td>
+              </tr>
+              </tbody>
+            </table>
+             </div>
+       
+      </div>
+
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+
+<!-- ----------------------Category Modal------------------ -->
+
+<div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Category</h4>
+      </div>
+ 
+      <div class="modal-body select_users">
+
+         <form  class="top_form" [formGroup]="eForm" (ngSubmit)="AddCategories(eForm.valid)">
+         <div class="row">
+           <aside class="col-sm-12">
+             <div class="form-group">
+                 <input type="text"  class="form-control"  value="" placeholder="Album Name" formControlName="name"/>
+              </div>
+           </aside>
+         </div>
+         <div class="row">
+           <aside class="col-sm-12">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Save</button>
+               <button type="button" class="blue_btn yellow_btn text-uppercase black_btn"   style="margin-top:0px; color:#fff;" data-dismiss="modal" >Cancel</button>
+           </aside>
+         </div>
+       </form>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

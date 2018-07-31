@@ -1,0 +1,209 @@
+.clear{clear:both;height:0;}
+.content_area
+{
+	padding: 15px 15px 35px 15px;
+	min-height: 100%;
+	position: relative;
+}
+.tables_area .white_box
+{
+	padding: 0;
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	margin-top: 15px;
+}
+.white_box
+{
+	background: #fff;
+	padding: 15px;
+	border-radius: 2px;
+}
+.add_formarea
+{
+	padding: 15px;
+}
+.big_yellow
+{
+	font-size: 18px;
+	padding: 10px 35px;
+	margin-bottom: 20px;
+}
+.add_formarea label
+{
+	font-size: 14px;
+	color: #242424;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.add_formarea .form-control
+{
+	font-size: 16px;
+	color: #242424;
+	height: auto;
+	box-shadow: none;
+	padding: 8px 12px;
+}
+.login_form .form-group
+{
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+.form-group h3 {
+	margin-top: 5px;
+}
+.top_form .form-control, .search_input .form-group .form-control
+{
+	height: auto;
+	padding: 8px 10px;
+	box-shadow: none;
+}
+.custom_select select
+{
+	width: 100%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 11px;
+    line-height: 40px;
+    background: #fff;
+}
+.custom_select
+{
+	position: relative;
+}
+.custom_select::after {
+	position: absolute;
+	top: 1px;
+	width: 40px;
+	background: #fff;
+	bottom: 1px;
+	text-align: center;
+	content: "\f0dd";
+	font-family: fontawesome;
+	right: 1px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-size: 20px;
+	line-height: 30px;
+	pointer-events:none;
+}
+.select_users label
+{
+	display: block;
+	padding: 5px;
+}
+.select_users label:nth-child(2n)
+{
+	background:#f5f5f5;
+}
+.select_users label img
+{
+	margin: 0 5px;
+}
+.modal-header .close
+{
+	margin: 0;
+	padding: 0;
+}
+.blue_btn
+{
+	background: #F78C6A;
+	border-radius: 5px;
+	color: #fff !important;
+	text-decoration:none !important;
+	font-size: 14px;
+	border: none;
+	padding: 5px 22px;
+	display: inline-block;
+	line-height: 26px;
+	margin-top: 20px;
+	font-weight: 600;
+}
+.blue_btn:hover
+{
+	background: #eb7650;
+}
+.blue_btn.black_btn {
+    background: #2c2c2c;
+}
+/*.yellow_btn 
+{
+	font-size: 16px;
+	font-weight: 700;
+	background: #e96268;
+	padding: 6px 20px;
+}
+.yellow_btn:hover 
+{
+	background: #f269c9 ;
+}
+.big_yellow
+{
+	font-size: 18px;
+	padding: 10px 35px;
+	margin-bottom: 20px;
+}
+.big_yellow1
+{
+	font-size: 10px;
+	padding: 5px 20px;
+	margin-bottom: 20px;
+}*/
+
+.add_user a
+{
+    display: inline-block;
+    background: #F78C6A;
+    color: #ffffff !important;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-size: 14px;
+    cursor:pointer;
+    margin-top: 8px;
+}
+.add_user a i
+{
+    margin-right: 5px;
+}
+.icon_input
+{
+	position: relative;
+}
+.icon_input i {
+	font-size: 20px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.ui-datepicker.ui-widget{background: #fff;border: 1px solid #ddd;min-width: 311px;}
+.ui-datepicker.ui-widget .ui-datepicker-header{background: none;border: none;}
+.ui-datepicker.ui-widget .ui-datepicker-prev .ui-icon, .ui-datepicker.ui-widget .ui-datepicker-next .ui-icon {background:url("../../../assets/images/left_arrow.png") no-repeat scroll center center;cursor: pointer;height: 35px;left: 0;margin: 0;top: 0;width: 35px;}
+.ui-datepicker.ui-widget .ui-datepicker-next .ui-icon {	background:url("../../../assets/images/right_arrow.png") no-repeat scroll center center;}
+.ui-datepicker-title {color: #000;}
+.ui-datepicker.ui-widget a.ui-state-active{background: #15a5fb;color: #fff;}
+.ui-datepicker.ui-widget .ui-state-default, .ui-datepicker.ui-widget .ui-widget-content .ui-state-default, .ui-datepicker.ui-widget .ui-widget-header .ui-state-default {color: #000;padding: 0 10px;text-align: center;text-shadow: none;}
+.ui-datepicker .ui-datepicker-prev {left: 2px !important;top: 2px !important;}
+.ui-datepicker .ui-datepicker-next {right: 2px !important; top:2px !important;}
+.bootstrap-timepicker-widget.dropdown-menu.open {display: block;padding: 5px;}
+.bootstrap-timepicker-widget {text-align: center;}
+.bootstrap-timepicker-widget input {border: 1px solid #ccc;	padding: 5px;text-align: center;border-radius: 5px;width: 75px;}
+.bootstrap-timepicker-widget table td {padding: 5px 10px;}
+
+label.radio_btn
+{
+    margin-right: 10px;
+}
+label.radio_btn input
+{
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.owl-dt-calendar-table {
+    line-height: 12px;
+}

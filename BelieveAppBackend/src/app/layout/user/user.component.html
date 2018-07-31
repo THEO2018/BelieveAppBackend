@@ -1,0 +1,130 @@
+		<div class="content_area">
+			
+			<div class="tables_area">
+				<h2>User Detail</h2>
+				
+				<div class="clear"></div>
+				<div class="white_box">
+					<form [formGroup]="myForm" >
+					<div class="add_formarea">
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">First Name</label>
+									<input id="name" type="text" value="" placeholder="Enter First Name Here" class="form-control" formControlName="first_name" [attr.maxlength]="50"/>
+								</div>
+								<!-- <div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Last Name</label>
+									<input id="name" type="text" value="" placeholder="Enter Last Name Here" class="form-control" formControlName="last_name" [attr.maxlength]="50"/>
+								</div>
+							<!-- 	<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Phone Number</label>
+									<input id="name" type="text" value="" placeholder="Enter Phone Number Here" class="form-control" formControlName="phone_number" [attr.maxlength]="50"/>
+								</div>
+								<!-- <div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+							<aside class="col-sm-5">
+						<div class="form-group">
+									<label class="text-uppercase">Gender</label>
+									<input id="name" type="text" value="" placeholder="Enter Gender Here" class="form-control" formControlName="gender" [attr.maxlength]="50"/>
+								</div>
+								<!-- <div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+									<div class="form-group">
+									<label class="text-uppercase">Profession</label>
+									<input id="name" type="text" value="" placeholder="Enter Profession Here" class="form-control" formControlName="profession" [attr.maxlength]="50"/>
+								</div>
+							<!-- 	<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+							<aside class="col-sm-5">
+
+							 	<div class="form-group">
+									<label class="text-uppercase">Profile Image</label>
+									
+									<img src="{{this.api_image}}"  style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+							     <div class="form-group">
+									<label class="text-uppercase">Status</label>
+									<input id="name" type="text" value="" placeholder="Enter Status Here" class="form-control" formControlName="status" [attr.maxlength]="50"/>
+								</div>
+							
+							<!-- 	<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Address</label>
+									<input id="name" type="text" value="" placeholder="Enter Address Here" class="form-control" formControlName="address" [attr.maxlength]="50"/>
+								</div>
+							<!-- 	<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div> -->
+							</aside>
+						
+					
+						</div>
+
+
+
+				
+
+
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

@@ -1,0 +1,37 @@
+<div class="bg_area">
+  <h2 class="title_head">Update Giving Link</h2>
+  <div>
+    <form [formGroup]="rForm" (ngSubmit)="AddLinksDetail(rForm.valid,rForm.value)">
+      <div class="row">
+        <aside class="col-sm-4">
+          <div class="form-group">
+            <input type="text" class="form-control" value="" placeholder="Enter Url*" formControlName="giving_url" [attr.maxlength]="500"
+              id="name" [pattern] ="urlPattern"/>
+          </div>
+          <div *ngIf="rForm.get('giving_url').hasError('required') && rForm.get('giving_url').touched">
+            <div class="error" *ngIf="rForm.get('giving_url').hasError('required')  && rForm.get('giving_url').touched">
+              Url is required
+            </div>
+          </div>
+          <div *ngIf="rForm.get('giving_url').hasError('pattern') && rForm.get('giving_url').touched">
+            <div class="error" *ngIf="rForm.get('giving_url').hasError('pattern')  && rForm.get('giving_url').touched ">
+              Invalid Url
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="row">
+        <aside class="col-sm-12">
+          <button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+        </aside>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style type="text/css">
+	.error {
+		color: red;
+	}
+</style>

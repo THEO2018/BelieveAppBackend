@@ -1,0 +1,59 @@
+<div class="content_area">
+  
+  <div class="tables_area">
+  	  <a class="blue_btn yellow_btn pull-right text-uppercase" routerLink="/polls" [routerLinkActive]="['router-link-active']">Published</a>
+ <div class="white_box">
+     	<div class="table-responsive">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th width="15%">Poll Title</th>
+							<th width="35%">Question</th>
+							<th width="10%">Options</th>
+							<th width="10%">End Time</th>
+							<th width="15%">poll Image</th>
+							<th width="15%">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let poll of data1">
+							<td>{{poll.poll_title}}</td>
+							<td>{{poll.question}}</td>
+							<td>{{poll.options_count}}</td>
+							<td>{{poll.end_time}}</td>
+							<td *ngIf="poll.poll_image">
+								<img src="{{poll.poll_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+							<td *ngIf="!poll.poll_image">
+								<img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+
+							<td>
+								 <a  class="blue_btn yellow_btn text-uppercase" (click)="publishModal(poll._id)">Publish</a>
+							</td>
+						</tr>
+						<!-- <tr>
+							<td colspan="6">
+								<mfBootstrapPaginator></mfBootstrapPaginator>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+    </div>
+
+  	</div>
+
+  	</div>
+
+  		  <div class="modal fade" id="publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                     <div class="modal-body text-center">
+                      <p>Are you sure you want to Publish this Blog?</p>
+                      <a class="blue_btn" (click)="PublishDrafts()">OK</a>
+                      <a class="blue_btn" data-dismiss="modal" >Cancel</a>
+                    </div>
+                     </div>
+                  </div>
+                  </div>

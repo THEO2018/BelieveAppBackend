@@ -1,0 +1,56 @@
+<ul class="requests">
+	<li class="alert alert-success"  *ngFor="let grouplist of data"><span *ngIf="grouplist.first_user_id.gender == 'Female'"><a [routerLink]="['/user', grouplist.first_user_id._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{grouplist.first_user_id.first_name}}</a> has requested to add <a [routerLink]="['/user', grouplist.second_user_id._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{grouplist.second_user_id.first_name}}</a> with her as Betrothed </span>
+	
+	<span *ngIf="grouplist.first_user_id.gender == 'Male'"><a [routerLink]="['/user', grouplist.first_user_id._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{grouplist.first_user_id.first_name}}</a> has requested to add <a [routerLink]="['/user', grouplist.second_user_id._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{grouplist.second_user_id.first_name}}</a> with him as Betrothed </span>
+		<div class="success_action">
+			<a class="accept_request" data-toggle="modal" data-target="#request">Accept</a>
+			<a data-toggle="modal" data-target="#reject">Reject</a>
+		</div>
+
+
+		<div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Select Visibility Status for Users</p>
+		      	<a class="blue_btn" (click)="BethrodRequest('A','Y',grouplist._id)">On</a>
+		      	<a class="blue_btn" (click)="BethrodRequest('A','N',grouplist._id)">Off</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Are you sure you want to add this user?</p>
+		      	<a class="blue_btn" (click)="bethrods()">Yes</a>
+		      	<a class="blue_btn" data-dismiss="modal">No</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Are you sure you want to remove this user?</p>
+		      	<a class="blue_btn" (click)="BethrodRequest('R','',grouplist._id)">OK</a>
+		      	<a class="blue_btn" data-dismiss="modal">Cancel</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+
+	</li>
+</ul>
+
+
+
+
+
+
+

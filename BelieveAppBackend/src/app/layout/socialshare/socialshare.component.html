@@ -1,0 +1,40 @@
+<div class="bg_area">
+  <h2 class="title_head">Update Social Share Content </h2>
+  <div>
+    <form [formGroup]="rForm" (ngSubmit)="UpdateSocialShare(rForm.valid,rForm.value)">
+      <div class="row">
+        <aside class="col-sm-4">
+          <div class="form-group">
+            <!-- <input type="text" class="form-control" value="" placeholder="Enter Url*" formControlName="giving_url" [attr.maxlength]="500"
+              id="name" [pattern] ="urlPattern"/> -->
+
+              <textarea id="des" value="" placeholder="Enter Introductory Social Share Content" class="form-control" formControlName="social_share" [attr.maxlength]="50"></textarea>
+
+          </div>
+          <div *ngIf="rForm.get('social_share').hasError('required') && rForm.get('social_share').touched">
+            <div class="error" *ngIf="rForm.get('social_share').hasError('required')  && rForm.get('social_share').touched">
+              Content is required
+            </div>
+          </div>
+         <!--  <div *ngIf="rForm.get('social_share').hasError('pattern') && rForm.get('social_share').touched">
+            <div class="error" *ngIf="rForm.get('social_share').hasError('pattern')  && rForm.get('social_share').touched ">
+              Invalid Url
+            </div>
+          </div> -->
+        </aside>
+      </div>
+
+      <div class="row">
+        <aside class="col-sm-12">
+          <button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+        </aside>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style type="text/css">
+	.error {
+		color: red;
+	}
+</style>

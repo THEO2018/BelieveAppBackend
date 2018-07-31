@@ -1,0 +1,308 @@
+<div class="content_area">
+
+	<div class="tables_area">
+		<h2>Edit Small Group</h2>
+		<div class="white_box">
+			<form [formGroup]="newSmallGroup" novalidate (ngSubmit)="EditSmallGroup(newSmallGroup)">
+				<div class="add_formarea">
+
+					<div class="row">
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Name</label>
+								<input id="name" type="text" value="" placeholder="Enter Name" class="form-control" formControlName="small_group_name" />
+							</div>
+							<div *ngIf="newSmallGroup.get('small_group_name').hasError('required') && newSmallGroup.get('small_group_name').touched">
+								<div class="error" *ngIf="newSmallGroup.get('small_group_name').hasError('required')  && newSmallGroup.get('small_group_name').touched ">
+									Name is required
+								</div>
+							</div>
+						</aside>
+
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Venue</label>
+								<input id="ven" type="text" value="" placeholder="Select Venue" class="form-control" autocorrect="off" autocapitalize="off"
+								 spellcheck="off" #search formControlName="venue" />
+							</div>
+							<div *ngIf="newSmallGroup.get('venue').hasError('required')
+								  && newSmallGroup.get('venue').touched">
+								<div class="error" *ngIf="newSmallGroup.get('venue').hasError('required')  && newSmallGroup.get('venue').touched ">
+									Venue is required
+								</div>
+							</div>
+						</aside>
+					</div>
+					<div class="row">
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Description</label>
+								<textarea id="des" value="" placeholder="Enter Description" class="form-control" formControlName="small_group_description"
+								 [attr.maxlength]="500"></textarea>
+								<!-- <input id="des" type="text" value="" placeholder="Enter Description" class="form-control" formControlName="small_group_description"
+								/> -->
+							</div>
+							<div *ngIf="newSmallGroup.get('small_group_description').hasError('required') && newSmallGroup.get('small_group_description').touched">
+								<div class="error" *ngIf="newSmallGroup.get('small_group_description').hasError('required')  && newSmallGroup.get('small_group_description').touched ">
+									Description is required
+								</div>
+							</div>
+						</aside>
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Front picture*</label>
+								<p data-backdrop="static" data-keyboard="false" class="add_user" (click)="openModal()">
+									<img *ngIf="api_image && !imageSrc && !image" src="{{api_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									<img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									<img *ngIf="image" src="{{this.imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+								</p>
+							</div>
+							<div class="error" *ngIf="!img_valid">
+								<div class="error" [hidden]="img_valid">
+									Front picture is required
+								</div>
+							</div>
+
+							<div class="error" *ngIf="!img">
+								<div class="error" [hidden]="img">
+									Only png/Jpeg Allowed
+								</div>
+							</div>
+						</aside>
+
+					</div>
+
+					<div class="meeting_box">
+						<h4>Meeting Schedule</h4>
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Select Days</label>
+									<div class="custom_select">
+										<select formControlName="days">
+											<option *ngFor="let item of muloptions" [ngValue]="item.value">{{item.value}}</option>
+											<!-- <option value="C">Closed</option> -->
+										</select>
+									</div>
+								</div>
+							</aside>
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">START TIME</label>
+									<div class="icon_input">
+										<input class="form-control" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" formControlName="start_time" value="" [(ngModel)]="timer">
+										<owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+										<!-- 	<input type="time" value="" placeholder="Enter Time" class="form-control timepicker" formControlName="start_time"/> -->
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+									</div>
+								</div>
+
+							</aside>
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">END TIME</label>
+									<div class="icon_input">
+										<input class="form-control" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" formControlName="end_time" [(ngModel)]="timer1">
+										<owl-date-time [pickerType]="'timer'" #dt5></owl-date-time>
+										<!-- <input type="time"  value="{{timer}}" placeholder="Enter Time" class="form-control timepicker" formControlName="end_time" [(ngModel)]="timer1"/> -->
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+									</div>
+								</div>
+
+							</aside>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<aside class="col-sm-4">
+							<div class="form-group">
+								<label class="text-uppercase">Add Users</label>
+								<div class="select_users" *ngIf="initial">
+									<div *ngFor="let test of allusers">
+										<div *ngIf="test.selected == true">
+											<label> <a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{test.full_name}}</a><a (click)="deleteUser(test,test.full_name,test.id)"><i class="fa fa-close"></i></a></label>
+										</div>
+									</div>
+								</div>
+								<div class="select_users" *ngIf="!initial">
+									<div *ngFor="let test of allusers">
+										<div *ngIf="test.selected == true">
+											<label> <a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{test.full_name}}</a><a (click)="deleteUser(test,test.full_name,test.id)"><i class="fa fa-close"></i></a></label>
+										</div>
+									</div>
+								</div>
+
+								<p class="add_user">
+									<a data-target="#adduser" data-toggle="modal" data-backdrop="static" data-keyboard="false" (click)="usermodall()">
+										<i class="fa fa-plus"></i>Add Users</a>
+								</p>
+
+							</div>
+							<div class="error" *ngIf="!users_valid">
+								<div class="error" [hidden]="users_valid">
+									 Users are required
+								</div>
+							</div>
+						</aside>
+						<!-- User Modal -->
+						<div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">Select Users</h4>
+									</div>
+  <form [formGroup]="searchForm">
+  <input type="text" [(ngModel)]="term"  class="form-control"  placeholder="Search" (click)="teamName(term)" formControlName="search">
+   </form>
+									<div class="modal-body select_users" style="max-height: 500px;
+    overflow: auto;">
+										<label *ngFor="let test of allusers | filter:term">
+											<input type="checkbox" name="data" [checked]="test.selected == true" [disabled]="test.admin ==  true" (change)="getuserVal(test._id,test.full_name,  $event.target.checked)">
+											<img src="../../assets/images/logo.png" alt="" style="height:50px;width:50px;"><a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000" data-dismiss="modal">{{test.full_name}}</a></label>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal" [disabled]="!initial" (click)="cancelvalue()">Cancel</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal" (click)="okvalue()">OK</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<aside class="col-sm-4">
+							<label class="text-uppercase">Add Admins</label>
+							<div class="select_users" *ngIf="adminInitial">
+								<div *ngFor="let test of smallGroup">
+									<div *ngIf="test.adminselected == true">
+										<label><a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000" data-dismiss="modal">{{test.full_name}}</a><a (click)="deleteAdmin(test,test.full_name,test.id)"><i class="fa fa-close"></i></a></label>
+									</div>
+								</div>
+							</div>
+							<div class="select_users" *ngIf="!adminInitial">
+								<div *ngFor="let test of smallGroup">
+									<div *ngIf="test.adminselected == true">
+										<label><a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000" data-dismiss="modal">{{test.full_name}}</a><a (click)="deleteAdmin(test,test.full_name,test.id)"><i class="fa fa-close"></i></a></label>
+									</div>
+								</div>
+							</div>
+
+
+							<p class="add_user">
+								<a data-backdrop="static" data-keyboard="false" (click)="adminmodal()">
+									<i class="fa fa-plus"></i>Add Admins</a>
+							</p>
+							<div class="error" *ngIf="!user_valid">
+								<div class="error" [hidden]="user_valid">
+									admin is required
+								</div>
+							</div>
+							<!-- <p class="add_user">
+										<a (click)="selectUsers()"><i class="fa fa-plus"></i>Add Admins</a>
+									</p> -->
+						</aside>
+
+
+
+					</div>
+
+
+					<!-- Admin Modal -->
+
+					<div class="modal fade" id="addadmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel">Select Admins</h4>
+								</div>
+
+								<div class="modal-body select_users" *ngIf="apiuser" style="max-height: 500px;
+    overflow: auto;">
+									<label *ngFor="let test of smallGroup">
+										<input type="checkbox" name="data" class="admin-check" value="test._id" [checked]="test.adminselected == true" (change)="getadminVal(test._id,test.name,$event.target.checked,test)">
+										<img src="../../assets/images/logo.png" alt="" style="height:50px;width:50px;">{{test.full_name}}</label>
+								</div>
+								<div class="modal-body select_users" *ngIf="ok" style="max-height: 500px;
+    overflow: auto;">
+									<label *ngFor="let test of smallGroups">
+										<input type="checkbox" name="data" class="admin-check" value="test._id" [checked]="test.adminselected == true" (change)="getadminVal(test._id,test.name,$event.target.checked,test)">
+										<img src="../../assets/images/logo.png" alt="" style="height:50px;width:50px;">{{test.full_name}}</label>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" [disabled]="!adminInitial" (click)="cancelvalue1()">Cancel</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal" (click)="okvalue1()">OK</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- gallery modal -->
+
+					<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body select_users" style="height: 100%;
+									
+		overflow: auto;">
+									<mat-tab-group color="primary">
+										<mat-tab label="Upload files">
+											<div class="table_box">
+												<div class="table_inner">
+													<p>Browse your file here</p>
+													<input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+												</div>
+											</div>
+											<div class="bottom_box text-right">
+												<button class="blue_btn" data-dismiss="modal">OK</button>
+											</div>
+										</mat-tab>
+										<mat-tab label="Media library">
+											<ul class="gallery_images">
+												<li *ngFor="let image of arryData.libraryImages; let i=index">
+													<div class="uppre">
+														<div class="img_outer">
+															<img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+														</div>
+													</div>
+												</li>
+											</ul>
+											<div class="bottom_box text-right">
+												<button class="blue_btn" data-dismiss="modal">OK</button>
+											</div>
+										</mat-tab>
+									</mat-tab-group>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<button type="submit" class="blue_btn yellow_btn  text-uppercase">Update</button>
+					<button type="submit" class="blue_btn yellow_btn  text-uppercase" (click)="Cancel()">Cancel</button>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<style type="text/css">
+	.error {
+		color: red;
+	}
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

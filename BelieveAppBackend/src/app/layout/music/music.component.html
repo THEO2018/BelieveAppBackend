@@ -1,0 +1,281 @@
+<div class="content_area">
+  
+  <div class="tables_area">
+      <a class="blue_btn yellow_btn pull-right text-uppercase" data-toggle="modal" data-target="#show_artist">Get Artist</a>
+      <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="addArtist()">Add Artist</a>
+    <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add New</a>
+        <div class="clear"></div>
+    <div class="bg_area" *ngIf="add_new">
+    <h2>Add New Album</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="AddAlbum(myForm.valid)" class="top_form">
+         <div class="row">
+           <aside class="col-sm-4">
+             <div class="form-group">
+                 <input id="titlemusic" type="text"  class="form-control"  value="" placeholder="Album Name" formControlName="album_title" [attr.maxlength]="50"/>
+                 
+             </div>
+
+              <div *ngIf="myForm.get('album_title').hasError('required') && myForm.get('album_title').touched">
+			                        <div class="error" *ngIf="myForm.get('album_title').hasError('required')  && myForm.get('album_title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+           </aside>
+         </div>
+         <div class="row">
+            <aside class="col-sm-4">
+                <div class="form-group">
+                  <label class="text-uppercase">Album Image*</label>
+                  <p class="add_user">
+                    <a (click) = "openModal()">Browse</a>&nbsp;
+                    <img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+                    />
+                    <img *ngIf="image" src="{{imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+                  </p>
+                </div>
+                <div class="error" *ngIf="!img_valid">
+                  <div class="error" [hidden]="img_valid">
+                      Album Image is required
+                  </div>
+                </div>
+  
+                <div class="error" *ngIf="!img">
+                  <div class="error" [hidden]="img">
+                    Only png/Jpeg Allowed
+                  </div>
+                </div>
+              </aside>
+
+              <aside class="col-sm-6">
+                  <div class="form-group">
+                    <label class="text-uppercase">Artist*</label>
+                    <div class="custom_select">
+                      <select formControlName="artist">
+                       <option value =null disabled selected hidden >Select Artist</option>
+                        <option *ngFor="let item of artistData" [ngValue]="item._id">{{item.artist_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+    
+                   <div *ngIf="myForm.get('artist').hasError('required')
+                    && myForm.get('artist').touched">
+                                <div class="error" *ngIf="myForm.get('artist').hasError('required')  && myForm.get('artist').touched ">
+                                Artist is required
+                                </div> 
+                </div>
+                </aside>
+         </div>
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Save</button>
+              <button (click)="cancel()" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Cancel</button>
+           </aside>
+         </div>
+       </form>
+       </div>
+       </div>
+
+
+
+
+
+       <div class="bg_area" *ngIf="add_new_artist">
+        <h2>Add New Artist</h2>
+        <div>
+            <form [formGroup]="artistForm" (ngSubmit)="AddArtist(artistForm.valid)" class="top_form">
+             <div class="row">
+               <aside class="col-sm-4">
+                 <div class="form-group">
+                     <input id="titlemusic" type="text"  class="form-control"  value="" placeholder="Artist Name" formControlName="artist_name" [attr.maxlength]="50"/>
+                     
+                 </div>
+    
+                  <div *ngIf="artistForm.get('artist_name').hasError('required') && artistForm.get('artist_name').touched">
+                                  <div class="error" *ngIf="artistForm.get('artist_name').hasError('required')  && artistForm.get('artist_name').touched ">
+                                  Artist name is required
+                                  </div> 
+                              </div>
+               </aside>
+             </div>
+             <div class="row">
+                <aside class="col-sm-4">
+                    <div class="form-group">
+                      <label class="text-uppercase">Artist Image*</label>
+                      <p class="add_user">
+                        <a (click)="openModal()">Browse</a>&nbsp;
+                        <img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+                        />
+                        <img *ngIf="image" src="{{imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+                      </p>
+                    </div>
+                    <div class="error" *ngIf="!img_valid">
+                      <div class="error" [hidden]="img_valid">
+                          Artist Image is required
+                      </div>
+                    </div>
+      
+                    <div class="error" *ngIf="!img">
+                      <div class="error" [hidden]="img">
+                        Only png/Jpeg Allowed
+                      </div>
+                    </div>
+                  </aside>
+             </div>
+             <div class="row">
+               <aside class="col-sm-4">
+                  <button type="submit" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Save</button>
+                  <button (click)="cancel()" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Cancel</button>
+               </aside>
+             </div>
+           </form>
+           </div>
+           </div>
+   
+
+
+           
+       <h2 style="margin-top:10px;">Album List</h2>
+    <div class="clear"></div>
+    <div class="white_box">
+      <div class="content_area" style="background: #eaeaea;">
+        <div class="top3_area">
+            <div class="row">
+              <aside class="col-lg-4" *ngFor ="let albums of data">
+                <div class="white_three">
+                  <img src = "{{albums.album_image}}">
+                  <p  class="text-uppercase">{{albums.album_title}}</p>
+                  <a  class="action_btn"><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/songlist', albums._id]" [routerLinkActive]="['router-link-active']"></i></a>
+                  <a  class="action_btn"><i class="fa fa-edit" aria-hidden="true" [routerLink]="['/editalbum', albums._id]" [routerLinkActive]="['router-link-active']"></i></a>
+				         <a  class="action_btn"><i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(albums._id)"></i></a>
+                </div>
+
+                	
+
+
+                      <!-- DElete Modal -->
+                <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">  
+                       <div class="modal-body text-center">
+                          <p>Are you sure you want to Delete?</p>
+                          <a class="blue_btn" (click)="RemoveComm()">Yes</a>
+                          <a data-dismiss="modal" class="blue_btn">No</a>
+                        </div>
+                         </div>
+                    </div>
+                  </div>
+
+           
+
+              </aside>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- -------------------------------Category show---------------------------- -->
+
+<div class="modal fade" id="show_artist" data-toggle="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <h4 class="modal-title" id="myModalLabel">All Artist</h4> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+   
+        <div class="modal-body select_users" style="max-height: 500px;
+      overflow: auto;">
+          <div class="table-responsive">
+              <table width="100%" cellspacing="0" cellpadding="0" >
+                <thead>
+                  <tr>
+                    <th>Artist Name</th>
+                    <th>Artist Picture</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let test of artistData">
+                    <td><label>{{test.artist_name}}</label></td>
+                    <td *ngIf="test.artist_image">
+                        <img src="{{test.artist_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+                      </td>
+                      <td *ngIf="!test.artist_image">
+                        <img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+                      </td>
+                  <td><a *ngIf="!test.disableStatus" class="action_btn">
+                    <i class="fa fa-trash" aria-hidden="true" (click)="removeArtist(test._id)"></i>
+                  </a></td>
+                </tr>
+                </tbody>
+              </table>
+               </div>
+         
+        </div>
+  
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+  
+       
+      </div>
+    </div>
+  </div>
+
+  							<!-- gallery modal -->
+                <div class="modal fade" id="gallerymodal" data-toggle="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body select_users" style="height: 100%;
+                        
+          overflow: auto;">
+                          <mat-tab-group>
+                            <mat-tab label="Upload files">
+                              <div class="table_box">
+                                <div class="table_inner">
+                                  <p>Browse your file here</p>
+                                
+                                <input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+                                </div>
+                                <div class="error" *ngIf="!img">
+                                  <div class="error" [hidden]="img">
+                                    Only png/Jpeg Allowed
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="bottom_box text-right">
+                                <button class="blue_btn" data-dismiss="modal">OK</button>
+                              </div>
+                            </mat-tab>
+                            <mat-tab label="Media library">
+                              <ul class="gallery_images">
+                                <li *ngFor="let image of arryData.libraryImages; let i=index">
+                                  <div class="uppre">
+                                    <div class="img_outer">
+                                      <img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                              <div class="bottom_box text-right">
+                                <button class="blue_btn" data-dismiss="modal">OK</button>
+                              </div>
+                            </mat-tab>
+                          </mat-tab-group>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

@@ -1,0 +1,2210 @@
+<html>
+<head>
+<title>Believe Admin</title>
+</head>
+<body>
+<h1>Web Services for Believe App (Admin Panel)</h1>
+<h2>BaseUrl - http://192.168.2.26:3000/</h2>
+
+
+***************************************************************************************
+
+<h3>(1) Login (/admin/login)</h3>
+<form action="/admin/login" method = "POST">
+<table>
+<tr>
+<td>Email </td><td><input type="text" name="email">email</td>
+</tr>
+<tr>
+<td>Password </td><td><input type="text" name="password">password</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(2) Create Group (/admin/create_group)</h3>
+<form action="/admin/create_group" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Group Name </td><td><input type="text" name="group_name">group_name</td>
+</tr>
+<tr>
+<td>Description </td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td>Privacy </td><td><input type="text" name="privacy">privacy (C-Closed, O-Open)</td>
+</tr>
+<tr>
+<td>Users </td><td><input type="text" name="users">users (comma separated)</td>
+</tr>
+<tr>
+<td>Admin Users </td><td><input type="text" name="admin_users">admin_users (comma separated)</td>
+</tr>
+<tr>
+ <td>Group Image</td><td><input type="file" name="group_image" />group_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(3) Get Users (/admin/get_users)</h3>
+<form action="/admin/get_users" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(4) Get All Groups (/admin/get_groups)</h3>
+<form action="/admin/get_groups" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(5) Create Small Group (/admin/create_small_group)</h3>
+<form action="/admin/create_small_group" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Small Group Name </td><td><input type="text" name="small_group_name">small_group_name</td>
+</tr>
+<tr>
+<td>Small Group Description </td><td><input type="text" name="small_group_description">small_group_description</td>
+</tr>
+<tr>
+<td>Users </td><td><input type="text" name="users">users (comma separated)</td>
+</tr>
+<tr>
+<td>Admin Users </td><td><input type="text" name="admin_users">admin_users </td>
+</tr>
+<tr>
+<td>Venue </td><td><input type="text" name="venue">venue </td>
+</tr>
+<tr>
+<td>Venue Latitude</td><td><input type="text" name="venue_latitude">venue_latitude </td>
+</tr>
+<tr>
+<td>Venue Longitude</td><td><input type="text" name="venue_longitude">venue_longitude </td>
+</tr>
+<tr>
+<td>Days </td><td><input type="text" name="days">days </td>
+</tr>
+<tr>
+<td>Start Time </td><td><input type="text" name="start_time">start_time </td>
+</tr>
+<tr>
+<td>End Time </td><td><input type="text" name="end_time">end_time </td>
+</tr>
+<tr>
+ <td>Small Group Image</td><td><input type="file" name="small_group_image" />small_group_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(6) Get All Small Groups (/admin/get_small_groups)</h3>
+<form action="/admin/get_small_groups" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(7) Get Small Group Join Requests (/admin/get_small_group_join_requests)</h3>
+<form action="/admin/get_small_group_join_requests" method = "POST">
+<table>
+<tr>
+<td>Small Group Id </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(7) Accept/Reject Small Group Join Requests (/admin/accept_reject_small_group_request)</h3>
+<form action="/admin/accept_reject_small_group_request" method = "POST">
+<table>
+<tr>
+<td>Request Id </td><td><input type="text" name="request_id">request_id</td>
+</tr>
+<tr>
+<td>Small Group Id </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr>
+<tr>
+<td>Accept Status </td><td><input type="text" name="accept_status">accept_status (Y- yes, N-no)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(7) Get Group Join Requests (/admin/get_group_join_requests)</h3>
+<form action="/admin/get_group_join_requests" method = "POST">
+<table>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(7) Accept/Reject Group Join Requests (/admin/accept_reject_group_request)</h3>
+<form action="/admin/accept_reject_group_request" method = "POST">
+<table>
+<tr>
+<td>Request Id </td><td><input type="text" name="request_id">request_id</td>
+</tr>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr>
+<tr>
+<td>Accept Status </td><td><input type="text" name="accept_status">accept_status (Y- yes, N-no)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(8) Edit Group (/admin/edit_group)</h3>
+<form action="/admin/edit_group" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td>Group Name </td><td><input type="text" name="group_name">group_name</td>
+</tr>
+<tr>
+<td>Description </td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td>Privacy </td><td><input type="text" name="privacy">privacy (C-Closed, O-Open)</td>
+</tr>
+<tr>
+<td>Users </td><td><input type="text" name="users">users (comma separated)</td>
+</tr>
+<tr>
+<td>Admin Users </td><td><input type="text" name="admin_users">admin_users (comma separated)</td>
+</tr>
+<tr>
+ <td>Group Image</td><td><input type="file" name="group_image" />group_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(9) Add Betrothed (/admin/add_betrothed)</h3>
+<form action="/admin/add_betrothed" method = "POST">
+<table>
+<tr>
+<td>First User Id </td><td><input type="text" name="first_user_id">first_user_id</td>
+</tr>
+<tr>
+<td>Second User Id </td><td><input type="text" name="second_user_id">second_user_id</td>
+</tr>
+<tr>
+<td>Visibility Status </td><td><input type="text" name="visibility_status">visibility_status (Y- on, N- off)</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(10) Add Wedding List (/admin/add_wedding_list)</h3>
+<form action="/admin/add_wedding_list" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Title </td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Url to website </td><td><input type="text" name="url_online_site">url_online_site</td>
+</tr>
+<tr>
+<td>link Url Status </td><td><input type="text" name="link_url">link_url</td>
+</tr>
+<tr>
+ <td>Cover Image</td><td><input type="file" name="cover_photo" />cover_photo</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(11) Add Upcoming Marriages (/admin/add_upcoming_marriages)</h3>
+<form action="/admin/add_upcoming_marriages" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Fisrt user Id </td><td><input type="text" name="first_user_id">first_user_id</td>
+</tr>
+<tr>
+<td>Second user Id </td><td><input type="text" name="second_user_id">second_user_id</td>
+</tr>
+<tr>
+<td>Date Of marriage</td><td><input type="text" name="date_of_marriage">date_of_marriage</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+ <td>Marriage Cover Image</td><td><input type="file" name="marriage_cover_photo" />marriage_cover_photo</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(12) Get All Betrotheds (/admin/get_betrotheds)</h3>
+<form action="/admin/get_betrotheds" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(13) Get All Pending requests of betrotheds (/admin/get_requests_betrotheds)</h3>
+<form action="/admin/get_requests_betrotheds" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(14) Get All Wedding List (/admin/get_wedding_lists)</h3>
+<form action="/admin/get_wedding_lists" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(15) Get Upcoming Marriages (/admin/get_upcoming_marriages)</h3>
+<form action="/admin/get_upcoming_marriages" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(15) Get Draft Upcoming Marriages (/admin/get_draft_upcoming_marriages)</h3>
+<form action="/admin/get_draft_upcoming_marriages" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(16) Add Birthday List (/admin/add_birthday_list)</h3>
+<form action="/admin/add_birthday_list" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Birthday List Title </td><td><input type="text" name="bday_list_title">bday_list_title</td>
+</tr>
+<tr>
+<td>Birthday List Url to website </td><td><input type="text" name="bday_list_url_online_site">bday_list_url_online_site</td>
+</tr>
+<tr>
+<td>link Url Status </td><td><input type="text" name="link_url">link_url</td>
+</tr>
+<tr>
+ <td>Birthday List Cover Image</td><td><input type="file" name="bday_list_cover_photo" />bday_list_cover_photo</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(17) Add Event Category (/admin/add_event_category)</h3>
+<form action="/admin/add_event_category" method = "POST">
+<table>
+<tr>
+<td>Name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(18) Get Event Categories (/admin/get_event_categories)</h3>
+<form action="/admin/get_event_categories" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(19) Add Event (/admin/add_event)</h3>
+<form action="/admin/add_event" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Event Title </td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Event Category </td><td><input type="text" name="event_category">event_category</td>
+</tr>
+<tr>
+<td>Description </td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td>Venue </td><td><input type="text" name="venue">venue</td>
+</tr>
+<tr>
+<td>Date </td><td><input type="text" name="date">date (yyyy-mm-dd)</td>
+</tr>
+<tr>
+<td>Start Time </td><td><input type="text" name="start_time">start_time</td>
+</tr>
+<tr>
+<td>End Time </td><td><input type="text" name="end_time">end_time</td>
+</tr>
+<tr>
+<td>Price Status </td><td><input type="text" name="price_status">price_status (Y-yes, N-no)</td>
+</tr>
+<tr>
+<td>Price </td><td><input type="text" name="price">price</td>
+</tr>
+<tr>
+ <td>Event Cover Image</td><td><input type="file" name="event_cover" />event_cover</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(20) Get All Events (/admin/get_all_events)</h3>
+<form action="/admin/get_all_events" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(21) Get All Birthday list (/admin/get_all_birthday_lists)</h3>
+<form action="/admin/get_all_birthday_lists" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(22) Get Small Group Detail (/admin/get_small_group_detail)</h3>
+<form action="/admin/get_small_group_detail" method = "POST">
+<table>
+<tr>
+<td>Small Group Id </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(23) Edit Group (/admin/edit_small_group)</h3>
+<form action="/admin/edit_small_group" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Small Group Id </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td>Small Group Name </td><td><input type="text" name="small_group_name">small_group_name</td>
+</tr>
+<tr>
+<td>small_group Description </td><td><input type="text" name="small_group_description">small_group_description</td>
+</tr>
+<tr>
+<td>Users </td><td><input type="text" name="users">users (comma separated)</td>
+</tr>
+<tr>
+<td>Admin Users </td><td><input type="text" name="admin_users">admin_users (comma separated)</td>
+</tr>
+<tr>
+<td>Venue </td><td><input type="text" name="venue">venue</td>
+</tr>
+<tr>
+<td>days </td><td><input type="text" name="days">days</td>
+</tr>
+<tr>
+<td>Start Time </td><td><input type="text" name="start_time">start_time</td>
+</tr>
+<tr>
+<td>End Time </td><td><input type="text" name="end_time">end_time</td>
+</tr>
+<tr>
+ <td>Small Group Image</td><td><input type="file" name="small_group_image" />small_group_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(24) Get Upcoming/past events (/admin/get_upcoming_past_events)</h3>
+<form action="/admin/get_upcoming_past_events" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(25) Get Event Detail (/admin/get_event_detail)</h3>
+<form action="/admin/get_event_detail" method = "POST">
+<table>
+<tr>
+<td>Event Id </td><td><input type="text" name="event_id">event_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(26) Edit Event (/admin/edit_event)</h3>
+<form action="/admin/edit_event" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Event Id </td><td><input type="text" name="event_id">event_id</td>
+</tr>
+<tr>
+<td>Event Title </td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Event Category </td><td><input type="text" name="event_category">event_category</td>
+</tr>
+<tr>
+<td>Description </td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td>Venue </td><td><input type="text" name="venue">venue</td>
+</tr>
+<tr>
+<td>Date </td><td><input type="text" name="date">date (yyyy-mm-dd)</td>
+</tr>
+<tr>
+<td>Start Time </td><td><input type="text" name="start_time">start_time</td>
+</tr>
+<tr>
+<td>End Time </td><td><input type="text" name="end_time">end_time</td>
+</tr>
+<tr>
+<td>Price Status </td><td><input type="text" name="price_status">price_status (Y-yes, N-no)</td>
+</tr>
+<tr>
+<td>Price </td><td><input type="text" name="price">price</td>
+</tr>
+<tr>
+ <td>Event Cover Image</td><td><input type="file" name="event_cover" />event_cover</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(27) Remove Community Module (/admin/remove_community_module)</h3>
+<form action="/admin/remove_community_module" method = "POST">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (group - GR, small_group- SG, event- EV, betrothed - BR, upcoming_marriage - UM, wedding list- WL, birthday LIst - BL )</td>
+</tr>
+<tr>
+<td>Type Id </td><td><input type="text" name="type_id">type_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(28) Add Music Album (/admin/add_music_album)</h3>
+<form action="/admin/add_music_album" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Album Title </td><td><input type="text" name="album_title">album_title</td>
+</tr>
+<tr>
+<td>Artsit </td><td><input type="text" name="artist">artist</td>
+</tr>
+<tr>
+ <td>Album Image</td><td><input type="file" name="album_image" />album_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(29) Get Music Albums (/admin/get_music_albums)</h3>
+<form action="/admin/get_music_albums" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(30) Add Song to Album (/admin/add_song_to_album)</h3>
+<form action="/admin/add_song_to_album" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Song Title </td><td><input type="text" name="song_title">song_title</td>
+</tr>
+<tr>
+<td>Album ID </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+ <td>Song File</td><td><input type="file" name="song_file" />song_file</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(31) Get Songs of album (/admin/get_songs_of_album)</h3>
+<form action="/admin/get_songs_of_album" method = "POST">
+<table>
+<tr>
+<td>Album Id </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(31) Get Draft Songs of album (/admin/get_draft_songs_of_album)</h3>
+<form action="/admin/get_draft_songs_of_album" method = "POST">
+<table>
+<tr>
+<td>Album Id </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(32) Accept Reject Betrothed (/admin/accept_reject_betrothed)</h3>
+<form action="/admin/accept_reject_betrothed" method = "POST">
+<table>
+<tr>
+<td>Betrothed Id </td><td><input type="text" name="betrothed_id">betrothed_id</td>
+</tr>
+<tr>
+<td>Accept/ Reject status </td><td><input type="text" name="accept_status">accept_status (A- accepted, R- rejected) </td>
+</tr>
+<tr>
+<td>Visisbility status </td><td><input type="text" name="visibility_status">visibility_status ((Y- on, N- off))</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(65) Get Draft betrotheds (/admin/get_draft_betrotheds)</h3>
+<form action="/admin/get_draft_betrotheds" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+
+<h3>(33) Add Media gallary (/admin/add_media_gallary)</h3>
+<form action="/admin/add_media_gallary" method = "POST">
+<table>
+<tr>
+<td>gallary Title </td><td><input type="text" name="gallary_title">gallary_title</td>
+</tr>
+<tr>
+<td>Category </td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(34) Add Media to Gallary (/admin/add_media_to_gallary)</h3>
+<form action="/admin/add_media_to_gallary" method = "POST" enctype="multipart/form-data">
+<table>
+
+<tr>
+<td>Gallary ID </td><td><input type="text" name="gallary_id">gallary_id</td>
+</tr>
+<tr>
+<td>Media Type </td><td><input type="text" name="media_type">media_type (Image - P, Video - V)</td>
+</tr>
+<tr>
+ <td>Media file </td><td><input type="file" name="media_file" />media_file</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(35) Get Media Gallaries (/admin/get_media_gallaries)</h3>
+<form action="/admin/get_media_gallaries" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(36) Get Media of Gallaries (/admin/get_media_of_gallaries)</h3>
+<form action="/admin/get_media_of_gallaries" method = "POST">
+<table>
+<tr>
+<td>Gallary Id </td><td><input type="text" name="gallary_id">gallary_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(37) Get album detail (/admin/get_album_detail)</h3>
+<form action="/admin/get_album_detail" method = "POST">
+<table>
+<tr>
+<td>Album Id </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(38) Edit Music Album (/admin/edit_music_album)</h3>
+<form action="/admin/edit_music_album" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Album Id </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td>Album Title </td><td><input type="text" name="album_title">album_title</td>
+</tr>
+<tr>
+ <td>Album Image</td><td><input type="file" name="album_image" />album_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(39) Remove Music Album/Song (/admin/remove_music)</h3>
+<form action="/admin/remove_music" method = "POST">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (Music Album - MA, Music Song- MS)</td>
+</tr>
+<tr>
+<td>Type Id </td><td><input type="text" name="type_id">type_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(40) Get All Apointment requests (/admin/get_appointment_requests)</h3>
+<form action="/admin/get_appointment_requests" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(41) Accept Reject Appoitment (/admin/accept_reject_appointment)</h3>
+<form action="/admin/accept_reject_appointment" method = "POST">
+<table>
+<tr>
+<td>Appoinement Id </td><td><input type="text" name="appointment_id">appointment_id</td>
+</tr>
+<tr>
+<td>Accept/ Reject status </td><td><input type="text" name="accept_status">accept_status (A- accepted, R- rejected) </td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(42) Add Blog Category (/admin/add_blog_category)</h3>
+<form action="/admin/add_blog_category" method = "POST">
+<table>
+<tr>
+<td>Name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(43) Get Blog Categories (/admin/get_blog_categories)</h3>
+<form action="/admin/get_blog_categories" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(44) Add Blog  (/admin/add_blog)</h3>
+<form action="/admin/add_blog" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Blog Title </td><td><input type="text" name="blog_title">blog_title</td>
+</tr>
+<tr>
+<td>Category </td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td>Blog </td><td><input type="text" name="blog">blog</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+ <td>Blog Image</td><td><input type="file" name="blog_image" />blog_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(45) Get Draft Blogs (/admin/get_draft_blogs)</h3>
+<form action="/admin/get_draft_blogs" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(45) Get Blogs (/admin/get_blogs)</h3>
+<form action="/admin/get_blogs" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(46) Get blog detail (/admin/get_blog_detail)</h3>
+<form action="/admin/get_blog_detail" method = "POST">
+<table>
+<tr>
+<td>Blog Id </td><td><input type="text" name="blog_id">blog_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(47) Get Alumni new normal Users (/admin/get_alumni_new_normal_users)</h3>
+<form action="/admin/get_alumni_new_normal_users" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(48) Change To Alumni (/admin/change_to_alumni)</h3>
+<form action="/admin/change_to_alumni" method = "POST">
+<table>
+<tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(49) Add Classified Category (/admin/add_classified_category)</h3>
+<form action="/admin/add_classified_category" method = "POST" >
+<table>
+<tr>
+<td>Name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(50) Get Classifieds Categories (/admin/get_classifieds_categories)</h3>
+<form action="/admin/get_classifieds_categories" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(51) Add Classified  (/admin/add_classified)</h3>
+<form action="/admin/add_classified" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Classified Title </td><td><input type="text" name="classified_title">classified_title</td>
+</tr>
+<tr>
+<td>Category </td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td>Classified </td><td><input type="text" name="classified">classified</td>
+</tr>
+<tr>
+ <td>Classified Image</td><td><input type="file" name="classified_image" />classified_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(52) Get Classifieds Of Category (/admin/get_classifieds_of_category)</h3>
+<form action="/admin/get_classifieds_of_category" method = "POST">
+<table>
+<tr>
+<td>Category </td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(53) Get classified detail (/admin/get_classified_detail)</h3>
+<form action="/admin/get_classified_detail" method = "POST">
+<table>
+<tr>
+<td>Classified Id </td><td><input type="text" name="classified_id">classified_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(54) Get Recommendation Requests (/admin/get_recommendation_requests)</h3>
+<form action="/admin/get_recommendation_requests" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(55) Approve/cancel Recommendation Requests (/admin/approve_cancel_recommendation_request)</h3>
+<form action="/admin/approve_cancel_recommendation_request" method = "POST">
+<table>
+<tr>
+<td>Recommendation Id </td><td><input type="text" name="recommendation_id">recommendation_id</td>
+</tr>
+<tr>
+<td>Approve/cancel status </td><td><input type="text" name="approve_status">approve_status (A- Approve , C- cancel)</td>
+</tr>
+<tr>
+<td>Email </td><td><input type="text" name="email">email</td>
+</tr>
+<tr>
+<td>Admin Description </td><td><input type="text" name="admin_description">admin_description</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(56) Get Recommendation Approved/canceled (/admin/get_appoved_canceled_recommendations)</h3>
+<form action="/admin/get_appoved_canceled_recommendations" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(57) Edit Media Gallary (/admin/edit_media_gallary)</h3>
+<form action="/admin/edit_media_gallary" method = "POST">
+<table>
+<tr>
+<td>Gallary Id </td><td><input type="text" name="gallary_id">gallary_id</td>
+</tr>
+<tr>
+<td>Gallary Title </td><td><input type="text" name="gallary_title">gallary_title</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(58) Remove Media Gallary/Media (/admin/remove_media)</h3>
+<form action="/admin/remove_media" method = "POST">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (Gallary - GA, Media- ME)</td>
+</tr>
+<tr>
+<td>Type Id </td><td><input type="text" name="type_id">type_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(59) Get Gallary Detail (/admin/get_gallary_detail)</h3>
+<form action="/admin/get_gallary_detail" method = "POST">
+<table>
+<tr>
+<td>Gallary Id </td><td><input type="text" name="gallary_id">gallary_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(60) Get Today/Upcoming Appointments  (/admin/get_today_upcoming_appointments)</h3>
+<form action="/admin/get_today_upcoming_appointments" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(61) Edit Contact Detail (/admin/edit_contact_detail)</h3>
+<form action="/admin/edit_contact_detail" method = "POST">
+<table>
+<tr>
+<td>Location </td><td><input type="text" name="location">location</td>
+</tr>
+<tr>
+<td>Phone </td><td><input type="text" name="phone">phone</td>
+</tr>
+<tr>
+<td>Mail </td><td><input type="text" name="mail">mail</td>
+</tr>
+<tr>
+<td>Website Link </td><td><input type="text" name="Website_link">Website_link</td>
+</tr>
+<tr>
+<td>Facebook Link </td><td><input type="text" name="facebook_link">facebook_link</td>
+</tr>
+<tr>
+<td>Twitter Link </td><td><input type="text" name="twitter_link">twitter_link</td>
+</tr>
+<tr>
+<td>Instagram Link </td><td><input type="text" name="instagram_link">instagram_link</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(62) Get Contact Detail (/admin/get_contact_detail)</h3>
+<form action="/admin/get_contact_detail" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(63) Add a Poll  (/admin/add_poll)</h3>
+<form action="/admin/add_poll" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Poll Title </td><td><input type="text" name="poll_title">poll_title</td>
+</tr>
+<tr>
+<td>Question </td><td><input type="text" name="question">question</td>
+</tr>
+<tr>
+<td>Options </td><td><input type="text" name="options">options (^ separated)</td>
+</tr>
+<!-- <tr>
+<td>Start Time </td><td><input type="text" name="start_time">start_time (February 10, 2018 12:50:09)</td>
+</tr> -->
+<tr>
+<td>End Time </td><td><input type="text" name="end_time">end_time (February 10, 2018 14:50:09)</td>
+</tr>
+<tr>
+<td>Setting Multiple Choice </td><td><input type="text" name="setting_multiple_choice">setting_multiple_choice</td>
+</tr>
+<tr>
+<td>Setting Hide Results after Voting </td><td><input type="text" name="setting_hide_results_after_voting">setting_hide_results_after_voting</td>
+</tr>
+<tr>
+<td>Setting Hide Results</td><td><input type="text" name="setting_hide_results">setting_hide_results</td>
+</tr>
+<tr>
+<td>Share Title</td><td><input type="text" name="share_title">share_title</td>
+</tr>
+<tr>
+<td>Share Question</td><td><input type="text" name="share_question">share_question</td>
+</tr>
+<tr>
+<td>Share Answer</td><td><input type="text" name="share_answer">share_answer</td>
+</tr>
+<tr>
+<td>Share Results</td><td><input type="text" name="share_results">share_results</td>
+</tr>
+<tr>
+<td>Share Platform Facebook</td><td><input type="text" name="share_platform_facebook">share_platform_facebook</td>
+</tr>
+<tr>
+<td>Share Platform Whatsapp</td><td><input type="text" name="share_platform_whatsapp">share_platform_whatsapp</td>
+</tr>
+<tr>
+<td>Share Platform Twitter</td><td><input type="text" name="share_platform_twitter">share_platform_twitter</td>
+</tr>
+<tr>
+<td>Share Platform Text</td><td><input type="text" name="share_platform_text">share_platform_text</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+ <td>poll Image</td><td><input type="file" name="poll_image" />poll_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(64) Get Closed Polls (/admin/get_closed_polls)</h3>
+<form action="/admin/get_closed_polls" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(65) Get Active Polls (/admin/get_active_polls)</h3>
+<form action="/admin/get_active_polls" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(65) Get Draft Polls (/admin/get_draft_polls)</h3>
+<form action="/admin/get_draft_polls" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(65) Get Past Polls Settings(/admin/get_past_polls_seetings)</h3>
+<form action="/admin/get_past_polls_seetings" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(66) Edit Past Poll Settings (/admin/edit_past_poll_settings)</h3>
+<form action="/admin/edit_past_poll_settings" method = "POST">
+<table>
+<tr>
+<td>Past polls visibilty status  </td><td><input type="text" name="past_polls_visibility_status">past_polls_visibility_status (true, false)</td>
+</tr>
+<tr>
+<td>Number of Past polls visible</td><td><input type="text" name="no_of_past_polls_visible">no_of_past_polls_visible</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(66) Get Poll Detail (/admin/get_poll_detail)</h3>
+<form action="/admin/get_poll_detail" method = "POST">
+<table>
+<tr>
+<td>Poll ID </td><td><input type="text" name="poll_id">poll_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(67) Remove Classified category/classified (/admin/remove_classified)</h3>
+<form action="/admin/remove_classified" method = "POST">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (Classified - CL, Category- CA)</td>
+</tr>
+<tr>
+<td>Type Id </td><td><input type="text" name="type_id">type_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(68) Add Online Store Link (/admin/add_online_store_link)</h3>
+<form action="/admin/add_online_store_link" method = "POST" >
+<table>
+<tr>
+<td>Name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td>Online Store Url </td><td><input type="text" name="online_store_url">online_store_url</td>
+</tr>
+<tr>
+<td>link Url Status </td><td><input type="text" name="link_url">link_url</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(69) Edit Online Store Link (/admin/edit_online_store_link)</h3>
+<form action="/admin/edit_online_store_link" method = "POST" >
+<table>
+<tr>
+<td>Online Store Id </td><td><input type="text" name="online_store_id">online_store_id</td>
+</tr>
+<tr>
+<td>Name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td>Online Store Url </td><td><input type="text" name="online_store_url">online_store_url</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(70) Get Online Stores (/admin/get_online_stores)</h3>
+<form action="/admin/get_online_stores" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(70) Get Draft Online Stores (/admin/get_draft_online_stores)</h3>
+<form action="/admin/get_draft_online_stores" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(71) Edit service Hours (/admin/edit_service_hours)</h3>
+<form action="/admin/edit_service_hours" method = "POST" >
+<table>
+<tr>
+<td>Day From </td><td><input type="text" name="day_from">day_from</td>
+</tr>
+<tr>
+<td>Day To </td><td><input type="text" name="day_to">day_to</td>
+</tr>
+<tr>
+<td>Time </td><td><input type="text" name="time">time</td>
+</tr>
+<tr>
+<td>Venue </td><td><input type="text" name="venue">venue</td>
+</tr>
+<tr>
+<td>Phone </td><td><input type="text" name="phone">phone</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(72) Get Service Hours Detail (/admin/get_service_hours_detail)</h3>
+<form action="/admin/get_service_hours_detail" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(73) Add News Link (/admin/add_news_link)</h3>
+<form action="/admin/add_news_link" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Name</td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td>News Url</td><td><input type="text" name="news_url">news_url</td>
+</tr>
+<tr>
+<td>link Url Status </td><td><input type="text" name="link_url">link_url</td>
+</tr>
+<tr>
+ <td>News Image</td><td><input type="file" name="news_image" />news_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(74) Edit News Link (/admin/edit_news_link)</h3>
+<form action="/admin/edit_news_link" method = "POST" >
+<table>
+<!-- <tr>
+<td>News Url Id</td><td><input type="text" name="news_url_id">news_url_id</td>
+</tr> -->
+<!-- <tr>
+<td>Name</td><td><input type="text" name="name">name</td>
+</tr> -->
+<tr>
+<td>News Url</td><td><input type="text" name="news_url">news_url</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(75) Get News Urls (/admin/get_news_urls)</h3>
+<form action="/admin/get_news_urls" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(76) Add About Page (/admin/add_about_page)</h3>
+<form action="/admin/add_about_page" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Title</td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Description</td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status">status (S- Draft, A- publish)</td>
+</tr>
+<tr>
+ <td>About Cover Image</td><td><input type="file" name="about_cover_image" />about_cover_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(77) Get Draft About Pages (/admin/get_draft_about_pages)</h3>
+<form action="/admin/get_draft_about_pages" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(77) Get About Pages (/admin/get_about_pages)</h3>
+<form action="/admin/get_about_pages" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(78) Get About Page Detail  (/admin/get_about_page_detail)</h3>
+<form action="/admin/get_about_page_detail" method = "Post">
+<table>
+<tr>
+<td>About Page Id</td><td><input type="text" name="about_page_id">about_page_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(79) Edit About Page Detail (/admin/edit_about_page_detail)</h3>
+<form action="/admin/edit_about_page_detail" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>About Page Id</td><td><input type="text" name="about_page_id">about_page_id</td>
+</tr>
+<tr>
+<td>Title</td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Description</td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+ <td>About Cover Image</td><td><input type="file" name="about_cover_image" />about_cover_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(80) Delete About Page/Blog  (/admin/delete_about_page_blog)</h3>
+<form action="/admin/delete_about_page_blog" method = "Post">
+<table>
+<tr>
+<td>Type</td><td><input type="text" name="type">type (About page - AP, Blog - BL, Blog Category - BC) </td>
+</tr>
+<tr>
+<td>Type Id</td><td><input type="text" name="type_id">type_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(81) Delete Online Store/News Url  (/admin/delete_store_news)</h3>
+<form action="/admin/delete_store_news" method = "Post">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (Online store - OS, News = NE)</td>
+</tr>
+<tr>
+<td>Type Id</td><td><input type="text" name="type_id">type_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(82) Get Library (/admin/get_library)</h3>
+<form action="/admin/get_library" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(83) Add Media to Library (/admin/add_media_to_library)</h3>
+<form action="/admin/add_media_to_library" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Media Type</td><td><input type="text" name="media_type">media_type (V-video, I-Image, A- Audio)</td>
+</tr>
+<tr>
+ <td>Image Name</td><td><input type="file" name="image_name" />image_name</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(84) Publish Drafts (/admin/publish_drafts)</h3>
+<form action="/admin/publish_drafts" method = "Post">
+<table>
+<tr>
+<td>Type </td><td><input type="text" name="type">type (Betrothed- BE, Upcoming Marriage - UM, Songs- SN, Blog- BL, Online store- OS, About Page- AP, Polls- PL)</td>
+</tr>
+<tr>
+<td>Type Id</td><td><input type="text" name="type_id">type_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(85) Edit Classified Category (/admin/edit_classified_category)</h3>
+<form action="/admin/edit_classified_category" method = "Post">
+<table>
+<tr>
+<td>Category Id </td><td><input type="text" name="category_id">category_id</td>
+</tr>
+<tr>
+<td>Category Name</td><td><input type="text" name="category_name">category_name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(86) Get Links (/admin/get_links)</h3>
+<form action="/admin/get_links" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(87) Add New Link (/admin/add_new_link)</h3>
+<form action="/admin/add_new_link" method = "Post">
+<table>
+<tr>
+<td>Title </td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>URL </td><td><input type="text" name="url">url</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(87) Get Giving Url (/admin/get_giving_url)</h3>
+<form action="/admin/get_giving_url" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(88) Update Giving Link (/admin/update_giving_link)</h3>
+<form action="/admin/update_giving_link" method = "Post">
+<table>
+<tr>
+<td>URL </td><td><input type="text" name="giving_url">giving_url</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(89) Get Social share content (/admin/get_social_share_content)</h3>
+<form action="/admin/get_social_share_content" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(90) Update Social share content (/admin/update_social_share_content)</h3>
+<form action="/admin/update_social_share_content" method = "Post">
+<table>
+<tr>
+<td>content </td><td><input type="text" name="content">content</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+<h2> Admin Settings </h2>
+
+
+***************************************************************************************
+<h3>(88) Change Admin Password (/admin/change_admin_password)</h3>
+<form action="/admin/change_admin_password" method = "POST">
+<table>
+<tr>
+<td>Email </td><td><input type="text" name="email"> email</td>
+</tr>
+<tr>
+<td>Current Password</td><td><input type="text" name="current_password">current_password</td>
+</tr>
+<tr>
+<td>New Password</td><td><input type="text" name="new_password">new_password</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(89) Add New Manager to Admin (/admin/add_manager_admin)</h3>
+<form action="/admin/add_manager_admin" method = "POST">
+<table>
+<tr>
+<td>Admin ID </td><td><input type="text" name="admin_id"> admin_id</td>
+</tr>
+<tr>
+<td>Email </td><td><input type="text" name="email"> email</td>
+</tr>
+<tr>
+<td>Name </td><td><input type="text" name="name"> name</td>
+</tr>
+<tr>
+<td>Phone</td><td><input type="text" name="phone">phone</td>
+</tr>
+<tr>
+<td>Password</td><td><input type="text" name="password">password</td>
+</tr>
+<tr>
+<td>Permissions</td><td><input type="text" name="permissions">permissions (Comma Separated)</td>
+</tr>
+<tr>
+<td>Status</td><td><input type="text" name="status">status</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(90) Edit Manager Acount (/admin/edit_admin_account)</h3>
+<form action="/admin/edit_admin_account" method = "POST">
+<table>
+<tr>
+<td>Admin ID </td><td><input type="text" name="admin_id"> admin_id</td>
+</tr>
+<tr>
+<td>Name </td><td><input type="text" name="name"> name</td>
+</tr>
+<tr>
+<td>Phone</td><td><input type="text" name="phone">phone</td>
+</tr>
+<!-- <tr>
+<td>Password</td><td><input type="text" name="password">password</td>
+</tr> -->
+<tr>
+<td>Permissions</td><td><input type="text" name="permissions">permissions (Comma Separated)</td>
+</tr>
+<tr>
+<td>Status</td><td><input type="text" name="status">status</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(91) Get Permissions (/admin/get_permissions)</h3>
+<form action="/admin/get_permissions" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(92) Get Admin Permissions (/admin/get_admin_permissions)</h3>
+<form action="/admin/get_admin_permissions" method = "POST">
+<table>
+<tr>
+<td>Admin ID </td><td><input type="text" name="admin_id"> admin_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(93) Get All Managers (/admin/get_all_managers)</h3>
+<form action="/admin/get_all_managers" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(94) Get Manager Detail (/admin/get_manager_detail)</h3>
+<form action="/admin/get_manager_detail" method = "POST">
+<table>
+<tr>
+<td>Admin ID </td><td><input type="text" name="admin_id"> admin_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(95) Get Validation Status (/admin/get_validation_status)</h3>
+<form action="/admin/get_validation_status" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(96) Change Validation Status (/admin/change_validation_status)</h3>
+<form action="/admin/change_validation_status" method = "POST">
+<table>
+<tr>
+<td>Staus</td><td><input type="text" name="staus"> staus (true, false)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(97) Get Pending Users (/admin/get_pending_users)</h3>
+<form action="/admin/get_pending_users" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(98) Accept/ Reject User (/admin/accept_reject_user)</h3>
+<form action="/admin/accept_reject_user" method = "POST">
+<table>
+<tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="status"> status (Accept- A, Reject - C, (For enable removed users== A- Enable))</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(99) Get Removed Users (/admin/get_removed_users)</h3>
+<form action="/admin/get_removed_users" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(100) Edit Church Info (/admin/edit_church_info)</h3>
+<form action="/admin/edit_church_info" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Church ID </td><td><input type="text" name="church_id"> church_id</td>
+</tr>
+<tr>
+<td>Church Name </td><td><input type="text" name="church_name"> church_name</td>
+</tr>
+<tr>
+<td>Church Address </td><td><input type="text" name="church_address"> church_address</td>
+</tr>
+<tr>
+<td>Church Timings </td><td><input type="text" name="church_timings"> church_timings</td>
+</tr>
+<tr>
+<td>Website </td><td><input type="text" name="website"> website</td>
+</tr>
+<tr>
+<td>Phone </td><td><input type="text" name="phone"> phone</td>
+</tr>
+<tr>
+ <td>Logo </td><td><input type="file" name="logo" />logo</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(101) Get Church Detail (/admin/get_church_detail)</h3>
+<form action="/admin/get_church_detail" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+
+
+***************************************************************************************
+
+<h3>(33) Add Media Category (/admin/add_media_category)</h3>
+<form action="/admin/add_media_category" method = "POST">
+<table>
+<tr>
+<td>name </td><td><input type="text" name="name">name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(18) Get Media Categories (/admin/get_media_categories)</h3>
+<form action="/admin/get_media_categories" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(33) Delete Media Category (/admin/delete_media_category)</h3>
+<form action="/admin/delete_media_category" method = "POST">
+<table>
+<tr>
+<td>category id </td><td><input type="text" name="category_id">category_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+
+***************************************************************************************
+<h3>(35)  Add music artist (/admin/add_music_artist)</h3>
+<form action="/admin/add_music_artist" method = "POST" enctype="multipart/form-data">
+<table>
+
+<tr>
+<td>Artist Name </td><td><input type="text" name="artist_name"> artist_name</td>
+</tr>
+<tr>
+ <td>Artist Image </td><td><input type="file" name="artist_image" />artist_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+
+<h3>(38) Edit Music Artist (/admin/edit_music_artist)</h3>
+<form action="/admin/edit_music_artist" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Artist Id </td><td><input type="text" name="album_id">album_id</td>
+</tr>
+<tr>
+<td>Artist Name </td><td><input type="text" name="artist_name">artist_name</td>
+</tr>
+<tr>
+ <td>Artist Image</td><td><input type="file" name="artist_image" />artist_image</td>
+ </tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(38) Delete Music Artist (/admin/delete_music_artist)</h3>
+<form action="/admin/delete_music_artist" method = "POST">
+<table>
+<tr>
+<td>Artist Id </td><td><input type="text" name="artist_id">artist_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(32) Get Artists(/admin/get_artists)</h3>
+<form action="/admin/get_artists" method = "GET">
+<table>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+</body>
+</html>

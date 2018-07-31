@@ -1,0 +1,284 @@
+		<div class="content_area">
+			<div class="tables_area">
+				<h2>Edit Event</h2>
+				
+				<div class="clear"></div>
+				<div class="white_box">
+					<form [formGroup]="newEvent" novalidate (ngSubmit)="EditEvent(newEvent.valid)">
+					<div class="add_formarea">
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Title</label>
+									<input id="name" type="text" value="" placeholder="Enter Title Here" class="form-control" formControlName="title"/>
+								</div>
+								<div *ngIf="newEvent.get('title').hasError('required') && newEvent.get('title').touched">
+			                        <div class="error" *ngIf="newEvent.get('title').hasError('required')  && newEvent.get('title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+							</aside>
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Venue</label>
+									<input id="ven" type="text" value="" placeholder="Select Venue" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  #search formControlName="venue"/>
+								</div>
+								<div *ngIf="newEvent.get('venue').hasError('required') && newEvent.get('venue').touched">
+			                        <div class="error" *ngIf="newEvent.get('venue').hasError('required')  && newEvent.get('venue').touched ">
+			                        Venue is required
+			                        </div> 
+		                    	</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Event Date</label>
+								<div class="icon_input">
+									 <input [owlDateTime]="dt3"  class="form-control" [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [min]="min"  formControlName="mydate">
+    								<owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+    							</div>
+								</div>
+								<div *ngIf="newEvent.get('mydate').hasError('required') && newEvent.get('mydate').touched">
+			                        <div class="error" *ngIf="newEvent.get('mydate').hasError('required')  && newEvent.get('mydate').touched ">
+			                        Event Date is required
+			                        </div> 
+		                    	</div>
+							</aside>
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Select Category</label>
+									<div class="custom_select">
+									<select formControlName="event_category">
+											<option value="{{grouplist._id}}" 
+											*ngFor="let grouplist of cat_data">{{grouplist.name}}</option>
+										</select>
+										</div>
+								</div>
+								<div *ngIf="newEvent.get('event_category').hasError('required') && newEvent.get('event_category').touched">
+			                        <div class="error" *ngIf="newEvent.get('event_category').hasError('required')  && newEvent.get('event_category').touched ">
+			                        Category is required
+			                        </div> 
+		                    	</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">START TIME</label>
+									<div class="icon_input">
+										<input class="form-control" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" formControlName="start_time" placeholder="Select" value="" [(ngModel)]="timer">
+   										 <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+									</div>
+
+									<div *ngIf="newEvent.get('start_time').hasError('required') && newEvent.get('start_time').touched">
+			                        <div class="error" *ngIf="newEvent.get('start_time').hasError('required')  && newEvent.get('start_time').touched ">
+			                        START TIME is required
+			                        </div> 
+		                    	</div>
+								</div>
+							</aside>
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">END TIME</label>
+									<div class="icon_input">
+										<input class="form-control" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" formControlName="end_time" placeholder="Select" value="" [(ngModel)]="timer1">
+   										 <owl-date-time [pickerType]="'timer'" #dt5></owl-date-time>
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+									</div>
+
+									<div *ngIf="newEvent.get('end_time').hasError('required') && newEvent.get('end_time').touched">
+			                        <div class="error" *ngIf="newEvent.get('end_time').hasError('required')  && newEvent.get('end_time').touched ">
+			                        END TIME is required
+			                        </div> 
+		                    	</div>
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-5">
+								<div class="form-group">
+									<label class="text-uppercase">Price Status </label>
+									<div class="icon_input">
+										<label class="radio_btn">
+											<input type="radio" name="data" value="N" [checked]="price_val == 'N'"  (change)="priceState('N',$event.target.checked)">Free
+										</label>
+										<label class="radio_btn">
+											<input type="radio" name="data" value="Y" [checked]="price_val == 'Y'" (change)="priceState('Y',$event.target.checked)">Paid
+										</label>
+										<div *ngIf="pricee"><label class="text-uppercase">Price</label>
+											<input class="form-control" type="text" formControlName="price"></div>
+
+									</div>
+								</div>
+							</aside>
+							<aside class="col-sm-6">
+									<div class="form-group">
+										<label class="text-uppercase">Cover Image</label>
+										<p data-backdrop="static" data-keyboard="false" class="add_user" (click)="openModal()">
+											<img *ngIf="api_image && !imageSrc && !image" src="{{api_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"
+											/>
+											<img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+											/>
+											<img *ngIf="image" src="{{this.imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+										</p>
+									</div>
+									<div class="error" *ngIf="!img_valid">
+										<div class="error" [hidden]="img_valid">
+											Front picture is required
+										</div>
+									</div>
+		
+									<div class="error" *ngIf="!img">
+										<div class="error" [hidden]="img">
+											Only png/Jpeg Allowed
+										</div>
+									</div>
+								</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-10">
+								<div class="form-group">
+									<label class="text-uppercase">Description</label>
+									<textarea id="des" value="" placeholder="Enter Description" class="form-control" formControlName="description" [attr.maxlength]="500"></textarea>
+								</div>
+								<div *ngIf="newEvent.get('description').hasError('required') && newEvent.get('description').touched">
+			                        <div class="error" *ngIf="newEvent.get('description').hasError('required')  && newEvent.get('description').touched ">
+			                        Description is required
+			                        </div> 
+		                    	</div>
+							</aside>
+							
+						</div>
+
+
+						<div class="row">
+							<aside class="col-sm-12">
+								<div class="form-group">
+									<label class="text-uppercase">Groups</label>
+									<div class="select_users" *ngIf = "intial">
+											<div *ngFor="let test of grp_data">
+													<div *ngIf="test.selected == true">
+														<label>{{test.group_name}}</label>
+													</div>
+												</div>
+										</div>
+							  <div class="select_users" *ngIf = "!intial">
+									<div *ngFor="let test of grp_data">
+											<div *ngIf="test.selected == true">
+												<label>{{test.group_name}}</label>
+											</div>
+										</div>
+								</div>
+
+									<p class="add_user">
+										<a data-backdrop="static" data-keyboard="false" (click) = "userModal()"><i class="fa fa-plus"></i>Add Groups</a>
+									</p>
+
+									<div class="error" *ngIf="!grp_valid" >
+								 <div class="error" [hidden]="grp_valid"> 
+						      Group is required 
+						      </div>
+						      </div>
+								</div>
+						  
+							</aside>		
+						</div>
+
+
+<!------------------------ Start Modal ---------------------------->
+<div class="modal fade" id="addadmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Select Group</h4>
+      </div>
+ 
+      <div class="modal-body select_users" style="max-height: 500px;
+    overflow: auto;">
+        <label *ngFor="let test of grp_data">
+			<input type="checkbox" name="data" value="test" [checked]="test.selected == true" (change)="getuserVal(test._id,test.group_name,  $event.target.checked)"><img src="../../assets/images/logo.png" alt="" style="height:50px;width:50px;">{{test.group_name}}</label>
+      </div>
+
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancel1()">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="okvalue()">OK</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- gallery modal -->
+
+<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body select_users" style="height: 100%;
+					
+overflow: auto;">
+					<mat-tab-group color="primary">
+						<mat-tab label="Upload files">
+							<div class="table_box">
+								<div class="table_inner">
+									<p>Browse your file here</p>
+									<input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+								</div>
+							</div>
+							<div class="bottom_box text-right">
+								<button class="blue_btn" data-dismiss="modal">OK</button>
+							</div>
+						</mat-tab>
+						<mat-tab label="Media library">
+							<ul class="gallery_images">
+								<li *ngFor="let image of arryData.libraryImages; let i=index">
+									<div class="uppre">
+										<div class="img_outer">
+											<img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="bottom_box text-right">
+								<button class="blue_btn" data-dismiss="modal">OK</button>
+							</div>
+						</mat-tab>
+					</mat-tab-group>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ <!------------------------End  Modal ---------------------------->
+
+
+						
+						<button type="submit" class="blue_btn yellow_btn big_yellow text-uppercase" >Submit</button>
+						<button type="submit" class="blue_btn yellow_btn big_yellow text-uppercase" (click)="cancel()">Cancel</button>
+
+					</div>
+			</form>
+				</div>
+			</div>
+				</div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

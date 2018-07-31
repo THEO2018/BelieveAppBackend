@@ -1,0 +1,86 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LayoutComponent } from './layout.component';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: LayoutComponent,
+        children: [
+            { path: '', redirectTo: 'dashboard' },
+            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule',runGuardsAndResolvers: 'always' },
+            { path: 'newmedia', loadChildren: './charts/charts.module#ChartsModule',runGuardsAndResolvers: 'always' },
+            { path: 'newlink', loadChildren: './newlink/newlink.module#NewlinkModule',runGuardsAndResolvers: 'always' },
+            { path: 'giving', loadChildren: './giving/giving.module#GivingModule',runGuardsAndResolvers: 'always' },
+            { path: 'grouprequest/:id/:id2', loadChildren: './grouprequest/grouprequest.module#GrouprequestModule',runGuardsAndResolvers: 'always' },
+            { path: 'savedpolls', loadChildren: './savedpolls/savedpolls.module#SavedpollsModule',runGuardsAndResolvers: 'always' },
+            { path: 'servicehour', loadChildren: './servicehour/servicehour.module#ServicehourModule',runGuardsAndResolvers: 'always' },
+            { path: 'managers', loadChildren: './managers/managers.module#ManagersModule',runGuardsAndResolvers: 'always' },
+            { path: 'addmanager', loadChildren: './addmanager/addmanager.module#AddManagerModule',runGuardsAndResolvers: 'always' },
+            { path: 'adminedit/:id', loadChildren: './adminedit/adminedit.module#AdminEditModule',runGuardsAndResolvers: 'always' },
+            { path: 'changepassword', loadChildren: './changepassword/changepassword.module#ChangePasswordModule',runGuardsAndResolvers: 'always' },
+            { path: 'aboutpage', loadChildren: './aboutpage/aboutpage.module#AboutpageModule',runGuardsAndResolvers: 'always'},
+            { path: 'contactsupport', loadChildren: './contactsupport/contactsupport.module#ContactsupportModule',runGuardsAndResolvers: 'always' },
+            { path: 'setting', loadChildren: './notes/notes.module#NotesModule',runGuardsAndResolvers: 'always' },
+            { path: 'polls', loadChildren: './polls/polls.module#PollsModule',runGuardsAndResolvers: 'always' },
+            { path: 'poll-detail/:id', loadChildren: './poll-detail/poll-detail.module#PollDetailModule',runGuardsAndResolvers: 'always' },
+            { path: 'add-poll', loadChildren: './add-poll/add-poll.module#AddPollModule',runGuardsAndResolvers: 'always' },
+            { path: 'news', loadChildren: './news/news.module#NewsModule',runGuardsAndResolvers: 'always' },
+            { path: 'onlinestore', loadChildren: './onlinestore/onlinestore.module#OnlinestoreModule',runGuardsAndResolvers: 'always' },
+            { path: 'requestrecomm', loadChildren: './requestrecomm/requestrecomm.module#RecommdationReqModule',runGuardsAndResolvers: 'always' },
+            { path: 'content', loadChildren: './content-management/content-management.module#ContentModule',runGuardsAndResolvers: 'always' },
+            { path: 'classifiedlist/:id', loadChildren: './classifiedlist/classifiedlist.module#ClassifiedlistModule',runGuardsAndResolvers: 'always' },
+            { path: 'classifiedlist', loadChildren: './classifiedlist/classifiedlist.module#ClassifiedlistModule',runGuardsAndResolvers: 'always' },
+            { path: 'recommdations', loadChildren: './recommdations/recommdations.module#RecommdationModule',runGuardsAndResolvers: 'always' },
+            { path: 'classifieds', loadChildren: './classifieds/classifieds.module#ClassifiedModule',runGuardsAndResolvers: 'always' },
+            { path: 'contact', loadChildren: './contact/contact.module#ContactModule',runGuardsAndResolvers: 'always' },
+            { path: 'blog', loadChildren: './blog/blog.module#BlogModule',runGuardsAndResolvers: 'always' },
+            { path: 'editblog/:id', loadChildren: './editblog/editblog.module#EditBlogModule',runGuardsAndResolvers: 'always' },
+            { path: 'addblog', loadChildren: './addblog/addblog.module#AddBlogModule',runGuardsAndResolvers: 'always' },
+            { path: 'groups', loadChildren: './groups/groups.module#GroupssModule',runGuardsAndResolvers: 'always' },
+            { path: 'users', loadChildren: './users/users.module#UsersModule',runGuardsAndResolvers: 'always' },
+            { path: 'newmember', loadChildren: './newmember/newmember.module#NewmemberModule',runGuardsAndResolvers: 'always' },
+            { path: 'alumni', loadChildren: './alumni/alumni.module#AlumniModule',runGuardsAndResolvers: 'always' },
+            { path: 'fiances', loadChildren: './fiances/fiances.module#FiancesModule',runGuardsAndResolvers: 'always' },
+            { path: 'appointment', loadChildren: './appointment/appointment.module#AppointmentModule',runGuardsAndResolvers: 'always' },
+            { path: 'appointrequest', loadChildren: './appointrequest/appointrequest.module#AppointrequestModule',runGuardsAndResolvers: 'always' },
+            { path: 'pastevent', loadChildren: './pastevent/pastevent.module#PastEventsModule',runGuardsAndResolvers: 'always' },
+            { path: 'editmedia/:id', loadChildren: './editmedia/editmedia.module#EditmediaModule',runGuardsAndResolvers: 'always' },
+            { path: 'weddinglist', loadChildren: './weddinglist/weddinglist.module#WeddingModule',runGuardsAndResolvers: 'always' },
+            { path: 'birthday', loadChildren: './birthday/birthday.module#BirthdayModule' ,runGuardsAndResolvers: 'always'},
+            { path: 'upcomingmarriage', loadChildren: './upcomingmarriage/upcomingmarriage.module#UpcomingModule',runGuardsAndResolvers: 'always' },
+            { path: 'newgroup', loadChildren: './newgroup/newgroup.module#NewGroupssModule',runGuardsAndResolvers: 'always' },
+            { path: 'socialshare', loadChildren: './socialshare/socialshare.module#SocialshareModule' },
+            { path: 'popup', loadChildren: './popup/popup.module#PopupModule',runGuardsAndResolvers: 'always' },
+            { path: 'requests', loadChildren: './requests/requests.module#RequestsModule' ,runGuardsAndResolvers: 'always'},
+            { path: 'newsmallgroup', loadChildren: './newsmallgroup/newsmallgroup.module#NewSmallGroupsModule',runGuardsAndResolvers: 'always' },
+            { path: 'editsmallgroup/:id', loadChildren: './editsmallgroup/editsmallgroup.module#EditSmallModule',runGuardsAndResolvers: 'always' },
+            { path: 'events', loadChildren: './events/events.module#EventssModule',runGuardsAndResolvers: 'always' },
+            { path: 'editalbum/:id', loadChildren: './editalbum/editalbum.module#EditalbumModule',runGuardsAndResolvers: 'always' },
+            { path: 'editevent/:id', loadChildren: './editevent/editevent.module#EditeventModule',runGuardsAndResolvers: 'always' },
+            { path: 'upcomingevent', loadChildren: './upcomingevent/upcomingevent.module#UpcomingEventModule',runGuardsAndResolvers: 'always' },
+            { path: 'newevent', loadChildren: './newevent/newevent.module#NewEventsModule',runGuardsAndResolvers: 'always' },
+            { path: 'music', loadChildren: './music/music.module#MusicsModule',runGuardsAndResolvers: 'always' },
+            { path: 'media', loadChildren: './media/media.module#MediaModule',runGuardsAndResolvers: 'always' },
+            { path: 'medialist/:id', loadChildren: './medialist/medialist.module#MedialistModule',runGuardsAndResolvers: 'always' },
+            { path: 'songlist/:id', loadChildren: './songlist/songlist.module#SonglistModule',runGuardsAndResolvers: 'always' },
+            { path: 'marriage', loadChildren: './marriage/marriage.module#MarriageGroupModule',runGuardsAndResolvers: 'always' },
+            { path: 'smallgroup', loadChildren: './smallgroup/smallgroup.module#SmallGroupsModule',runGuardsAndResolvers: 'always' },
+            { path: 'editgroup/:id', loadChildren: './editgroup/editgroup.module#EditGroupModule',runGuardsAndResolvers: 'always' },
+            { path: 'user/:id', loadChildren: './user/user.module#UserModule' },
+            { path: 'tables', loadChildren: './tables/tables.module#TablesModule',runGuardsAndResolvers: 'always' },
+            { path: 'forms', loadChildren: './form/form.module#FormModule',runGuardsAndResolvers: 'always' },
+            { path: 'library', loadChildren: './library/library.module#LibraryModule',runGuardsAndResolvers: 'always' },
+            { path: 'church', loadChildren: './bs-element/bs-element.module#BsElementModule',runGuardsAndResolvers: 'always' },
+            { path: 'members', loadChildren: './grid/grid.module#GridModule',runGuardsAndResolvers: 'always' },
+            { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule',runGuardsAndResolvers: 'always' },
+            { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule',runGuardsAndResolvers: 'always' }
+        ]
+    }
+];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+export class LayoutRoutingModule {}

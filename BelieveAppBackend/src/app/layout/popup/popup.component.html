@@ -1,0 +1,23 @@
+  
+     
+      <div class="text-center">
+        <span *ngFor="let placement of placements">
+          <button
+            class="btn btn-default"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            [confirmText]="confirmText"
+            [cancelText]="cancelText"
+            [placement]="placement"
+            (confirm)="confirmClicked = true"
+            (cancel)="cancelClicked = true"
+            confirmButtonType="danger"
+            cancelButtonType="default"
+            (click)="confirmClicked = false; cancelClicked = false"
+            [appendToBody]="true">
+            Show on {{ placement }}
+          </button>
+        </span>
+      </div>
+  

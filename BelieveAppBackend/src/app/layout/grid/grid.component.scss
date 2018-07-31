@@ -1,0 +1,139 @@
+.custom_select select
+{
+	width: 100%;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 8px;
+	line-height: 40px;
+}
+.custom_select
+{
+	position: relative;
+}
+.success_action
+		{
+    		
+    		a 
+    		{
+    			background: #000;
+			    color: #fff !important;
+			    display: inline-block;
+			    border-radius: 5px;
+			    padding: 3px 10px;
+			    font-weight: 700;
+			    font-size: 14px;
+			    margin: 3px;
+			    cursor:pointer;
+			}
+			a.accept_request
+			{
+				background: #155724;
+			}
+		}
+.custom_select::after {
+	position: absolute;
+	top: 1px;
+	width: 40px;
+	background: #fff;
+	bottom: 1px;
+	text-align: center;
+	content: "\f0dd";
+	font-family: fontawesome;
+	right: 1px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-size: 20px;
+	line-height: 30px;
+	pointer-events:none;
+}
+ul.sorted_tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.sorted_tabs li {
+    float: left;
+    margin-right: 10px;
+}
+ul.sorted_tabs li a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    background: #222;
+    border-radius: 5px;
+}
+ul.sorted_tabs li a.active {
+    background: #F78C6A;
+}
+.clear
+{
+	clear:both;
+}
+.table-responsive table thead tr th
+{
+	color: #2e4485;
+	font-size: 14px;
+	font-weight: 700;
+	border-bottom: 2px solid #2e4485;
+	text-transform: uppercase;
+	padding: 10px;
+}
+.table-responsive table tbody tr td
+{
+	color: #242424;
+	font-size: 14px;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding: 12px 10px;
+}
+.table-responsive table tbody tr td:last-child
+{
+	border-right: none;
+}
+.table-responsive table tbody tr:nth-child(2n) td
+{
+	background:#eeeef3;
+}
+.automatic label {
+    display: inline-block;
+}
+.automatic .custom_select {
+    display: inline-block;
+    width: 100px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.blue_btn
+{
+	background: #F78C6A;
+	border-radius: 5px;
+	color: #fff !important;
+	text-decoration:none !important;
+	font-size: 14px;
+	border: none;
+	padding: 5px 22px;
+	display: inline-block;
+	line-height: 26px;
+	margin-top: 20px;
+	font-weight: 600;
+}
+.blue_btn:hover
+{
+	background: #eb7650;
+}
+.blue_btn.black_btn {
+    background: #2c2c2c;
+}
+.top_form
+{
+	padding-bottom: 20px;
+}
+.top_form .yellow_btn {
+	height: 39px;
+	margin: 0;
+	vertical-align: middle;
+	padding: 6px 35px;
+	font-size: 18px;
+}

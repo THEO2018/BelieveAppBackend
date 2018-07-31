@@ -1,0 +1,109 @@
+<div class="content_area">
+  
+  <div class="tables_area">
+    <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add New</a>
+        <div class="clear"></div>
+    <div class="bg_area" *ngIf="add_new">
+    <h2>New Category</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="AddCategories(myForm.valid)">
+         <div class="row">
+           <aside class="col-sm-4">
+             <div class="form-group">
+                 <input id="name" type="text"  class="form-control"  value="" placeholder="Category Name" formControlName="name"/>
+                 
+             </div>
+
+                <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').touched">
+			                        <div class="error" *ngIf="myForm.get('name').hasError('required')  && myForm.get('name').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+           </aside>
+         </div>
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Save</button>
+               <button (click)="cancel()" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Cancel</button>
+           </aside>
+         </div>
+       </form>
+       </div>
+       </div>
+   
+       <h2 style="margin-top:10px;">Category List</h2>
+    <div class="clear"></div>
+    <div class="white_box">
+      <div class="content_area" style="background: #eaeaea;">
+        <div class="top3_area">
+        	<div class="gallery_whitebox" *ngFor ="let albums of data">
+	            <div class="white_three">
+	              <img src = "../../assets/images/news.png">
+	              <p  class="text-uppercase">{{albums.name}}</p>
+	              <a  class="action_btn"><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/classifiedlist', albums._id]" [routerLinkActive]="['router-link-active']"></i></a>
+	              <a *ngIf="!albums.disableStatus" class="action_btn"><i class="fa fa-edit" aria-hidden="true" (click)="editModal(albums.name,albums._id)"></i></a>
+				         <a *ngIf="!albums.disableStatus" class="action_btn" (click)="RemoveClick(albums._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+	            </div>
+
+              <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">  
+                       <div class="modal-body text-center">
+                          <p>Are you sure you want to Delete?</p>
+                          <a class="blue_btn" (click)="RemoveComm()">Yes</a>
+                          <a data-dismiss="modal" class="blue_btn">No</a>
+                        </div>
+                         </div>
+                    </div>
+                  </div>
+                  
+	        </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">  
+                       <div class="modal-body">
+                        <h2 class="title_head">Edit Category</h2>
+                           <form  [formGroup]="eForm" (ngSubmit)="EditCategory(eForm.valid,eForm.value)">
+         <div class="row">
+           <aside class="col-sm-8">
+             <div class="form-group">
+              <label class="text-uppercase">Title*</label>
+                 <input id="name" type="text"  class="form-control"  value="" placeholder="Category Name" formControlName="name"/>
+                 
+             </div>
+
+                <div *ngIf="eForm.get('name').hasError('required') && eForm.get('name').touched">
+                              <div class="error" *ngIf="eForm.get('name').hasError('required')  && eForm.get('name').touched ">
+                              Title is required
+                              </div> 
+                          </div>
+           </aside>
+         </div>
+
+            <div class="row">
+              <aside class="col-sm-12">
+                <button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+                <button  type="submit" class="blue_btn yellow_btn text-uppercase" data-dismiss="modal">Cancel</button>
+              </aside>
+            </div>
+          </form>
+                        </div>
+                         </div>
+                    </div>
+                  </div>
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

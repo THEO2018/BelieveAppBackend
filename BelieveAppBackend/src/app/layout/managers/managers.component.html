@@ -1,0 +1,78 @@
+<div class="content_area">
+
+	<div class="tables_area">
+		<h2 class="pull-left">Managers</h2>
+		<a href="add_fleet.html" class="blue_btn yellow_btn pull-right text-uppercase" routerLink="/addmanager" [routerLinkActive]="['router-link-active']">Add New</a>
+		<div class="clear"></div>
+		<!--  <div class="row">
+			<div class="col-md-3"> 
+					<label class="label-control">Search By Name</label>
+					<input type="text" class="form-control" id="searchbar" placeholder="Search" />
+			</div>
+			<div class="col-md-3">
+					<label class="label-control">Rows on page</label>
+					<select class="form-control input-sm" [(ngModel)]="rowsOnPage" placeholder ="select Option">
+							<option [disabled]="true" [selected]="true">Select Option</option>
+						<option ngValue="5">5</option>
+						<option ngValue="10">10</option>
+						<option ngValue="15">15</option>
+					</select>
+				
+			</div> 
+		 <div class="col-md-3">
+		 </div>
+			 <div class="col-md-3">
+			 </div>
+		</div> -->
+		<div class="white_box">
+			<div class="table-responsive">
+				<table width="100%" cellspacing="0" cellpadding="0" id="example">
+					<thead>
+						<tr>
+							<th width="15%">Name</th>
+							<th width="10%">Email</th>
+							<th width="35%">Phone</th>
+							<th width="15%">Status</th>
+							<th width="15%">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let managerlist of data">
+							<td>{{managerlist.name}}</td>
+							<td>{{managerlist.email}}</td>
+							<td>{{managerlist.phone}}</td>
+							<td *ngIf="managerlist.status=='A'">Enabled</td>
+							<td *ngIf="managerlist.status=='D'">Disabled</td>
+							<td>
+								<!-- <a  class="action_btn"  data-toggle="modal" data-target="#request"><i class="fa fa-edit" aria-hidden="true"></i></a> -->
+								<a class="action_btn">
+									<i class="fa fa-edit" aria-hidden="true" [routerLink]="['/adminedit', managerlist._id]" [routerLinkActive]="['router-link-active']"></i>
+								</a>
+								<!-- <a class="action_btn">
+									<i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(managerlist._id)"></i>
+								</a> -->
+								<!-- <a  class="action_btn"><i class="fa fa-trash" aria-hidden="true" (click)="RemoveComm(grouplist._id)"></i></a> -->
+							</td>
+
+
+							<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center">
+											<p>Are you sure you want to Delete?</p>
+											<a class="blue_btn" (click)="RemoveComm()">Yes</a>
+											<a data-dismiss="modal" class="blue_btn">No</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,43 @@
+		<div class="content_area">
+			
+			<div class="tables_area">
+				<h2>News</h2>
+				<div class="white_box">
+					 <form  [formGroup]="myForm" (ngSubmit)="Editnews(myForm.valid,myForm.value)">
+					<div class="add_formarea">
+
+						
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">News Url</label><input type="text" value="" placeholder="" class="form-control" formControlName="news_url" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+	                        
+						</div>
+
+
+					
+						
+						<button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+						<!-- <button class="blue_btn yellow_btn  text-uppercase" (click)="CAncel()">Cancel</button> -->
+
+					</div>
+				</form>
+				</div>
+			</div>
+				</div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

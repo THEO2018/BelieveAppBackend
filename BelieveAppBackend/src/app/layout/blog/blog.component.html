@@ -1,0 +1,105 @@
+	<div class="content_area">
+			
+			<div class="tables_area">
+				
+				<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="PublishList()" *ngIf="saved">Published</a>
+        		<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="SavedList()" *ngIf="publish">Saved</a>
+				<a class="blue_btn yellow_btn pull-right text-uppercase"  routerLink="/addblog" [routerLinkActive]="['router-link-active']">New Blog</a>
+				 <h2 *ngIf="saved">Saved Blogs</h2>
+                 <h2 *ngIf="publish">Published Blogs</h2>
+				<!-- <h2 class="pull-left">Blogs</h2> -->
+				<div class="clear"></div>
+				<div class="white_box" *ngIf="publish">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0" id="" class="display">
+							<thead>
+								<tr>
+									<th width="15%">Blog Title</th>
+									<th width="10%">Category </th>
+									<!-- <th width="35%">Blog</th> -->
+									<th width="15%">Blog Image</th>
+									<th width="15%">ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  *ngFor="let grouplist of data">
+									<td>{{grouplist.blog_title}}</td>
+									<td>{{grouplist.category.name}}</td>
+									<!-- <td><div style="max-height: 100px;overflow: auto;">{{grouplist.blog}}</div></td> -->
+									<td *ngIf="grouplist.blog_image"><img src="{{grouplist.blog_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td *ngIf="!grouplist.blog_image"><img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td>
+										<a  class="action_btn"><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/editblog', grouplist._id]" [routerLinkActive]="['router-link-active']"></i></a>
+										<a  class="action_btn"><i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(grouplist._id)"></i></a>
+									</td>
+
+
+									
+
+								</tr>
+								<!-- <tr>
+									<td colspan="6">
+										<mfBootstrapPaginator></mfBootstrapPaginator>
+									</td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+<!-- /********************************************************/				 -->
+<div class="white_box" *ngIf="saved">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0" id="" class="display">
+							<thead>
+								<tr>
+									<th width="15%">Blog Title</th>
+									<th width="10%">Category </th>
+									<!-- <th width="35%">Blog</th> -->
+									<th width="15%">Blog Image</th>
+									<th width="15%">ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  *ngFor="let grouplist of data1">
+									<td>{{grouplist.blog_title}}</td>
+									<td>{{grouplist.category.name}}</td>
+									<!-- <td><div style="max-height: 100px;overflow: auto;">{{grouplist.blog}}</div></td> -->
+									<td *ngIf="grouplist.blog_image"><img src="{{grouplist.blog_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td *ngIf="!grouplist.blog_image"><img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;"/></td>
+									<td>
+									 <a  class="blue_btn yellow_btn text-uppercase" (click)="publishModal(grouplist._id)">Publish</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									      	<p>Are you sure you want to Delete?</p>
+									      	<a class="blue_btn" (click)="RemoveComm()">Yes</a>
+									      	<a data-dismiss="modal" class="blue_btn">No</a>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+
+
+									  <div class="modal fade" id="publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                     <div class="modal-body text-center">
+                      <p>Are you sure you want to Publish this Song?</p>
+                      <a class="blue_btn" (click)="PublishDrafts()">OK</a>
+                      <a class="blue_btn" data-dismiss="modal" >Cancel</a>
+                    </div>
+                     </div>
+                  </div>
+                  </div>

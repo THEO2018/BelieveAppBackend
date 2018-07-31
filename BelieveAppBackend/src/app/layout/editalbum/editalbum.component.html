@@ -1,0 +1,119 @@
+<div class="bg_area">
+    <h2>Edit Album</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="EditAlbum(myForm.valid)" class="top_form">
+         <div class="row">
+           <aside class="col-sm-4">
+             <div class="form-group">
+               <label class="text-uppercase">Album Name*</label>
+                 <input id="album" type="text"  class="form-control"  value="" placeholder="Album Name" formControlName="album_title"/>
+                 
+             </div>
+                  <div *ngIf="myForm.get('album_title').hasError('required') && myForm.get('album_title').touched">
+			                        <div class="error" *ngIf="myForm.get('album_title').hasError('required')  && myForm.get('album_title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+           </aside>
+           <aside class="col-sm-6">
+                  <div class="form-group">
+                    <label class="text-uppercase">Artist*</label>
+                    <div class="custom_select">
+                      <select formControlName="artist">
+                       <option value =null disabled selected hidden >Select Artist</option>
+                        <option *ngFor="let item of artistData" [ngValue]="item._id">{{item.artist_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+    
+                   <div *ngIf="myForm.get('artist').hasError('required')
+                    && myForm.get('artist').touched">
+                                <div class="error" *ngIf="myForm.get('artist').hasError('required')  && myForm.get('artist').touched ">
+                                Artist is required
+                                </div> 
+                </div>
+                </aside>
+         </div>
+         <div class="row">
+            <aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Front picture*</label>
+									<p data-backdrop="static" data-keyboard="false" class="add_user" (click) = "openModal()">
+											<img *ngIf="!api_image && !imageSrc && !image" src="../../assets/images/user.png"  alt="" style="height:75px;width: 75px;border-radius: 100%;"/>
+											<img *ngIf="api_image && !imageSrc && !image" src="{{api_image}}"  alt="" style="height:75px;width: 75px;border-radius: 100%;"/>
+										<img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									<img *ngIf="image" src="{{this.imageUrl}}"  style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									</p>
+								</div>
+								<div class="error" *ngIf="!img_valid">
+									<div class="error" [hidden]="img_valid">
+										Front picture is required
+									</div>
+								</div>
+	
+								<div class="error" *ngIf="!img">
+									<div class="error" [hidden]="img">
+										Only png/Jpeg Allowed
+									</div>
+								</div>
+							</aside>
+         </div>
+
+         <!-- gallery modal -->
+
+<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body select_users" style="height: 100%;
+					
+overflow: auto;">
+					<mat-tab-group color="primary">
+						<mat-tab label="Upload files">
+							<div class="table_box">
+								<div class="table_inner">
+									<p>Browse your file here</p>
+									<input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+								</div>
+							</div>
+							<div class="bottom_box text-right">
+								<button class="blue_btn" data-dismiss="modal">OK</button>
+							</div>
+						</mat-tab>
+						<mat-tab label="Media library">
+							<ul class="gallery_images">
+								<li *ngFor="let image of arryData.libraryImages; let i=index">
+									<div class="uppre">
+										<div class="img_outer">
+											<img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="bottom_box text-right">
+								<button class="blue_btn" data-dismiss="modal">OK</button>
+							</div>
+						</mat-tab>
+					</mat-tab-group>
+				</div>
+			</div>
+		</div>
+	</div>
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Update</button>
+               <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;" (click)="cancel()">Cancel</button>
+           </aside>
+         </div>
+       </form>
+       </div>
+       </div>
+
+       <style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>

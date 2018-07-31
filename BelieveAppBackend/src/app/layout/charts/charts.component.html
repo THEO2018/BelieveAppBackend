@@ -1,0 +1,74 @@
+<div class="content_area">
+  
+  <div class="tables_area">
+
+    <a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add Category</a>
+     <div class="clear"></div>
+    <div class="bg_area" *ngIf="add_new">
+          <h2 class="title_head">New Category</h2>
+          <div>
+            <div class="row">
+              <aside class="col-sm-6">
+                <div class="form-group">
+                    <input type="text"  class="form-control"  value=""
+                     placeholder="Url*"  id="web"/>
+                 </div>
+              </aside>
+            </div>
+          <div class="row">
+              <aside class="col-sm-12">
+                <button type="submit" class="blue_btn yellow_btn text-uppercase">Save</button>
+                <button (click)="cancell()" type="submit" class="blue_btn yellow_btn text-uppercase">Cancel</button>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+       <div class="clear"></div>
+    <div class="bg_area">
+    <h2>New Media</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="AddMedia(myForm.valid)" class="top_form">
+         <div class="row">
+            <aside class="col-sm-4">
+                <div class="form-group">
+                  <label class="text-uppercase">Album Image*</label>
+                  <p class="add_user">
+                    <input type="file" #fileupload (change)="onFileChange($event)" id="image_name" />
+                  </p>
+                </div>
+                <div class="error" *ngIf="!img_valid">
+                  <div class="error" [hidden]="img_valid">
+                      Album Image is required
+                  </div>
+                </div>
+  
+                <div class="error" *ngIf="!img">
+                  <div class="error" [hidden]="img">
+                    Only png/Jpeg/mp3/mp4 Allowed
+                  </div>
+                </div>
+              </aside>
+         </div>
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Save</button>
+              <button (click)="cancel()" class="blue_btn yellow_btn text-uppercase" style="margin-top:0px; color:#fff;">Cancel</button>
+             </aside>
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+.mat-tab-body-wrapper {
+    height: 100%;
+}
+</style>

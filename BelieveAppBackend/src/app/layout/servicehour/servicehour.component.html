@@ -1,0 +1,92 @@
+		<div class="content_area">
+			
+			<div class="tables_area">
+				<h2>Service Hours</h2>
+				<div class="white_box">
+					 <form  [formGroup]="myForm" (ngSubmit)="EditService(myForm.valid,myForm.value)">
+					<div class="add_formarea">
+
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Day From</label>
+									<div class="custom_select">
+										<select formControlName="day_from">
+											<option value="" [disabled]="true" [selected]="true">Select</option>
+											<option *ngFor="let item of muloptions" [ngValue]="item.value">{{item.value}}</option>
+											<!-- <option value="C">Closed</option> -->
+										</select>
+									</div>
+								</div>
+							</aside>
+
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Day To</label>
+									<div class="custom_select">
+										<select formControlName="day_to">
+											<option value="" [disabled]="true" [selected]="true">Select</option>
+											<option *ngFor="let item of muloptions" [ngValue]="item.value">{{item.value}}</option>
+										</select>
+									</div>
+								</div>
+							</aside>
+						</div>
+
+					
+
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Time</label>
+									<div class="icon_input">
+										<input class="form-control" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" formControlName="time" placeholder="" 
+										[(ngModel)]="timer">
+   										 <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+									</div>
+								</div>
+							</aside>
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Venue </label>
+									<input id="ven" type="text" value="" placeholder="Select Venue" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  #search formControlName="venue"/>
+								</div>
+							</aside>	
+						</div>
+
+
+
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+									<label class="text-uppercase">Phone </label>
+									<input type="text" value="" placeholder="" class="form-control" id="phn" formControlName="phone" [attr.maxlength]="50"/>
+								</div>
+							</aside>
+						</div>
+
+
+						
+						<button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+						<!-- <button class="blue_btn yellow_btn  text-uppercase" (click)="CAncel()">Cancel</button> -->
+
+					</div>
+				</form>
+				</div>
+			</div>
+				</div>
+
+
+
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

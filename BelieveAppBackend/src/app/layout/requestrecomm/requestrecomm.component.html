@@ -1,0 +1,72 @@
+<ul class="requests">
+	<li class="alert alert-success"  *ngFor="let grouplist of data">{{grouplist.user_id.first_name}} {{grouplist.user_id.last_name}} has requested for the Recommendation
+		<div class="success_action">
+			<a class="accept_request" (click)="accept(grouplist._id,grouplist.user_id.email)">Accept</a>
+			<a (click)="reject(grouplist._id,grouplist.user_id.email)">Cancel</a>
+		</div>
+
+
+	<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									     	<h2 class="title_head">Accept Recommendation</h2>
+									      	<form  [formGroup]="myForm" (ngSubmit)="AproveCancelRecomm('A',myForm.value)">
+						<div class="row">
+							<aside class="col-sm-12">
+								<div class="form-group">
+								   <!-- <label class="text-uppercase">Email*</label> -->
+									<input id="name" type="email" value="" placeholder="Enter Email" class="form-control"  [attr.maxlength]="50" formControlName="email"/>
+								    
+								</div>
+								
+			                    	
+							</aside>
+					
+						</div>
+						<div class="row">
+									<aside class="col-sm-12">
+								<div class="form-group">
+								  <!--  <label class="text-uppercase">Description*</label> -->
+									<textarea id="des" value="" placeholder="Enter Description" class="form-control"  [attr.maxlength]="500" formControlName="admin_description"></textarea>
+								    
+								</div>
+								
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-12">
+								<button type="submit" class="blue_btn  text-uppercase">Submit</button>
+								<button  type="submit" class="blue_btn  text-uppercase" data-dismiss="modal">Cancel</button>
+							</aside>
+						</div>
+					</form>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+
+		<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Are you sure you want to reject this Recommendation?</p>
+		      
+		      	<a class="blue_btn" (click)="AproveCancelRecomm('C')">OK</a>
+		      	<a class="blue_btn" data-dismiss="modal">Cancel</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+
+	</li>
+</ul>
+
+
+
+
+
+
+

@@ -1,0 +1,206 @@
+<div class="content_area">
+
+	<div class="tables_area">
+		<h2>Edit Group</h2>
+		<div class="white_box">
+			<form [formGroup]="myForm" (ngSubmit)="EditGroup(myForm.valid)">
+				<div class="add_formarea">
+
+					<div class="row">
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Name</label>
+								<input id="name" type="text" value="" placeholder="Enter Name" class="form-control" formControlName="group_name" />
+							</div>
+							<div *ngIf="myForm.get('group_name').hasError('required') && myForm.get('group_name').touched">
+								<div class="error" *ngIf="myForm.get('group_name').hasError('required')  
+			                        && myForm.get('group_name').touched ">
+									Name is required
+								</div>
+							</div>
+						</aside>
+
+						<!-- 	<aside class="col-sm-6">
+								<div class="form-group">
+									<label class="text-uppercase">Add admin</label>
+									<input type="text" value="" placeholder="Select Admin" class="form-control" />
+									<p class="add_user text-right">
+										<a data-toggle="modal" data-target="#addadmin"><i class="fa fa-plus"></i> Add Admins</a></p>
+								</div>
+							</aside> -->
+					</div>
+					<div class="row">
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Privacy</label>
+								<div class="custom_select">
+									<select formControlName="privacy">
+											<option value="O">Open</option>
+											<option value="C">Closed</option>
+										</select>
+								</div>
+							</div>
+							<div *ngIf="myForm.get('privacy').hasError('required') && myForm.get('privacy').touched">
+								<div class="error" *ngIf="myForm.get('privacy').hasError('required')  && myForm.get('privacy').touched ">
+									Privacy is required
+								</div>
+							</div>
+						</aside>
+
+						<aside class="col-sm-6">
+							<div class="form-group">
+								<label class="text-uppercase">Front picture*</label>
+								<p data-backdrop="static" data-keyboard="false" class="add_user" (click)="openModal()">
+									<!-- <img *ngIf="!api_image && !imageSrc && !image" src="../../assets/images/user.png"  alt="" style="height:75px;width: 75px;border-radius: 100%;"/> -->
+									<img *ngIf="api_image && !imageSrc && !image" src="{{api_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									<img *ngIf="browse" [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" style="height:75px;width: 75px;border-radius: 100%;"
+									/>
+									<img *ngIf="image" src="{{this.imageUrl}}" style="height:75px;width: 75px;border-radius: 100%;" />
+								</p>
+							</div>
+							<div class="error" *ngIf="!img_valid">
+								<div class="error" [hidden]="img_valid">
+									Front picture is required
+								</div>
+							</div>
+
+							<div class="error" *ngIf="!img">
+								<div class="error" [hidden]="img">
+									Only png/Jpeg Allowed
+								</div>
+							</div>
+						</aside>
+
+					</div>
+
+
+					<div class="row">
+						<aside class="col-sm-12">
+							<div class="form-group">
+								<label class="text-uppercase">Description</label>
+								<textarea id="des" value="" placeholder="Enter Description" class="form-control" formControlName="description" [attr.maxlength]="500"></textarea>
+								<!-- <input id="des" type="text" value="" placeholder="Enter Description" class="form-control" formControlName="description"/> -->
+							</div>
+
+						</aside>
+
+					</div>
+
+
+					<div class="row">
+						<aside class="col-sm-12">
+							<div class="form-group">
+								<label class="text-uppercase">Add Users</label>
+
+								<div class="select_users" *ngIf="intial">
+									<div *ngFor="let test of data">
+										<div *ngIf="test.selected == true">
+											<label> <a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{test.full_name}}</a><a (click)="deleteUser(test,test._id)"><i class="fa fa-close"></i></a></label>
+										</div>
+									</div>
+								</div>
+								<div class="select_users" *ngIf="formdata">
+									<div *ngFor="let test of data">
+										<div *ngIf="test.selected == true">
+											<label> <a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000">{{test.full_name}}</a><a (click)="deleteUser(test,test._id)"><i class="fa fa-close"></i></a></label>
+										</div>
+									</div>
+								</div>
+
+								<p class="add_user">
+									<a data-backdrop="static" data-keyboard="false" (click)="groupModal()"><i class="fa fa-plus"></i>Add Users</a>
+								</p>
+							</div>
+							<div class="error" *ngIf="!user_valid">
+								<div class="error" [hidden]="user_valid">
+									Users are required
+								</div>
+							</div>
+						</aside>
+					</div>
+
+
+					<!-- gallery modal -->
+
+					<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body select_users" style="height: 100%;
+									
+		overflow: auto;">
+									<mat-tab-group color="primary">
+										<mat-tab label="Upload files">
+											<div class="table_box">
+												<div class="table_inner">
+													<p>Browse your file here</p>
+													<input type="file" #fileupload (change)="onFileChange($event)" id="event_cover" />
+												</div>
+											</div>
+											<div class="bottom_box text-right"><button class="blue_btn" data-dismiss="modal">OK</button></div>
+										</mat-tab>
+										<mat-tab label="Media library">
+											<ul class="gallery_images">
+												<li *ngFor="let image of arryData.libraryImages; let i=index">
+													<div class="uppre">
+														<div class="img_outer">
+															<img src="{{image.image_name}}" (click)="checking(i,image.image_name)">
+														</div>
+													</div>
+												</li>
+											</ul>
+											<div class="bottom_box text-right"><button class="blue_btn" data-dismiss="modal">OK</button></div>
+										</mat-tab>
+									</mat-tab-group>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal -->
+					<div class="modal fade" id="addadmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Select Users</h4>
+								</div>
+  <form [formGroup]="searchForm">
+  <input type="text" [(ngModel)]="term"  class="form-control"  placeholder="Search" (click)="teamName(term)" formControlName="search">
+   </form>
+								<div class="modal-body select_users" style="max-height: 500px;
+    overflow: auto;">
+									<label *ngFor="let test of data| filter:term"><input type="checkbox"
+                  name="data" value="test" [checked]="test.selected == true" (change)="getuserVal(test._id,test.full_name,  $event.target.checked)"><img src="../../assets/images/logo.png" alt="" style="height:50px;width:50px;"><a [routerLink]="['/user', test._id]" [routerLinkActive]="['router-link-active']" style="color: #000000" data-dismiss="modal">{{test.full_name}} </a></label>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancelvalue()">Cancel</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal" (click)="okvalue()">OK</button>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" class="blue_btn yellow_btn  text-uppercase">Update</button>
+					<button type="submit" class="blue_btn yellow_btn  text-uppercase" (click)="cancel()">Cancel</button>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<style type="text/css">
+	.error {
+		color: red;
+	}
+</style>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

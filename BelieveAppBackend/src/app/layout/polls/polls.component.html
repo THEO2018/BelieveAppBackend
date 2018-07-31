@@ -1,0 +1,170 @@
+<div class="content_area">
+
+	<div class="tables_area">
+		<h2 class="pull-left" *ngIf ="getacative">Active Polls</h2>
+		<h2 class="pull-left" *ngIf ="getClosed" >Past Polls</h2>
+		<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="PollModal()" *ngIf ="getClosed">Poll Settings</a>
+
+		<a class="blue_btn yellow_btn pull-right text-uppercase" routerLink="/add-poll" [routerLinkActive]="['router-link-active']" *ngIf ="getacative">Add New</a>
+
+		<a class="blue_btn yellow_btn pull-right text-uppercase" (click) = "getClose()" *ngIf ="getClosed">Active Polls</a>
+
+		<a class="blue_btn yellow_btn pull-right text-uppercase" (click) = "getActive()" *ngIf ="getacative">Past Polls</a>
+		
+		<div class="clear"></div>
+		<div class="white_box">
+			<div class="table-responsive" *ngIf ="getacative">
+				<table width="100%" cellspacing="0" cellpadding="0"  id="" class="display">
+					<thead>
+						<tr>
+							<th width="15%">Poll Title</th>
+							<th width="35%">Question</th>
+							<th width="10%">Options</th>
+							<th width="10%">End Time</th>
+							<th width="15%">poll Image</th>
+							<th width="15%">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let poll of data">
+							<td>{{poll.poll_title}}</td>
+							<td>{{poll.question}}</td>
+							<td>{{poll.options_count}}</td>
+							<td>{{poll.end_time}}</td>
+							<td *ngIf="poll.poll_image">
+								<img src="{{poll.poll_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+							<td *ngIf="!poll.poll_image">
+								<img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+
+							<td>
+								<a class="action_btn">
+										<a  class="action_btn"><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/poll-detail', poll._id]" [routerLinkActive]="['router-link-active']"></i></a>
+										
+									<!-- <i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(grouplist._id)"></i> -->
+								</a>
+							</td>
+							<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center">
+											<p>Are you sure you want to Delete?</p>
+											<a class="blue_btn" (click)="RemoveComm()">Yes</a>
+											<a data-dismiss="modal" class="blue_btn">No</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</tr>
+						<!-- <tr>
+							<td colspan="6">
+								<mfBootstrapPaginator></mfBootstrapPaginator>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive" *ngIf ="getClosed">
+				<table width="100%" cellspacing="0" cellpadding="0"  id="" class="display">
+					<thead>
+						<tr>
+							<th width="15%">Poll Title</th>
+							<th width="15%">Question</th>
+							<th width="35%">Options</th>
+							<th width="20%">End Time</th>
+							<th width="15%">poll Image</th>
+							<!-- <th width="15%">Action</th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let poll of data1">
+							<td>{{poll.poll_title}}</td>
+							<td>{{poll.question}}</td>
+							<td>{{poll.options_count}}</td>
+							<td>{{poll.end_time}}</td>
+							<td *ngIf="poll.poll_image">
+								<img src="{{poll.poll_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+							<td *ngIf="!poll.poll_image">
+								<img src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+							</td>
+
+							<!-- <td>
+								<a class="action_btn">
+									<i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(grouplist._id)"></i>
+								</a>
+							</td> -->
+							<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center">
+											<p>Are you sure you want to Delete?</p>
+											<a class="blue_btn" (click)="RemoveComm()">Yes</a>
+											<a data-dismiss="modal" class="blue_btn">No</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</tr>
+					<!-- 	<tr>
+							<td colspan="6">
+								<mfBootstrapPaginator></mfBootstrapPaginator>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- /************************PollSettings***********************/ -->
+
+		<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body">
+									     	<h2 class="title_head">Poll Settings</h2>
+						<form  [formGroup]="myForm" (ngSubmit)="editPollSetting(myForm.value)">
+									      	
+						<div class="row">
+							<aside class="col-sm-6">
+								<div class="form-group">
+								   <label class="text-uppercase">Display Past Polls*</label>
+									<div class="custom_select">
+										<select formControlName="past_polls_visibility_status" (change)="showPastNumber($event.target.value)">
+											<option value="true">On</option>
+											<option value="false">Off</option>
+										</select>
+									</div>
+								</div>
+								
+			                    	
+							</aside>
+					
+						</div>
+						<div class="row" *ngIf="past_num=='true' || past_num==true">
+								<aside class="col-sm-6">
+								<label class="text-uppercase">Choose Number Of Visible Past Polls*</label>
+								<div class="form-group">
+								    <input   type="text"  class="form-control"  value="" placeholder="" id="web" formControlName="no_of_past_polls_visible"/>
+								    
+								</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-12">
+								<button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+								<button  type="submit" class="blue_btn yellow_btn text-uppercase" data-dismiss="modal">Cancel</button>
+							</aside>
+						</div>
+					</form>	
+				
+									      </div>
+									       </div>
+									  </div>
+									</div>

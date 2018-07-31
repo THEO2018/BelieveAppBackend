@@ -1,0 +1,234 @@
+	<div class="content_area">
+			
+			<div class="tables_area">
+				<!-- <a class="blue_btn yellow_btn pull-right text-uppercase">Add New</a> -->
+				<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="PublishList()" *ngIf="saved">Published</a>
+				<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="SavedList()" *ngIf="publish">Saved</a>
+				<a class="blue_btn yellow_btn pull-right text-uppercase" (click)="showAdd()">Add New</a>
+				<div class="clear"></div>
+				<div class="content_area" style="background:#eaeaea;"  *ngIf="add_new">
+					<h2 class="title_head">Add Online Store Link</h2>
+					<div>
+					 <form [formGroup]="rForm">
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value="" placeholder="Name*" formControlName="name" id="name"/>
+								    
+								</div>
+								<div *ngIf="rForm.get('name').hasError('required') && rForm.get('name').touched">
+				                        <div class="error" *ngIf="rForm.get('name').hasError('required')  && rForm.get('name').touched ">
+				                        Name is required
+				                        </div> 
+			                    	</div>
+			                    	
+							</aside>
+							
+						</div>
+						<div class="row">
+							<aside class="col-sm-4">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value=""
+								    [pattern] ="urlPattern" placeholder="Url*" formControlName="online_store_url" id="web"/>
+								    <p class="add_user">
+									<a data-backdrop="static" data-keyboard="false" (click)="openlinkModal()">Attach Url</a>&nbsp;
+									</p>
+								 </div>
+								<div *ngIf="rForm.get('online_store_url').hasError('required') && rForm.get('online_store_url').touched">
+				                        <div class="error" *ngIf="rForm.get('online_store_url').hasError('required')  && rForm.get('online_store_url').touched ">
+				                        Url is required
+				                        </div> 
+			                    	</div>
+			                    	<div *ngIf="rForm.get('online_store_url').hasError('pattern') && rForm.get('online_store_url').touched">
+			                        <div class="error" *ngIf="rForm.get('online_store_url').hasError('pattern')  && rForm.get('online_store_url').touched ">
+			                       Invalid Url 
+			                        </div> 
+		                    	</div>
+							</aside>
+							</div>
+
+
+						<div class="row">
+							<aside class="col-sm-12">
+								<button type="submit" class="blue_btn yellow_btn text-uppercase" (click)="AddStore(rForm.valid,rForm.value,'S')">Save</button>
+								<button type="submit" class="blue_btn yellow_btn text-uppercase" (click)="AddStore(rForm.valid,rForm.value,'A')">Publish</button>
+								<button (click)="cancel()" type="submit" class="blue_btn yellow_btn text-uppercase">Cancel</button>
+							</aside>
+						</div>
+					</form>
+					</div>
+				</div>
+
+
+         <h2 *ngIf="saved">Saved Online Stores</h2>
+         <h2 *ngIf="publish">Published Online Stores</h2>
+				<div class="white_box" *ngIf="publish">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0" id="" class="display">
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Store Url</th>
+									<th>ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let grouplist of data">
+									<td>{{grouplist.name}}</td>
+									<td style="max-width: 300px;overflow: auto;"><a target="_blank" href="{{grouplist.online_store_url}}">{{grouplist.online_store_url}}</a></td>
+									
+									<td>
+										<!-- <a  class="action_btn"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
+										<a  class="action_btn"><i class="fa fa-trash" aria-hidden="true" (click)="RemoveClick(grouplist._id)"></i></a>
+										<a  class="action_btn"><i class="fa fa-edit" aria-hidden="true" (click)="editModal(grouplist.online_store_url,grouplist.name,grouplist._id)"></i></a>
+									</td>
+
+									
+									<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									      	<p>Are you sure you want to Delete?</p>
+									      	<a class="blue_btn" (click)="RemoveComm()">Yes</a>
+									      	<a data-dismiss="modal" class="blue_btn">No</a>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+<div class="modal fade" id="addfirst" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Select Link</h4>
+      </div>
+ 
+      <div class="modal-body select_users" style="height: 100%;overflow: auto;">
+        <label *ngFor="let test of links"><input type="radio"
+                  name="data" value="test" (change)="getuserVal(test.url,  $event.target.checked)">{{test.title}}</label>
+      </div>
+
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+
+<!-- /************************************************************/ -->
+
+	<div class="white_box" *ngIf="saved">
+					<div class="table-responsive">
+						<table width="100%" cellspacing="0" cellpadding="0" id="" class="display">
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Store Url</th>
+									<th>ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let grouplist of data1">
+									<td>{{grouplist.name}}</td>
+									<td style="max-width: 300px;overflow: auto;"><a target="_blank" href="{{grouplist.online_store_url}}">{{grouplist.online_store_url}}</a></td>
+									
+									<td>
+									<a  class="blue_btn yellow_btn text-uppercase" (click)="publishModal(grouplist._id)">Publish</a>
+									</td>
+
+									
+								
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">  
+									     <div class="modal-body text-center">
+									     	<h2 class="title_head">Edit Online Store</h2>
+									      	 <form  [formGroup]="eForm" (ngSubmit)="EditStore(eForm.valid,eForm.value)">
+						<div class="row">
+							<aside class="col-sm-8">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value=""
+								    placeholder="" formControlName="name" id="web"/>
+								    
+								</div>
+								<div *ngIf="eForm.get('name').hasError('required') && eForm.get('name').touched">
+				                        <div class="error" *ngIf="eForm.get('name').hasError('required')  && eForm.get('name').touched ">
+				                        Name is required
+				                        </div> 
+			                    	</div>
+								
+			                    	
+							</aside>
+					
+						</div>
+						<div class="row">
+									<aside class="col-sm-8">
+								<div class="form-group">
+								    <input type="text"  class="form-control"  value=""
+								    [pattern] ="urlPattern" placeholder="" formControlName="online_store_url" id="web"/>
+								    
+								</div>
+								<div *ngIf="eForm.get('online_store_url').hasError('required') && eForm.get('online_store_url').touched">
+				                        <div class="error" *ngIf="eForm.get('online_store_url').hasError('required')  && eForm.get('online_store_url').touched ">
+				                        Url is required
+				                        </div> 
+			                    	</div>
+			                    	<div *ngIf="eForm.get('online_store_url').hasError('pattern') && eForm.get('online_store_url').touched">
+			                        <div class="error" *ngIf="eForm.get('online_store_url').hasError('pattern')  && eForm.get('online_store_url').touched ">
+			                       Invalid Url 
+			                        </div> 
+		                    	</div>
+							</aside>
+						</div>
+
+						<div class="row">
+							<aside class="col-sm-12">
+								<button type="submit" class="blue_btn yellow_btn text-uppercase">Update</button>
+								<button  type="submit" class="blue_btn yellow_btn text-uppercase" data-dismiss="modal">Cancel</button>
+							</aside>
+						</div>
+					</form>
+									      </div>
+									       </div>
+									  </div>
+									</div>
+<style type="text/css">
+.error
+{
+color:red;
+}
+
+</style>
+
+  <div class="modal fade" id="publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                     <div class="modal-body text-center">
+                      <p>Are you sure you want to Publish this Store?</p>
+                      <a class="blue_btn" (click)="PublishDrafts()">OK</a>
+                      <a class="blue_btn" data-dismiss="modal" >Cancel</a>
+                    </div>
+                     </div>
+                  </div>
+                  </div>

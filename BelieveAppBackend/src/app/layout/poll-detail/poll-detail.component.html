@@ -1,0 +1,75 @@
+<div class="content_area">
+
+    <div class="tables_area">
+        <h2>Poll Detail</h2>
+        <div class="white_box">
+                <div class="add_formarea">
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Poll Title</label>
+                                <p class="form-control">{{data.poll_title}}</p>
+                                
+                            </div>
+                            
+                        </aside>
+                    </div>
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Question</label>
+                               <p class="form-control">{{data.question}}</p>
+                                </div>
+                                
+                            
+                        </aside>
+                        
+                    </div>
+                      <div class="row">
+                         <aside class="col-sm-6">
+                            <div class="form-group" >
+                                <label class="text-uppercase">Options</label>
+                                <div *ngFor="let grouplist of data.options">
+                                <p class="form-control">{{grouplist.option}}</p>
+                                </div>
+                            </div>
+                            
+                        </aside>
+
+                         </div>
+                    <div class="row">
+                        <aside class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-uppercase"> TIME</label>
+                                <div class="icon_input">
+                                     <p class="form-control">{{_date}}</p>
+                                </div>
+                            </div>
+                            
+                        </aside>
+                    </div>
+
+
+
+                    <div class="row">
+                        <aside class="col-sm-6">
+                            <div class="form-group">
+                                <label class="text-uppercase">Poll Image</label>
+
+                               <img *ngIf="data.poll_image" src="{{data.poll_image}}" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+                                 <img *ngIf="!data.poll_image" src="../../assets/images/logo.png" alt="" style="height:75px;width: 75px;border-radius: 100%;" />
+                            </div>
+                           
+                        </aside>
+                    </div>
+
+                    
+                    </div>
+                   
+        </div>
+    </div>
+</div>
+
+
+
+<!-- http://plnkr.co/edit/ucKcXBA2zReWfBSQ8W7D?p=preview -->

@@ -1,0 +1,19 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">Dashboard</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xl-4 col-lg-8">
+            <app-stat [bgClass]="'primary'" [icon]="'fa-user'" [label]="'Users!'" routerLink="/forms" [routerLinkActive]="['router-link-active']"></app-stat>
+        </div>
+       <!--  <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-users'" [count]="12" [label]="'Groups!'" (click)="Groups()"></app-stat>
+        </div> -->
+        <div class="col-xl-4 col-lg-8">
+            <app-stat [bgClass]="'success'" [icon]="'fa-fw fa-table'"  [label]="'Polls!'" routerLink="/polls" [routerLinkActive]="['router-link-active']" ></app-stat>
+        </div>
+        <div class="col-xl-4 col-lg-8">
+            <app-stat [bgClass]="'danger'" [icon]="'fa-file-o'" [label]="'Appointments!'" routerLink="/appointment" [routerLinkActive]="['router-link-active']"></app-stat>
+        </div>
+    </div>
+    <hr/>
+</div>

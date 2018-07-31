@@ -1,0 +1,53 @@
+<div class="content_area">
+			
+			<div class="tables_area">
+				<h2 class="pull-left">Appointment Requests</h2>
+				<div class="clear"></div>
+
+<ul class="requests">
+	<li class="alert alert-success" *ngFor="let grouplist of data">{{grouplist.user_id.first_name}} has requested  for the '{{grouplist.title}}' Appointment on  {{grouplist.day_of_appointment}} {{grouplist.date_of_appointment}}
+		<div class="success_action">
+			<a class="accept_request" (click)="accept(grouplist._id)">Accept</a>
+			<a (click)="reject(grouplist._id)">Reject</a>
+		</div>
+
+
+		
+
+		<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Are you sure you want to accept the Appointment?</p>
+		      	<a class="blue_btn" (click)="ApoinmentsAR('A')">Yes</a>
+		      	<a class="blue_btn" data-dismiss="modal">No</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">  
+		     <div class="modal-body text-center">
+		      	<p>Are you sure you want to reject the Appointment?</p>
+		      	<a class="blue_btn" (click)="ApoinmentsAR('R')">OK</a>
+		      	<a class="blue_btn" data-dismiss="modal">Cancel</a>
+		      </div>
+		       </div>
+		  </div>
+		</div>
+
+
+	</li>
+</ul>
+
+  </div>
+</div>
+
+
+
+
+
+
+

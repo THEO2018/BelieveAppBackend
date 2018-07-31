@@ -1,0 +1,35 @@
+.main-container {
+    margin-top: 56px;
+    margin-left: 235px;
+    padding: 15px;
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    overflow: hidden;
+}
+.blue_btn
+{
+    background: #F78C6A;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 5px 12px;
+    display: inline-block;
+    line-height: 23px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+.blue_btn:hover
+{
+    background: #eb7650;
+}
+.blue_btn + .blue_btn {
+    margin-right: 5px;
+}
+@media screen and (max-width: 992px) {
+    .main-container {
+        margin-left: 0px !important;
+    }
+}

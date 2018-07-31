@@ -1,0 +1,160 @@
+.clear
+{
+	clear:both;
+	height:0;
+}
+.blue_btn + .blue_btn {
+    margin-right: 5px;
+}
+.blue_btn
+{
+	background: #F78C6A;
+	border-radius: 5px;
+	color: #fff !important;
+	text-decoration:none !important;
+	font-size: 14px;
+	border: none;
+	padding: 5px 22px;
+	display: inline-block;
+	line-height: 26px;
+	margin-top: 20px;
+	font-weight: 600;
+}
+.blue_btn:hover
+{
+	background: #eb7650;
+}
+.blue_btn.black_btn 
+{
+    background: #2c2c2c;
+}
+.top_form
+{
+	padding-bottom: 20px;
+}
+.top_form .yellow_btn 
+{
+	height: 39px;
+	margin: 0;
+	vertical-align: middle;
+	padding: 6px 35px;
+	font-size: 18px;
+}
+.content_area
+{
+	padding: 15px 15px 35px 15px;
+	min-height: 100%;
+	position: relative;
+}
+.top3_area
+{
+	padding: 10px 0 45px;
+}
+.mat-tab-label-active
+ {
+     color: #F78C6A !important;
+ } 
+.white_three
+{
+	background: #222;
+	margin: 20px 0 0 29px;
+	text-align: center;
+	padding: 25px;
+	position: relative;
+	border-radius: 2px;
+	box-shadow: 0px 8px 28px rgba(0,0,0,.12);
+	min-height: 100px;
+}
+.white_three p
+{
+	color: #fff;
+    margin: 0;
+}
+.white_three span
+{
+	position: absolute;
+	left: -29px;
+	width: 58px;
+	height: 58px;
+	font-size: 30px;
+	color: #fff;
+	line-height: 55px;
+	border-radius: 2px;
+	top: 15px;
+}
+.white_three h3
+{
+	margin-top: 0;
+}
+.gallery_images
+{
+	margin: 0;
+	padding: 0;
+    list-style: none;
+    height:100%;
+    overflow:auto;
+}
+.gallery_images li
+{
+	width: 20%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    min-height: 137px;
+}
+.img_outer 
+{
+	position: relative;
+	transform: translate(50%, 50%);
+}
+.img_outer img 
+{
+	height: 137px;
+	transform: translate(-50%, -50%);
+}
+.uppre 
+{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+    overflow: hidden;
+    border:2px solid transparent;
+}
+.gallery_images li.selected .uppre
+ {
+	border-color:#F78C6A;
+}
+.gallery_images li.selected::after 
+{
+	font-family: fontawesome;
+	position: absolute;
+	content: "\f00c";
+	background: #F78C6A;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	line-height: 24px;
+	right: 0;
+	top: 0px;
+}
+#gallerymodal .modal-dialog 
+{
+	max-width: 860px;
+	margin: 0 auto;
+	height: 100%;
+	padding: 55px 0;
+}
+
+.gallery_images li p
+{
+    margin: 137px 0 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}

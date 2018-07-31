@@ -1,0 +1,52 @@
+  <div class="content_area">
+  
+  <div class="tables_area">
+        <div class="clear"></div>
+    <div class="bg_area">
+    <h2>Edit Gallery</h2>
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="EditGallery(myForm.valid)">
+         <div class="row">
+           <aside class="col-sm-4">
+             <div class="form-group">
+             <label class="text-uppercase">Gallary Title*</label>
+                 <input type="text"  class="form-control"  value="" placeholder="Media Name" formControlName="gallary_title"/>
+                 
+             </div>
+
+                <div *ngIf="myForm.get('gallary_title').hasError('required') && myForm.get('gallary_title').touched">
+			                        <div class="error" *ngIf="myForm.get('gallary_title').hasError('required')  && myForm.get('gallary_title').touched ">
+			                        Title is required
+			                        </div> 
+		                    	</div>
+           </aside>
+             <aside class="col-sm-6">
+              <div class="form-group">
+                <label class="text-uppercase">Category*</label>
+                <div class="custom_select">
+                  <select formControlName="select_category">
+                   <option value =null disabled selected hidden >Select Category</option>
+                    <option *ngFor="let item of categoryData" [ngValue]="item._id">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+               <div *ngIf="myForm.get('select_category').hasError('required')
+                && myForm.get('select_category').touched">
+                            <div class="error" *ngIf="myForm.get('select_category').hasError('required')  && myForm.get('select_category').touched ">
+                            Category is required
+                            </div> 
+            </div>
+            </aside>
+         </div>
+         <div class="row">
+           <aside class="col-sm-4">
+              <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;">Save</button>
+              <button type="submit" class="blue_btn yellow_btn text-uppercase"   style="margin-top:0px; color:#fff;" (click)="cancel()">Cancel</button>
+           </aside>
+            </div>
+            </form>
+               </div>
+         </div>
+      </div>
+   </div>

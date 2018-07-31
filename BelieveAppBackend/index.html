@@ -1,0 +1,1646 @@
+<html>
+<head>
+<title>Believe</title>
+</head>
+<body>
+<h1>Web Services for Believe App</h1>
+<h2>BaseUrl - http://192.168.2.50:3000/</h2>
+***************************************************************************************
+<h3>(1) Sign Up (/api/sign_up)</h3>
+<form action="/api/sign_up" method = "POST">
+<table>
+<tr>
+<td>First Name </td><td><input type="text" name="first_name">first_name</td>
+</tr>
+<tr>
+<td>Last Name </td><td><input type="text" name="last_name">last_name</td>
+</tr>
+<tr>
+<td>Email </td><td><input type="text" name="email">email</td>
+</tr>
+<tr>
+<td>Phone Number </td><td><input type="text" name="phone_number">phone_number</td>
+</tr>
+<tr>
+<td>Password </td><td><input type="text" name="password">password</td>
+</tr>
+<tr>
+<td>Register Type </td><td><input type="text" name="register_type">register_type (F- facebook, G- Google, O- Other)</td>
+</tr>
+<tr>
+<td>Registered By </td><td><input type="text" name="registered_by">registered_by (P- Phone number , E- Email)</td>
+</tr>
+<tr>
+<td>Social Media ID </td><td><input type="text" name="social_media_id">social_media_id</td>
+</tr>
+<tr>
+<td>Profile Image </td><td><input type="text" name="profile_image">profile_image</td>
+</tr>
+<tr>
+<td>Device Type </td><td><input type="text" name="device_type">device_type(A- android)</td>
+</tr>
+<tr>
+<td>Device Id </td><td><input type="text" name="device_id">device_id</td>
+</tr>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token">access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(2) Create Profile (/api/create_profile)</h3>
+<form action="/api/create_profile" method="POST" enctype="multipart/form-data">
+<table>
+<!-- <tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr> -->
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Marital Status </td><td><input type="text" name="marital_status">marital_status</td>
+</tr>
+<tr>
+<td>Gender </td><td><input type="text" name="gender">gender (M-male, F- female)</td>
+</tr>
+<tr>
+<td>Profession </td><td><input type="text" name="profession">profession</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="user_status">user_status (N- normal user, A- Alumni)</td>
+</tr>
+<tr>
+<td>Campus </td><td><input type="text" name="campus">campus</td>
+</tr>
+<tr>
+<td>DOB </td><td><input type="text" name="dob">dob (yyyy-mm-dd)</td>
+</tr>
+<tr>
+<td>Street </td><td><input type="text" name="street">street</td>
+</tr>
+<tr>
+<td>City </td><td><input type="text" name="city">city</td>
+</tr>
+<tr>
+<td>State </td><td><input type="text" name="state">state</td>
+</tr>
+<tr>
+<td>Country </td><td><input type="text" name="country">country</td>
+</tr>
+<tr>
+<td>Postal Code </td><td><input type="text" name="postal_code">postal_code</td>
+</tr>
+<tr>
+ <td>Profile Image</td><td><input type="file" name="profile_image" />profile_image</td>
+ </tr>
+
+ <tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(3) Login (/api/login)</h3>
+<form action="/api/login" method = "POST">
+<table>
+<tr>
+<td>Email </td><td><input type="text" name="email">email</td>
+</tr>
+<tr>
+<td>Phone Number </td><td><input type="text" name="phone_number">phone_number</td>
+</tr>
+<tr>
+<td>Password </td><td><input type="text" name="password">password</td>
+</tr>
+<tr>
+<td>Registered By </td><td><input type="text" name="registered_by">registered_by (P-Phone number , E- Email)</td>
+</tr>
+<tr>
+<td>Device Type </td><td><input type="text" name="device_type">device_type(A- android)</td>
+</tr>
+<tr>
+<td>Device Id </td><td><input type="text" name="device_id">device_id</td>
+</tr>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token">access_token</td>
+</tr>
+<!-- <tr>
+<td>latitude </td><td><input type="text" name="latitude">latitude</td>
+</tr>
+<tr>
+<td>longitude </td><td><input type="text" name="longitude">longitude</td>
+</tr> -->
+<tr>
+<td>Time Zone </td><td><input type="text" name="time_zone">time_zone</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(4) Get All Groups (/api/get_groups)</h3>
+<form action="/api/get_groups" method = "GET">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(5) Detail of Group (/api/detail_group_with_about)</h3>
+<form action="/api/detail_group_with_about" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(5) Join Group (/api/join_group)</h3>
+<form action="/api/join_group" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(6) Add a Group Post (/api/add_group_post)</h3>
+<form action="/api/add_group_post" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td>Group Post status </td><td><input type="text" name="group_post_status">group_post_status</td>
+</tr>
+<tr>
+ <td>Group Post Media</td><td><input type="file" name="group_post_media" />group_post_media</td>
+</tr>
+<tr>
+<td>Group Post Media Type </td><td><input type="text" name="group_post_media_type">group_post_media_type (Photo- P, video- V)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(7) Add a Comment to Group Post (/api/add_comment_group_post)</h3>
+<form action="/api/add_comment_group_post" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Post ID </td><td><input type="text" name="group_post_id">group_post_id</td>
+</tr>
+<tr>
+<td>Comment Message </td><td><input type="text" name="comment_msg">comment_msg</td>
+</tr>
+<tr>
+<td>type </td><td><input type="text" name="type">type</td>
+</tr>
+<tr>
+ <td>Group Post Comment Image</td><td><input type="file" name="group_post_comment_img" />group_post_comment_img</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(8) Add a Like to Post (/api/add_like_group_post)</h3>
+<form action="/api/add_like_group_post" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Post ID </td><td><input type="text" name="group_post_id">group_post_id</td>
+</tr>
+<tr>
+<td>Like Status </td><td><input type="text" name="like_status">like_status (L-like , U- Unlike)</td>
+</tr>
+<tr>
+<td>Type </td><td><input type="text" name="type">type</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(9) Detail Group Discussion (/api/detail_group_discussion)</h3>
+<form action="/api/detail_group_discussion" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(10) Add a Photo to Group (/api/add_photo_to_group)</h3>
+<form action="/api/add_photo_to_group" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+<tr>
+ <td>Photo</td><td><input type="file" name="group_photo" />group_photo</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(11) Get Photos of Group (/api/get_group_photos)</h3>
+<form action="/api/get_group_photos" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group ID </td><td><input type="text" name="group_id">group_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(12) Get Single Post Detail (/api/get_group_post_detail)</h3>
+<form action="/api/get_group_post_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Post ID </td><td><input type="text" name="post_id">post_id</td>
+</tr>
+<tr>
+<td>type </td><td><input type="text" name="type">type</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(13) Get All Small Groups (/api/get_small_groups)</h3>
+<form action="/api/get_small_groups" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Latitude </td><td><input type="text" name="latitude"> latitude</td>
+</tr>
+<tr>
+<td>Longitude </td><td><input type="text" name="longitude"> longitude</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(13) Get Search Small Groups (/api/search_small_groups)</h3>
+<form action="/api/search_small_groups" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Small Group Name </td><td><input type="text" name="small_group_name"> small_group_name</td>
+</tr>
+<tr>
+<td>Latitude </td><td><input type="text" name="latitude"> latitude</td>
+</tr>
+<tr>
+<td>Longitude </td><td><input type="text" name="longitude"> longitude</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(14) Detail of Small Group (/api/detail_small_group)</h3>
+<form action="/api/detail_small_group" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Small Group ID </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(15) Join Small Group (/api/join_small_group)</h3>
+<form action="/api/join_small_group" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Small Group ID </td><td><input type="text" name="small_group_id">small_group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(15) Add a Post on Wall (/api/add_wall_post)</h3>
+<form action="/api/add_wall_post" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Wall Post status </td><td><input type="text" name="wall_post_status">wall_post_status</td>
+</tr>
+<tr>
+ <td>Wall Post Media</td><td><input type="file" name="wall_post_media" />wall_post_media</td>
+</tr>
+<tr>
+<td>Wall Post Media Type </td><td><input type="text" name="wall_post_media_type">wall_post_media_type (Photo- P, video- V)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(16) Add a Comment to Wall Post (/api/add_comment_wall_post)</h3>
+<form action="/api/add_comment_wall_post" method = "POST" enctype="multipart/form-data">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Wall Post ID </td><td><input type="text" name="wall_post_id">wall_post_id</td>
+</tr>
+<tr>
+<td>Comment Message </td><td><input type="text" name="comment_msg">comment_msg</td>
+</tr>
+<tr>
+ <td>Wall Post Comment Image</td><td><input type="file" name="wall_post_comment_img" />wall_post_comment_img</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(17) Add a Like to Post (/api/add_like_wall_post)</h3>
+<form action="/api/add_like_wall_post" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Wall Post ID </td><td><input type="text" name="wall_post_id">wall_post_id</td>
+</tr>
+<tr>
+<td>Like Status </td><td><input type="text" name="like_status">like_status (L-like , U- Unlike)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(18) Get Wall Posts (/api/get_wall_posts)</h3>
+<form action="/api/get_wall_posts" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(19) Get Single Wall Post Detail (/api/get_wall_post_detail)</h3>
+<form action="/api/get_wall_post_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Wall Post ID </td><td><input type="text" name="wall_post_id">wall_post_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(19) Logout (/api/logout)</h3>
+<form action="/api/logout" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(20) Get My Profile (/api/get_my_profile)</h3>
+<form action="/api/get_my_profile" method="Post">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+ <tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+
+<h3>(21) Edit Profile (/api/edit_profile)</h3>
+<form action="/api/edit_profile" method="POST" enctype="multipart/form-data">
+<table>
+<!-- <tr>
+<td>User Id </td><td><input type="text" name="user_id">user_id</td>
+</tr> -->
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Marital Status </td><td><input type="text" name="marital_status">marital_status</td>
+</tr>
+<tr>
+<td>Gender </td><td><input type="text" name="gender">gender (M-male, F- female)</td>
+</tr>
+<tr>
+<td>Profession </td><td><input type="text" name="profession">profession</td>
+</tr>
+<tr>
+<td>Status </td><td><input type="text" name="user_status">user_status (N- normal user, A- Alumni)</td>
+</tr>
+<tr>
+<td>Campus </td><td><input type="text" name="campus">campus</td>
+</tr>
+<tr>
+<td>DOB </td><td><input type="text" name="dob">dob (yyyy-dd-mm)</td>
+</tr>
+<tr>
+<td>Street </td><td><input type="text" name="street">street</td>
+</tr>
+<tr>
+<td>City </td><td><input type="text" name="city">city</td>
+</tr>
+<tr>
+<td>State </td><td><input type="text" name="state">state</td>
+</tr>
+<tr>
+<td>Country </td><td><input type="text" name="country">country</td>
+</tr>
+<tr>
+<td>Postal Code </td><td><input type="text" name="postal_code">postal_code</td>
+</tr>
+<tr>
+ <td>Profile Image</td><td><input type="file" name="profile_image" />profile_image</td>
+ </tr>
+ <tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(22) Add a couple (Marriage Section)(/api/add_betrothed)</h3>
+<form action="/api/add_betrothed" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>First User Id </td><td><input type="text" name="first_user_id">first_user_id</td>
+</tr>
+<tr>
+<td>Second User Id </td><td><input type="text" name="second_user_id">second_user_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(23) Get Marriages Section (/api/get_marriages)</h3>
+<form action="/api/get_marriages" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(24) Get Alumni's (/api/get_alumni)</h3>
+<form action="/api/get_alumni" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(25) Get Birthdays Section (/api/get_birthdays)</h3>
+<form action="/api/get_birthdays" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(26) Get New Members (/api/get_new_members)</h3>
+<form action="/api/get_new_members" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(27) Get Events  (/api/get_events)</h3>
+<form action="/api/get_events" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(28) Get Event Detail  (/api/get_event_detail)</h3>
+<form action="/api/get_event_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Event Id </td><td><input type="text" name="event_id"> event_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(29) Get Music Albums  (/api/get_music_albums)</h3>
+<form action="/api/get_music_albums" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(30) Get Songs of Album  (/api/get_songs_album)</h3>
+<form action="/api/get_songs_album" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Album Id </td><td><input type="text" name="album_id"> album_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(31) Get All Songs(/api/get_all_songs)</h3>
+<form action="/api/get_all_songs" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+<!-- ***************************************************************************************
+<h3>(32) Get All Media Gallaries(/api/get_all_gallaries)</h3>
+<form action="/api/get_all_gallaries" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+ -->
+
+***************************************************************************************
+<h3>(33) Get Media of Gallary  (/api/get_media_of_gallary)</h3>
+<form action="/api/get_media_of_gallary" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Gallary Id </td><td><input type="text" name="gallary_id"> gallary_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(34) Make Appointment Request (/api/make_appointment_request)</h3>
+<form action="/api/make_appointment_request" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Title </td><td><input type="text" name="title"> title</td>
+</tr>
+<tr>
+<td>Date </td><td><input type="text" name="date_of_appointment"> date_of_appointment(yyyy-mm-dd)</td>
+</tr>
+<tr>
+<td>Day </td><td><input type="text" name="day_of_appointment"> day_of_appointment</td>
+</tr>
+<tr>
+<td>Time from  </td><td><input type="text" name="time_from"> time_from</td>
+</tr>
+<tr>
+<td>Time To  </td><td><input type="text" name="time_to"> time_to</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(35) Get Today's Appointments  (/api/get_today_appointments)</h3>
+<form action="/api/get_today_appointments" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Date </td><td><input type="text" name="date"> date</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(36) Get Upcoming Appointments  (/api/get_upcoming_appointments)</h3>
+<form action="/api/get_upcoming_appointments" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(37) Get All Blogs  (/api/get_all_blogs)</h3>
+<form action="/api/get_all_blogs" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(38) Get Blog Detail  (/api/get_blog_detail)</h3>
+<form action="/api/get_blog_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Blog Id </td><td><input type="text" name="blog_id">blog_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(39) Get Classifieds Categories  (/api/get_classifieds_categories)</h3>
+<form action="/api/get_classifieds_categories" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(40) Get Classifieds of category (/api/get_classifieds_of_category)</h3>
+<form action="/api/get_classifieds_of_category" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Category </td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(41) Get Classified Detail (/api/get_classified_detail)</h3>
+<form action="/api/get_classified_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Classified ID </td><td><input type="text" name="classified_id">classified_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(42) Ask For Recommendation (/api/ask_for_recommendation)</h3>
+<form action="/api/ask_for_recommendation" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Title </td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Description </td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(43) Add a Comment Poll (/api/add_comment_poll)</h3>
+<form action="/api/add_comment_poll" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Poll ID </td><td><input type="text" name="poll_id">poll_id</td>
+</tr>
+<tr>
+<td>Comment Message </td><td><input type="text" name="comment_msg">comment_msg</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(44) Add vote to Poll (/api/add_vote_poll)</h3>
+<form action="/api/add_vote_poll" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Poll ID </td><td><input type="text" name="poll_id">poll_id</td>
+</tr>
+<tr>
+<td>Poll Option Id </td><td><input type="text" name="poll_option_id">poll_option_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(45) Get Active Polls (/api/get_active_polls)</h3>
+<form action="/api/get_active_polls" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(46) Get Poll Detail (/api/get_poll_detail)</h3>
+<form action="/api/get_poll_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Poll ID </td><td><input type="text" name="poll_id">poll_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+<!-- 
+***************************************************************************************
+<h3>(47) Close the Poll (/api/close_poll)</h3>
+<form action="/api/close_poll" method = "POST">
+<table>
+<tr>
+<td>Poll ID </td><td><input type="text" name="poll_id">poll_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+ -->
+
+
+
+***************************************************************************************
+<h3>(47) Get Closed Polls (/api/get_closed_polls)</h3>
+<form action="/api/get_closed_polls" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(48) Get Contact Detail (/api/get_contact_detail)</h3>
+<form action="/api/get_contact_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(49) Get Service Hours (/api/get_service_hours)</h3>
+<form action="/api/get_service_hours" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(50) Get About Us pages (/api/get_about_pages)</h3>
+<form action="/api/get_about_pages" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(51) Get About Us page Detail (/api/get_about_detail)</h3>
+<form action="/api/get_about_detail" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>About Page Id</td><td><input type="text" name="about_page_id">about_page_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(52) Change Password (/api/change_password)</h3>
+<form action="/api/change_password" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Old Password</td><td><input type="text" name="old_password">old_password</td>
+</tr>
+<tr>
+<td>New Password</td><td><input type="text" name="new_password">new_password</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(53) Add Note (/api/add_note)</h3>
+<form action="/api/add_note" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Title</td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Description</td><td><input type="text" name="description">description</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(54) Get Notes (/api/get_notes)</h3>
+<form action="/api/get_notes" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(55) Add Prayer (/api/add_prayer)</h3>
+<form action="/api/add_prayer" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Title</td><td><input type="text" name="title">title</td>
+</tr>
+<tr>
+<td>Category</td><td><input type="text" name="category">category</td>
+</tr>
+<tr>
+<td>Mesage</td><td><input type="text" name="message">message</td>
+</tr>
+<tr>
+<td>Post As Anonymous</td><td><input type="text" name="post_as_anonymous">post_as_anonymous</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(55) Add Pray to prayer (/api/add_pray_to_prayer)</h3>
+
+<form action="/api/add_pray_to_prayer" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Prayer Id</td><td><input type="text" name="prayer_id">prayer_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(56) Add a Comment to Prayer (/api/add_comment_prayer)</h3>
+<form action="/api/add_comment_prayer" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Prayer ID </td><td><input type="text" name="prayer_id">prayer_id</td>
+</tr>
+<tr>
+<td>Comment Message </td><td><input type="text" name="comment_msg">comment_msg</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(56) Answered a Prayer (/api/answer_a_prayer)</h3>
+<form action="/api/answer_a_prayer" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Prayer Id</td><td><input type="text" name="prayer_id">prayer_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(57) Get Categories Prayers (/api/get_prayer_categories)</h3>
+<form action="/api/get_prayer_categories" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(57) Get Prayers (/api/get_prayers)</h3>
+<form action="/api/get_prayers" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Type </td><td><input type="text" name="type"> type</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(58) Get Detail Of Prayer (/api/get_detail_of_prayer)</h3>
+
+<form action="/api/get_detail_of_prayer" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Prayer Id</td><td><input type="text" name="prayer_id">prayer_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(59) Get Giving Section (/api/get_giving_section)</h3>
+<form action="/api/get_giving_section" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(60) Get News url (/api/get_news_urls)</h3>
+<form action="/api/get_news_urls" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(61) Get Online store url (/api/get_store_urls)</h3>
+<form action="/api/get_store_urls" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(62) Get Bible (/api/get_bible)</h3>
+<form action="/api/get_bible" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(63) Get Other profile (/api/get_other_profile)</h3>
+<form action="/api/get_other_profile" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+ <tr>
+<td>User ID </td><td><input type="text" name="user_id"> user_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(64) Get Users (/api/get_users)</h3>
+<form action="/api/get_users" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(65) Search Users (/api/search_users)</h3>
+<form action="/api/search_users" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+ <tr>
+<td>User name </td><td><input type="text" name="user_name"> user_name</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(66) Get Other Users (/api/get_other_users)</h3>
+<form action="/api/get_other_users" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+ <tr>
+<td>Other user Id </td><td><input type="text" name="other_user_id"> other_user_id</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(67) Recently added music (/api/recently_added_music)</h3>
+<form action="/api/recently_added_music" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(68) Remove Account (/api/remove_account)</h3>
+<form action="/api/remove_account" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(69) Notification Settings (/api/notification_settings)</h3>
+<form action="/api/notification_settings" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+ <tr>
+<td>Group Id </td><td><input type="text" name="group_id"> group_id</td>
+</tr>
+<tr>
+<td>Status  </td><td><input type="text" name="status"> status( ON, OFF)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+***************************************************************************************
+<h3>(70) Get Group Notification Settings (/api/get_group_notification_settings)</h3>
+<form action="/api/get_group_notification_settings" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(71) Change Sound Status (/api/change_sound_status)</h3>
+<form action="/api/change_sound_status" method = "POST">
+<table>
+ <tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Status  </td><td><input type="text" name="status"> status( ON, OFF)</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+
+<h3>(72) Forgot Password (/api/forgot_password)</h3>
+<form action="/api/forgot_password" method = "POST">
+<table>
+<tr>
+<td>Email </td><td><input type="text" name="email">email</td>
+</tr>
+ <tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(73) Get Events of Group  (/api/get_events_of_group)</h3>
+<form action="/api/get_events_of_group" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Group Id </td><td><input type="text" name="group_id"> group_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+***************************************************************************************
+<h3>(32) Get All Media categories(/api/get_all_categories)</h3>
+<form action="/api/get_all_categories" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(32) Get Media album of categories(/api/get_album_of_category)</h3>
+<form action="/api/get_album_of_category" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Category Id </td><td><input type="text" name="category"> category</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+***************************************************************************************
+<h3>(32) Get Artists(/api/get_artists)</h3>
+<form action="/api/get_artists" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+
+***************************************************************************************
+<h3>(32) Get Albums of artists (/api/get_albums_of_artist)</h3>
+<form action="/api/get_albums_of_artist" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td>Artist Id </td><td><input type="text" name="artist_id"> artist_id</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+
+
+<!-- 
+
+
+
+***************************************************************************************
+<h3>(55) Check (/api/check)</h3>
+<form action="/api/check" method = "POST">
+<table>
+<tr>
+<td>Access Token </td><td><input type="text" name="access_token"> access_token</td>
+</tr>
+<tr>
+<td><button type="submit">Submit</button></td>
+</tr>
+</table>
+</form>
+
+ -->
+
+</body>
+</html>
+
+
