@@ -1,5 +1,5 @@
 {
-  "name": "SB-Admin-BS4-Angular-5",
+  "name": "believeappnode",
   "version": "4.0.0",
   "license": "MIT",
   "scripts": {
@@ -80,5 +80,16 @@
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
     "typescript": "~2.4.2"
-  }
+  },
+  "description": "Simple Dashboard Admin App built using Angular 5 and Bootstrap 4",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theo2018/BelieveAppBackend.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/theo2018/BelieveAppBackend/issues"
+  },
+  "homepage": "https://github.com/theo2018/BelieveAppBackend#readme"
 }
