@@ -402,7 +402,8 @@ router.post('/sign_up', function (req, res) {
 		ValidationConfig.getValidationConfig(function (err, status) {
 			console.log(status)
 			if (status.validation_status == true) {
-				params.status = 'P';
+				//params.status = 'P';
+				params.status = 'A';
 			}
 			else {
 				params.status = 'A';
