@@ -400,6 +400,7 @@ router.post('/sign_up', function (req, res) {
 	if (params.access_token === '9a218c9b5dfdae8b5abc11a41905ed48') {
 
 		ValidationConfig.getValidationConfig(function (err, status) {
+			console.log(status)
 			if (status.validation_status == true) {
 				params.status = 'P';
 			}
@@ -3330,6 +3331,7 @@ router.post('/get_marriages', function (req, res) {
 												}
 
 												BlogCategory.getCategoryId(function (err, categoryId) {
+													console.log("categoryId", categoryId)
 													var id = categoryId._id;
 													Blog.getAdviceSection(id, function (err, adviceOb) {
 														var advice = [];

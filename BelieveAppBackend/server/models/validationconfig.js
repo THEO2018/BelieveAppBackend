@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var validationConfigSchema = new Schema({
-  validation_status: Boolean
+  validation_status: {type: Boolean, default: true}
 });
 
 var ValidationConfig = mongoose.model('ValidationConfig', validationConfigSchema);

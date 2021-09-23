@@ -2,34 +2,34 @@ var mongoose   = require('mongoose');
 var Schema     = mongoose.Schema;
 
 var userSchema = new Schema({
-  first_name                : String,
-  last_name                 : String,
-  email                     : String,
-  phone_number              : String,
-  password                  : String,
-  register_type     	      : String,
-  registered_by             : String,
-  social_media_id         	: String,
-  device_type 			        : String,
-  device_id  			          : String,
-  marital_status 				    : String,
-  gender 			              : String,
-  profession                : String,
-  profile_image 		        : String,
-  user_status				        : String,
-  campus				            : String,
-  dob                       : Date,   
-  street	                  : String,
-  city                      : String,
-  state                     : String,
-  country                   : String,
-  postal_code 	            : String,
-  access_token              : String,
-  token                     : String,
-  profile_status            : Boolean,
-  notification_sound        : String,
-  time_zone                 : String,
-  status                    : String
+  first_name                : {type: String, default:''},
+  last_name                 : {type: String, default:''},
+  email                     : {type: String, default:''},
+  phone_number              : {type: String, default:''},
+  password                  : {type: String, default:''},
+  register_type     	      : {type: String, default:''},
+  registered_by             : {type: String, default:''},
+  social_media_id         	: {type: String, default:''},
+  device_type 			        : {type: String, default:''},
+  device_id  			          : {type: String, default:''},
+  marital_status 				    : {type: String, default:''},
+  gender 			              : {type: String, default:''},
+  profession                : {type: String, default:''},
+  profile_image 		        : {type: String, default:''},
+  user_status				        : {type: String, default:''},
+  campus				            : {type: String, default:''},
+  dob                       : {type: Date, default:null},   
+  street	                  : {type: String, default:''},
+  city                      : {type: String, default:''},
+  state                     : {type: String, default:''},
+  country                   : {type: String, default:''},
+  postal_code 	            : {type: String, default:''},
+  access_token              : {type: String, default:''},
+  token                     : {type: String, default:''},
+  profile_status            : {type: Boolean, default:false},
+  notification_sound        : {type: String, default:''},
+  time_zone                 : {type: String, default:''},
+  status                    : {type: String, default:''},
 },
 {
   timestamps: true 
@@ -40,13 +40,6 @@ module.exports        = User;
 
     module.exports.addNewUser  = function(params,callback){
             var new_user  = new User(params);  
-            for(var i in new_user) {
-              
-               if(!new_user[i]){
-                 new_user[i]= '';
-                console.log(new_user[i]= '')
-                  }
-             }
             new_user.save(callback);
     }
 
