@@ -290,7 +290,7 @@ module.exports        = User;
         module.exports.getAllNewMembersByAdmin = function (callback){ 
                   //   User.find({user_status : 'N', status: 'A'},{},callback);
 
-              User.aggregate( { "$project" : {
+              User.aggregate([{ "$project" : {
                 "_id"        :1,
                 "first_name" : 1,
                 "last_name"  : 1,
@@ -320,7 +320,7 @@ module.exports        = User;
                                         } 
                                 } 
                 },
-                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 7 } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}}] } }, callback) 
+                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 7 } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}}] } }], callback) 
         }
 
      module.exports.getAllNormalMembersByAdmin = function (callback){              

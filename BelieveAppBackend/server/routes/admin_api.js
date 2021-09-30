@@ -324,7 +324,7 @@ var artist_image_url = '/images/music_artist/';
 var album_song_url = '/audio/album_song/';
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../admin_api.html'));
+  res.sendFile(patph.join(__dirname, '../../admin_api.html'));
 });
 
 router.get('/forgot', (req, res) => {
@@ -335,11 +335,6 @@ router.get('/forgot', (req, res) => {
 
 function send_notification_betrothed(first_user, second_user) {
   console.log("hiii send_notification_betrothed ", first_user, second_user)
-  // User.getFirstUserDetail(first_user,function(err,firstUserDetail) {
-  //  console.log("hii firstUserDetail ",firstUserDetail)
-  // var group_users = members.users;
-  //   for(var i in group_users) {
-  // if(group_users[i]._id != authUser._id) {
   var notiParams = {
     user_id: first_user,
     author_id: second_user,
