@@ -4386,7 +4386,6 @@ router.post('/edit_contact_detail', function (req, res) {
       console.log(" error-- ", err);
     }
     else {
-
       res.json({
         status: true,
         message: "successfully updated Contact Detail",
@@ -4394,10 +4393,7 @@ router.post('/edit_contact_detail', function (req, res) {
       })
     }
   })
-
 });
-
-
 
 
 /*---------------------------------------------------------
@@ -4569,10 +4565,12 @@ router.get('/get_closed_polls', function (req, res) {
     else {
       console.log("closedPolls found ", closedPolls)
       for (var i in closedPolls) {
-        closedPolls[i].poll_image = baseUrl + poll_image_url + closedPolls[i].poll_image;
+        if (closedPolls[i].poll_image != '') {
+          closedPolls[i].poll_image = baseUrl + poll_image_url + closedPolls[i].poll_image;
+        } else {
+          closedPolls[i].poll_image = ""
+        }
       }
-
-
       res.json({
         status: true,
         message: "Closed Polls found successfully",
@@ -4611,8 +4609,11 @@ router.get('/get_active_polls', function (req, res) {
       var resultActivePolls = [];
       for (var i in activePolls) {
         resultActivePolls[i] = activePolls[i].toObject();
-        resultActivePolls[i].poll_image = baseUrl + poll_image_url + resultActivePolls[i].poll_image;
-
+        if (resultActivePolls[i].poll_image != '') {
+          resultActivePolls[i].poll_image = baseUrl + poll_image_url + resultActivePolls[i].poll_image;
+        } else {
+          resultActivePolls[i].poll_image = ""
+        }
       }
 
 
@@ -4655,11 +4656,12 @@ router.get('/get_draft_polls', function (req, res) {
       var resultDraftPolls = [];
       for (var i in draftPolls) {
         resultDraftPolls[i] = draftPolls[i].toObject();
-        resultDraftPolls[i].poll_image = baseUrl + poll_image_url + resultDraftPolls[i].poll_image;
-
+        if (resultDraftPolls[i].poll_image != '') {
+          resultDraftPolls[i].poll_image = baseUrl + poll_image_url + resultDraftPolls[i].poll_image;
+        } else {
+          resultDraftPolls[i].poll_image = ""
+        }
       }
-
-
       res.json({
         status: true,
         message: "Draft Polls found successfully",
