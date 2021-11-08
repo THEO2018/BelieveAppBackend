@@ -156,7 +156,7 @@ module.exports        = User;
      var id = mongoose.Types.ObjectId(user_id);
     
            //   User.find({ $where: "this.createdAt >= ISODate('2018-01')" }, callback);
-        User.aggregate( { "$project" : {
+        User.aggregate([{ "$project" : {
                 "_id"        :1,
                 "first_name" : 1,
                 "last_name"  : 1,
@@ -178,7 +178,7 @@ module.exports        = User;
                        "$todayDayOfYear" ] } 
                                 } 
                 },
-                { "$match" : {  $and: [ {"daysTillBirthday" : { "$eq" : 0 } }]} }, callback)
+                { "$match" : {  $and: [ {"daysTillBirthday" : { "$eq" : 0 } }]} }], callback)
 
     }
 
@@ -186,7 +186,7 @@ module.exports        = User;
     module.exports.getUpcomingBirthday = function (user_id, callback){
      var id = mongoose.Types.ObjectId(user_id);
        
-           User.aggregate( { "$project" : {
+           User.aggregate([{ "$project" : {
                           "_id"        :1,
                           "first_name" : 1,
                           "last_name"  : 1,
@@ -208,7 +208,7 @@ module.exports        = User;
                                          "$todayDayOfYear" ] } 
                                           } 
                           },
-                          { "$match" : {  $and: [ {"daysTillBirthday" : { "$lt" : 7 } },{"daysTillBirthday" : { "$ne" : 0 } } ]} }, callback)
+                          { "$match" : {  $and: [ {"daysTillBirthday" : { "$lt" : 7 } },{"daysTillBirthday" : { "$ne" : 0 } } ]} }], callback)
 
         
 
@@ -222,7 +222,7 @@ module.exports        = User;
         }
 
           module.exports.getAllNewMembers = function (id, callback){ 
-              User.aggregate( { "$project" : {
+              User.aggregate([{ "$project" : {
                 "_id"        :1,
                 "first_name" : 1,
                 "last_name"  : 1,
@@ -252,7 +252,7 @@ module.exports        = User;
                                         } 
                                 } 
                 },
-                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 7 } }, {"_id" : { "$ne" : id } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}} ]} }, callback) 
+                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 7 } }, {"_id" : { "$ne" : id } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}} ]} }], callback) 
         }
 
 

@@ -4,8 +4,8 @@ var Schema     = mongoose.Schema;
 var pollSchema = new Schema({
   poll_title                                  : String,
   question                                    : String,
-  start_time                                   : Date,
-  end_time                                    : Date,
+  start_time                                   : {type: Date, default: new Date()},
+  end_time                                    : {type: Date, default: new Date()},
   options_count                               : Number,
   poll_image                                  : String,
   setting_multiple_choice                     : Boolean,

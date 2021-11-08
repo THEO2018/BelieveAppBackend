@@ -895,6 +895,7 @@ router.post('/get_groups', function (req, res) {
 
 			console.log("params ", params)
 			User.getProfile(params, function (err, authUser) {
+				console.log("err, authUser",err, authUser)
 				if (authUser === null) {
 					res.statusCode = ses;
 					res.json({
@@ -905,6 +906,7 @@ router.post('/get_groups', function (req, res) {
 				}
 				else {
 					Group.getAllGroups(params, function (err, groups) {
+						console.log("err, groups",err, groups)
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
@@ -3539,6 +3541,7 @@ router.post('/get_birthdays', function (req, res) {
 
 								}
 								ClassifiedCategory.getClassifiedId(function (err, classifiedId) {
+									console.log('classifiedId', classifiedId)
 									var id = classifiedId._id;
 									Classified.getBirthNewsSection(id, function (err, birthNews) {
 										console.log(birthNews)
@@ -5273,11 +5276,34 @@ router.post('/get_service_hours', function (req, res) {
 			User.getProfile(params, function (err, authUser) {
 				console.log('auth user ', authUser)
 				if (authUser === null) {
-					res.statusCode = ses;
-					res.json({
-						status: 2,
-						message: "It seems like you have logged in from another device. Please Sign in again."
+					ServiceHour.getServiceHoursDetail(function (err, servicehours) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						}
+						else {
 
+							console.log("servicehours found ", servicehours)
+							Contact.getContactDetail(function (err, contactInfo) {
+								var sendData = servicehours.toObject();
+								sendData.facebook_link = contactInfo.facebook_link;
+								sendData.twitter_link = contactInfo.twitter_link;
+								sendData.instagram_link = contactInfo.instagram_link;
+								res.statusCode = suc;
+								res.json({
+									status: 1,
+									message: "Service hours found successfully",
+									data: sendData
+								})
+							})
+
+
+						}
 					})
 				}
 				else {

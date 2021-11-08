@@ -906,12 +906,7 @@ router.get('/get_small_groups', function (req, res) {
         message: "Groups found successfully",
         data: result_groups
       })
-
-
-
     }
-
-
   })
 
 });
