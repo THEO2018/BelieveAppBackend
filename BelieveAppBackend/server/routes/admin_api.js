@@ -2376,26 +2376,6 @@ router.post('/edit_event', function (req, res) {
 
         var id = params.event_id;
         grp_img = "";
-        //  var IsString = /^[a-zA-Z]+$/.test(params.event_category)
-        // if(IsString == true) {
-        //    EventCategory.getIdOfCategory(params.event_category,function(err,categoryId) {
-        //         params.event_category = categoryId._id;
-        //             Event.editEvent(id,params,function (err,event){
-        //               if(err){
-        //                   console.log(" error-- ",err);
-        //               }
-        //               else{ 
-
-        //                 res.json({
-        //                            status     : true,
-        //                            message    : "successfully updated small group",
-        //                            data       : event
-        //                 })           
-        //              }
-        //           })
-        //    })
-        // }
-        // else {
         Event.editEvent(id, params, function (err, event) {
           if (err) {
             console.log(" error-- ", err);
@@ -3800,12 +3780,12 @@ router.post('/add_classified_category', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
   // console.log(pluralize('advices',1));
 
-  // var typeValue = params.name.split(' ')[0];
-  // var typeLower = typeValue.toLowerCase();
-  // var typePlural = pluralize(typeLower, 5);
+  var typeValue = params.name.split(' ')[0];
+  var typeLower = typeValue.toLowerCase();
+  var typePlural = pluralize(typeLower, 5);
 
-  // params.type   = typePlural;
-  // console.log(typePlural);
+  params.type   = typePlural;
+  console.log(typePlural);
   params.status = 'A';
   ClassifiedCategory.addNewClassifiedCategory(params, function (err, newClassifiedCategory) {
     if (err) {

@@ -3481,7 +3481,6 @@ router.post('/get_birthdays', function (req, res) {
 			})
 		}
 		else {
-
 			User.getProfile(params, function (err, authUser) {
 				console.log('auth user ', authUser)
 				if (authUser === null) {
