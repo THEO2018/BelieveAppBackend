@@ -3,7 +3,6 @@ var Schema     = mongoose.Schema;
 
 var GivingSchema = new Schema({
       giving_url         : String      
-
 },
 {
   timestamps: true 
@@ -21,7 +20,7 @@ var GivingSchema = new Schema({
     }
 
    module.exports.getGivingUrl  = function(callback){
-      GivingUrl.findOne({},callback);
+      GivingUrl.find({},callback);
     }
 
   

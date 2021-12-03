@@ -6075,7 +6075,6 @@ router.get('/get_giving_url', function (req, res) {
 
     else {
       console.log("givingurl found ", givingurl)
-
       res.json({
         status: true,
         message: "Successfully find Giving Url",

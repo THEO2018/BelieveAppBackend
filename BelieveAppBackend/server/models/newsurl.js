@@ -29,16 +29,6 @@ var NewsSchema = new Schema({
     }
     
      module.exports.editNewsUrl  = function(params,callback){
-      //   function clean(obj) {
-      //       for (var propName in obj) {
-      //         if (obj[propName] === null || obj[propName] === '' || obj[propName] === undefined) {
-      //           delete obj[propName];
-      //         }
-      //       }
-      //       return obj;
-      //     }
-
-      // var update = clean(params);
       NewsUrl.findOneAndUpdate({}, {news_url : params.news_url},{new:true} ,callback);
     }
 

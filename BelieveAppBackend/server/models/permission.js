@@ -11,7 +11,7 @@ var permissionSchema = new Schema({
 });
 
 var Permission          	  = mongoose.model('Permission',permissionSchema);
-module.exports              = Permission;
+module.expogetPermissionsrts              = Permission;
 
 
 

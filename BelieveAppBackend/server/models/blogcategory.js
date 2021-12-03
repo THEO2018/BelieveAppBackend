@@ -38,7 +38,7 @@ var blogCategorySchema = new Schema({
 
  module.exports.getCategoryId  = function(callback){
           BlogCategory.findOne({type : 'advicemarriage'},callback);   
-    }
+ }
 
 
   module.exports.getGivingCategoryId  = function(callback){
