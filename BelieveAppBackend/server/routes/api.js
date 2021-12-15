@@ -7227,14 +7227,14 @@ router.post('/forgot_password', function (req, res) {
 				port: 465,
 				secure: true,
 				auth: {
-					user: 'vasu.netset@gmail.com',
-					pass: 'netset@123'
+					user: 'developeronwork6@gmail.com',
+					pass: 'nmlsfhytmftdthyh'
 				}
 
 			});
 			console.log("created ", transporter)
 			var mailOptions = {
-				from: 'vasu.netset@gmail.com',
+				from: 'developeronwork6@gmail.com',
 				to: params.email,
 				subject: 'Forgot Password Link',
 				text: 'This is the link from where you can update your password ' + baseUrl + '/api/forgot/?token=' + token
