@@ -895,7 +895,7 @@ router.post('/get_groups', function (req, res) {
 
 			console.log("params ", params)
 			User.getProfile(params, function (err, authUser) {
-				console.log("err, authUser",err, authUser)
+				console.log("err, authUser", err, authUser)
 				if (authUser === null) {
 					res.statusCode = ses;
 					res.json({
@@ -906,7 +906,7 @@ router.post('/get_groups', function (req, res) {
 				}
 				else {
 					Group.getAllGroups(params, function (err, groups) {
-						console.log("err, groups",err, groups)
+						console.log("err, groups", err, groups)
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
@@ -7561,49 +7561,52 @@ router.post('/get_album_of_category', function (req, res) {
 				}
 
 				else {
-					//   console.log("gallaries found ",gallaries )
+					console.log("gallaries found ", gallaries)
 					var resultGallaries = [];
 					var checkArray = [];
-					for (var i in gallaries) {
-						resultGallaries[i] = gallaries[i].toObject();
-						var dat = resultGallaries[i].createdAt;
-						var month = dat.toLocaleString("en-us", { month: "long" });
+					if (gallaries.length != 0) {
+						for (var i in gallaries) {
+							resultGallaries[i] = gallaries[i].toObject();
+							var dat = resultGallaries[i].createdAt;
+							var month = dat.toLocaleString("en-us", { month: "long" });
 
-						resultGallaries[i].date = dat.getDate() + " " + month + "," + dat.getFullYear();
-						getMedia(resultGallaries[i]._id, i, callback)
-						function callback(media, j) {
-							// console.log("mediaaaaaaaaaaaaaaaaaaaaaa ",media, i , resultGallaries[i].gallary_title)
-							if (media.length == 0) {
-								console.log("hiiiiiii ")
-								resultGallaries[j].media = [];
+							resultGallaries[i].date = dat.getDate() + " " + month + "," + dat.getFullYear();
+							getMedia(resultGallaries[i]._id, i, callback)
+							function callback(media, j) {
+								// console.log("mediaaaaaaaaaaaaaaaaaaaaaa ",media, i , resultGallaries[i].gallary_title)
+								if (media.length == 0) {
+									console.log("hiiiiiii ")
+									resultGallaries[j].media = [];
+								}
+								else {
+									resultGallaries[j].media = media;
+								}
+								checkArray.push(resultGallaries[i])
+								if (checkArray.length == gallaries.length) {
+									resultGallaries.sort(function (a, b) {
+										return (b.createdAt < a.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0);
+									});
+									res.statusCode = suc;
+									res.json({
+										status: 1,
+										message: "Gallaries found successfully",
+										data: resultGallaries
+									})
+								}
 							}
-							else {
-								resultGallaries[j].media = media;
-							}
-							checkArray.push(resultGallaries[i])
-							if (checkArray.length == gallaries.length) {
-								resultGallaries.sort(function (a, b) {
-									return (b.createdAt < a.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0);
-								});
-								res.statusCode = suc;
-								res.json({
-									status: 1,
-									message: "Gallaries found successfully",
-									data: resultGallaries
-								})
-							}
+
 						}
-
+					} else {
+						res.statusCode = suc;
+						res.json({
+							status: 1,
+							message: "Gallaries found successfully",
+							data: resultGallaries
+						})
 					}
-
-
-
 				}
-
 			})
-
 		}
-
 	})
 
 
