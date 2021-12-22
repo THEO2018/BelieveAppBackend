@@ -1857,6 +1857,7 @@ router.post('/add_event', function (req, res) {
       getEventImage(callback);
 
       function callback(event_cover) {
+        console.log('event_cover', event_cover)
         params.event_cover = event_cover;
         params.status = 'A';
         params.date = new Date(params.date);
@@ -1891,6 +1892,7 @@ router.post('/add_event', function (req, res) {
       function getEventImage(callback) {
         var event_cover;
         if (req.file) {
+          console.log('file Receievd', req.file)
           event_cover = req.file.filename;
           var libParams = {
             image_name: req.file.filename,
