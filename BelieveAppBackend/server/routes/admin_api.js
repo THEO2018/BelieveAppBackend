@@ -6278,6 +6278,7 @@ router.post('/add_manager_admin', function (req, res) {
 
   var params = req.body;
   params.role = 2;
+  params.email = params.email.toLowerCase()
   params.permissions = params.permissions.split(',');
   params.password = passwordhash.generate(params.password);
 

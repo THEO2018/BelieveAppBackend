@@ -27,15 +27,15 @@ module.exports                = AdminProfile;
 
 
   module.exports.adminLogin = function (params,callback){         
-   AdminProfile.find({ email: params.email},{}, callback);
+   AdminProfile.find({ email: params.email.toLowerCase()},{}, callback);
    }
 
    module.exports.checkIfEmailExist = function(params, callback) {
-    AdminProfile.findOne({ email: params.email}, callback);
+    AdminProfile.findOne({ email: params.email.toLowerCase()}, callback);
    }
 
   module.exports.getAdminPassword = function (params,callback){         
-     AdminProfile.findOne({ email: params.email},{}, callback);
+     AdminProfile.findOne({ email: params.email.toLowerCase()},{}, callback);
   }
 
 module.exports.changeAdminPassword = function (params,callback){         
