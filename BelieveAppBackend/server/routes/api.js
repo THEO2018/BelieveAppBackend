@@ -3507,6 +3507,7 @@ router.post('/get_birthdays', function (req, res) {
 						console.log("todayBirthdays ", todayBirthdays)
 						for (var i in todayBirthdays) {
 							todayBirthdays[i].profile_image = baseUrl + profile_image_url + todayBirthdays[i].profile_image;
+							todayBirthdays[i].dob =  todayBirthdays[i].dob;
 
 						}
 						User.getUpcomingBirthday(id, function (err, upcomingBirthdays) {
@@ -3522,6 +3523,8 @@ router.post('/get_birthdays', function (req, res) {
 							console.log("upcomingBirthdays ", upcomingBirthdays)
 							for (var i in upcomingBirthdays) {
 								upcomingBirthdays[i].profile_image = baseUrl + profile_image_url + upcomingBirthdays[i].profile_image;
+								upcomingBirthdays[i].dob = upcomingBirthdays[i].dob;
+
 
 							}
 							BirthdayList.getAllBirthdayLists(function (err, birthdaylists) {
@@ -5011,7 +5014,7 @@ router.post('/get_poll_detail', function (req, res) {
 												resultOptions[i].percent = 0;
 											}
 										}
-										
+
 										var sortedData = resultOptions.sort(function(a,b){
 											// here a , b is whole object, you can access its property
 										
