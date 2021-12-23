@@ -6281,7 +6281,7 @@ router.post('/add_manager_admin', function (req, res) {
   params.permissions = params.permissions.split(',');
   params.password = passwordhash.generate(params.password);
 
-  AdminProfile.addNewAdmin(params, function (err, newAdminManager) {
+  AdminProfile.checkIfEmailExist(params, function(err, profileExist) {
     if (err) {
       console.log(" error-- ", err);
       res.json({
@@ -6289,20 +6289,32 @@ router.post('/add_manager_admin', function (req, res) {
         message: "Something went wrong!",
         data: err
       })
-    }
-    else {
-
-      console.log("newAdminManager added ", newAdminManager)
-
-      res.json({
-        status: true,
-        message: "New Admin Manager added successfully",
-        data: newAdminManager
+    } else if (!profileExist) {
+      AdminProfile.addNewAdmin(params, function (err, newAdminManager) {
+        if (err) {
+          console.log(" error-- ", err);
+          res.json({
+            status: false,
+            message: "Something went wrong!",
+            data: err
+          })
+        }
+        else {
+          console.log("newAdminManager added ", newAdminManager)
+          res.json({
+            status: true,
+            message: "New Admin Manager added successfully",
+            data: newAdminManager
+          })
+        }
       })
-
+    } else {
+      res.json({
+        status: false,
+        message: "Email already exist!!",
+      })
     }
   })
-
 });
 
 

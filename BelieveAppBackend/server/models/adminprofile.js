@@ -30,6 +30,10 @@ module.exports                = AdminProfile;
    AdminProfile.find({ email: params.email},{}, callback);
    }
 
+   module.exports.checkIfEmailExist = function(params, callback) {
+    AdminProfile.findOne({ email: params.email}, callback);
+   }
+
   module.exports.getAdminPassword = function (params,callback){         
      AdminProfile.findOne({ email: params.email},{}, callback);
   }
