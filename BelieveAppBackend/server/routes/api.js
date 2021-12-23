@@ -5011,7 +5011,17 @@ router.post('/get_poll_detail', function (req, res) {
 												resultOptions[i].percent = 0;
 											}
 										}
-										resultPollDetail.options = resultOptions;
+										
+										var sortedData = resultOptions.sort(function(a,b){
+											// here a , b is whole object, you can access its property
+										
+											// it will return the difference to sort function and then 
+											// sort compare that difference is equal to 0 or smaller than 0 or 
+											// greater than 0. on the basis of that it will give sorted number list
+											  return a.option_no - b.option_no;
+											})
+										resultPollDetail.options = sortedData
+
 										console.log(resultPollDetail)
 										CommentPoll.getCommentsOnPoll(params, function (err, commentsOnPoll) {
 											var commentsOnPollResult = [];
