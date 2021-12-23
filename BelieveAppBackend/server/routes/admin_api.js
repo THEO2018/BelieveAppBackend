@@ -4324,7 +4324,7 @@ router.get('/get_today_upcoming_appointments', function (req, res) {
             upcomingAppointmentsResult[i] = upcomingAppointments[i].toObject();
             upcomingAppointmentsResult[i].user_id.profile_image = baseUrl + profile_image_url + upcomingAppointmentsResult[i].user_id.profile_image;
             var dat = upcomingAppointmentsResult[i].date_of_appointment;
-            upcomingAppointmentsResult[i].date_of_appointment = dat.getDate() + "/" + dat.getMonth() + 1 + "/" + dat.getFullYear();
+            upcomingAppointmentsResult[i].date_of_appointment = dat.getDate() + "/" + parseInt(dat.getMonth()+ 1)  + "/" + dat.getFullYear();
           }
 
           Appointment.getAppointmentRequests(function (err, appointmentRequests) {
