@@ -2357,9 +2357,7 @@ router.post('/edit_event', function (req, res) {
   upload_event_cover(req, res, function (err) {
     if (err) {
       console.log(err);
-    }
-
-    else {
+    } else {
       console.log("files in edit_event is ", req.file)
       console.log("dataaaaaaa in edit_event is ", req.body)
 
@@ -2369,6 +2367,7 @@ router.post('/edit_event', function (req, res) {
 
       function callback(event_cover) {
         params.event_cover = event_cover;
+        params.date = new Date(params.date);
         if (params.group_id === 'undefined') {
           params.group_id = "";
         }
