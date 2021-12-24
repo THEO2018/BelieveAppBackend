@@ -1991,8 +1991,9 @@ router.post('/get_group_post_detail', function (req, res) {
 									for (var i in allComments) {
 										resultAllComments[i] = allComments[i].toObject();
 										if (resultAllComments[i].wall_post_comment_img != "") {
-											resultAllComments[i].wall_post_comment_img = baseUrl + grouppost_comment_url + resultAllComments[i].wall_post_comment_img;
+											resultAllComments[i].wall_post_comment_img = baseUrl + grouppost_comment_url + resultAllComments[i].wall_post_media;
 										}
+										console.log('allCommmentIMage', resultAllComments[i].wall_post_media)
 										resultAllComments[i].user_id.profile_image = baseUrl + profile_image_url + resultAllComments[i].user_id.profile_image;
 										getCommentTimeAgo(resultAllComments[i], commentTimeAgoCallback)
 										function getCommentTimeAgo(comment, commentTimeAgoCallback) {
