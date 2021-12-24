@@ -1850,7 +1850,6 @@ router.post('/get_group_post_detail', function (req, res) {
 				}
 				else {
 					if (params.type == 'group') {
-
 						GroupPost.getGroupPostDetail(params, function (err, groupPostDetail) {
 							if (err) {
 								console.log(" error-- ", err);
@@ -1877,6 +1876,7 @@ router.post('/get_group_post_detail', function (req, res) {
 										if (resultAllComments[i].group_post_comment_img != "") {
 											resultAllComments[i].group_post_comment_img = baseUrl + grouppost_comment_url + resultAllComments[i].group_post_comment_img;
 										}
+										console.log('allCommmentIMage', resultAllComments[i].group_post_comment_img)
 										resultAllComments[i].user_id.profile_image = baseUrl + profile_image_url + resultAllComments[i].user_id.profile_image;
 										getCommentTimeAgo(resultAllComments[i], commentTimeAgoCallback)
 										function getCommentTimeAgo(comment, commentTimeAgoCallback) {
