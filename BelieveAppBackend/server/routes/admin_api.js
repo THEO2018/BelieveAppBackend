@@ -2365,10 +2365,16 @@ router.post('/edit_event', function (req, res) {
       //  console.log(/^[a-zA-Z]+$/.test('marriages'))
       getEditEventImage(callback)
 
+    
       function callback(event_cover) {
         params.event_cover = event_cover;
+
+        console.log('params.date', params.date)
         var newDate = params.date.split('T')
+
+        console.log('params.newDate', newDate[0])
         params.date = new Date(newDate[0]);
+
         if (params.group_id === 'undefined') {
           params.group_id = "";
         }
