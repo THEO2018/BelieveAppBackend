@@ -2367,7 +2367,8 @@ router.post('/edit_event', function (req, res) {
 
       function callback(event_cover) {
         params.event_cover = event_cover;
-        params.date = new Date(params.date);
+        var newDate = params.date.split('T')
+        params.date = new Date(newDate[0]);
         if (params.group_id === 'undefined') {
           params.group_id = "";
         }
