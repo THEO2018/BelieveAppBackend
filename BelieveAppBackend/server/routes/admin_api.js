@@ -3350,9 +3350,7 @@ router.get('/get_appointment_requests', function (req, res) {
   Appointment.getAppointmentRequests(function (err, appointmentRequests) {
     if (err) {
       console.log(" error-- ", err);
-    }
-
-    else {
+    }else {
       console.log("appointmentRequests found ", appointmentRequests)
       for (var i in appointmentRequests) {
         appointmentRequests[i].user_id.profile_image = baseUrl + profile_image_url + appointmentRequests[i].user_id.profile_image;

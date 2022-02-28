@@ -5598,6 +5598,53 @@ router.post('/add_note', function (req, res) {
 });
 
 
+router.put('/update_note', function (req, res) {
+
+	console.log("hiii update_note")
+	var params = req.body;
+	User.getProfile(params, function (err, authUser) {
+		console.log('auth user ', authUser)
+		if (authUser === null) {
+			res.statusCode = ses;
+			res.json({
+				status: 2,
+				message: "It seems like you have logged in from another device. Please Sign in again."
+
+			})
+		}
+		else {
+			params.user_id = String(authUser._id);
+			params.status = 'A';
+
+			console.log("data find succesfullly ");
+
+			Note.updateNote(params, function (err, note) {
+				if (err) {
+					console.log(" error-- ", err);
+					res.statusCode = er;
+					res.json({
+						status: 0,
+						message: "Something went wrong!",
+						data: err
+					})
+				}
+				else {
+					console.log("Data Updated succesfullly ", note);
+					res.statusCode = suc;
+					res.json({
+						status: 1,
+						message: "note updated",
+						data: note
+					})
+				}
+			})
+
+		}
+	})
+
+});
+
+
 
 /*---------------------------------------
 			   (54) Get Notes
