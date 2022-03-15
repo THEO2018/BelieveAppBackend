@@ -6,6 +6,9 @@ var classifiedSchema = new Schema({
   category                        : { type: String , ref:'BlogCategory' },
   classified                      : String,
   classified_image                : String,
+  venue                           : String,
+  venue_latitude                  : String,
+  venue_longitude                 : String,
   status                          : String
 },
 {
