@@ -24,7 +24,7 @@ module.exports.addNewCommentPrayer 		= function(params,callback)  {
 module.exports.getCommentsOnPrayer  = function(params,callback){
   console.log("hi model getCommentsOnPrayer ",params.prayer_id)
   CommentPrayer.find({prayer_id : params.prayer_id, status: 'A'})
-  .sort('createdAt')
+  .sort({'createdAt': -1})
   .populate('user_id','first_name last_name profile_image')
   .exec(callback);   
 }
