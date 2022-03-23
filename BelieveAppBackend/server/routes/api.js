@@ -3703,8 +3703,8 @@ router.post('/get_events', function (req, res) {
 						}
 
 						for (var j in groupEvents) {
-							if (allGroupEvents[j].date.getTime() > new Date().getTime()) {
-								result_events[j] = allGroupEvents[j]
+							if (groupEvents[j].date.getTime() > new Date().getTime()) {
+								result_events[j] = groupEvents[j]
 								console.log('result_events', result_events[j])
 								console.log(result_events.length)
 							}
@@ -3716,7 +3716,7 @@ router.post('/get_events', function (req, res) {
 						res.json({
 							status: 1,
 							message: "Events get succesfullly ",
-							data: groupEvents
+							data: result_events
 						})
 					})
 
