@@ -2163,6 +2163,7 @@ router.post('/get_small_groups', function (req, res) {
 								var dist = geodist({ lat: params.latitude, lon: params.longitude },
 									{ lat: result_groups[i].venue_latitude, lon: result_groups[i].venue_longitude })
 
+								result_groups[i].distance = dist;
 								result_groups[i].miles_distance = dist + ' Km';
 
 								for (var j in result_groups[i].requests) {
@@ -2173,11 +2174,11 @@ router.post('/get_small_groups', function (req, res) {
 										result_groups[i].join_status = "false";
 									}
 								}
-
 							}
 							result_groups.sort(function (a, b) {
-								return a.dist - b.dist;
+								return a.distance - b.distance;
 							});
+							console.log('result', )
 							res.statusCode = suc;
 							res.json({
 								status: 1,
