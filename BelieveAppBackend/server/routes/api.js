@@ -3696,7 +3696,8 @@ router.post('/get_events', function (req, res) {
 						var result_events = [];
 						var groupEvents = [];
 						for (var i in allGroupEvents) {
-							
+							console.log(allGroupEvents[i].date.getTime())
+							console.log(new Date().getTime())
 							if (allGroupEvents[i].date.getTime() > new Date().getTime()) {
 								groupEvents[i] = allGroupEvents[i].toObject();
 								groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
