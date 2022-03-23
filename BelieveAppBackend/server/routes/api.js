@@ -3508,7 +3508,7 @@ router.post('/get_birthdays', function (req, res) {
 						console.log("todayBirthdays ", todayBirthdays)
 						for (var i in todayBirthdays) {
 							todayBirthdays[i].profile_image = baseUrl + profile_image_url + todayBirthdays[i].profile_image;
-							todayBirthdays[i].dob =  todayBirthdays[i].dob;
+							todayBirthdays[i].dob = todayBirthdays[i].dob;
 
 						}
 						User.getUpcomingBirthday(id, function (err, upcomingBirthdays) {
@@ -3696,12 +3696,15 @@ router.post('/get_events', function (req, res) {
 						var result_events = [];
 						var groupEvents = [];
 						for (var i in allGroupEvents) {
-							groupEvents[i] = allGroupEvents[i].toObject();
-							groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
-							var date = groupEvents[i].date;
-							groupEvents[i].dateForSort = date;
-							groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-							console.log(groupEvents[i].group_id)
+							
+							if (allGroupEvents[i].date.getTime() > new Date().getTime()) {
+								groupEvents[i] = allGroupEvents[i].toObject();
+								groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
+								var date = groupEvents[i].date;
+								groupEvents[i].dateForSort = date;
+								groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+								console.log(groupEvents[i].group_id)
+							}
 							// for(var j in groupEvents[i].group_id) {
 							// 	   for(var k in groupEvents[i].group_id[j].users) 
 							// 		   {
@@ -5006,14 +5009,14 @@ router.post('/get_poll_detail', function (req, res) {
 											}
 										}
 
-										var sortedData = resultOptions.sort(function(a,b){
+										var sortedData = resultOptions.sort(function (a, b) {
 											// here a , b is whole object, you can access its property
-										
+
 											// it will return the difference to sort function and then 
 											// sort compare that difference is equal to 0 or smaller than 0 or 
 											// greater than 0. on the basis of that it will give sorted number list
-											  return a.option_no - b.option_no;
-											})
+											return a.option_no - b.option_no;
+										})
 										resultPollDetail.options = sortedData
 
 										console.log(resultPollDetail)
