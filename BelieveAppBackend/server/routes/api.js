@@ -3692,29 +3692,17 @@ router.post('/get_events', function (req, res) {
 								data: err
 							})
 						}
-						console.log("allGroupEvents ", allGroupEvents)
 						var result_events = [];
 						var groupEvents = [];
 						for (var i in allGroupEvents) {
-							console.log(allGroupEvents[i].date.getTime())
-							console.log(new Date().getTime())
-							if (allGroupEvents[i].date.getTime() > new Date().getTime()) {
+							if (allGroupEvents[i].date.getTime() > new Date().getDate().getTime()) {
 								groupEvents[i] = allGroupEvents[i].toObject();
 								groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
 								var date = groupEvents[i].date;
 								groupEvents[i].dateForSort = date;
 								groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-								console.log(groupEvents[i].group_id)
+								console.log(groupEvents.size)
 							}
-							// for(var j in groupEvents[i].group_id) {
-							// 	   for(var k in groupEvents[i].group_id[j].users) 
-							// 		   {
-							// 		   		if(groupEvents[i].group_id[j].users[k] === String(id)) {
-							// 		   			console.log("hiii ifff")
-							// 		   			result_events.push(groupEvents[i])
-							// 		   		}
-							// 		   }
-							//   }
 						}
 						groupEvents.sort(function (a, b) {
 							return a.dateForSort - b.dateForSort
