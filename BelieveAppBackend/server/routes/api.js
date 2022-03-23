@@ -3703,7 +3703,7 @@ router.post('/get_events', function (req, res) {
 						}
 
 						for (var j in groupEvents) {
-							const yesterdayTimeStamp = timeStamp - 24*60*60*1000;
+							const yesterdayTimeStamp = new Date().getTime() - 24*60*60*1000;
 							if (groupEvents[j].dateForSort.getTime() > new Date(yesterdayTimeStamp).getTime()) {
 								result_events.push(groupEvents[j])
 								console.log(result_events.length)
