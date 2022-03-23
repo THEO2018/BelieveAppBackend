@@ -2178,7 +2178,6 @@ router.post('/get_small_groups', function (req, res) {
 							result_groups.sort(function (a, b) {
 								return a.distance - b.distance;
 							});
-							console.log('result', )
 							res.statusCode = suc;
 							res.json({
 								status: 1,
@@ -3724,7 +3723,7 @@ router.post('/get_events', function (req, res) {
 
 						//console.log("allGroupEvents afterrrrr ",new_events)
 						groupEvents.sort(function (a, b) {
-							return (b.createdAt < a.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0);
+							return a.date - b.date
 						});
 						res.statusCode = suc;
 						res.json({
