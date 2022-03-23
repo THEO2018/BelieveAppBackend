@@ -2163,7 +2163,7 @@ router.post('/get_small_groups', function (req, res) {
 								var dist = geodist({ lat: params.latitude, lon: params.longitude },
 									{ lat: result_groups[i].venue_latitude, lon: result_groups[i].venue_longitude })
 
-								result_groups[i].miles_distance = dist + ' m';
+								result_groups[i].miles_distance = dist + ' Km';
 
 								for (var j in result_groups[i].requests) {
 									if (String(authUser._id) == result_groups[i].requests[j].user_id && result_groups[i].requests[j].request_status == 'P') {
@@ -2176,7 +2176,7 @@ router.post('/get_small_groups', function (req, res) {
 
 							}
 							result_groups.sort(function (a, b) {
-								return (b.createdAt < a.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0);
+								return (b.dist < a.dist) ? -1 : ((b.dist > a.dist) ? 1 : 0);
 							});
 							res.statusCode = suc;
 							res.json({

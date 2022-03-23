@@ -859,7 +859,7 @@ router.post('/create_small_group', function (req, res) {
         (6) Get Groups
 ----------------------------------------------------------*/
 router.get('/get_small_groups', function (req, res) {
-  console.log("hiii get_small_groups")
+  console.log("hiii get_small_groups,", req.body)
 
   var baseUrl = req.protocol + '://' + req.get('host');
 
@@ -2052,6 +2052,7 @@ router.post('/get_small_group_detail', function (req, res) {
 
 
       var startTime = result_group.start_time;
+      console.log("startTime", startTime)
       // var time = $("#starttime").val();
       var hours = Number(startTime.match(/^(\d+)/)[1]);
       var minutes = Number(startTime.match(/:(\d+)/)[1]);
@@ -6033,6 +6034,41 @@ router.post('/add_new_link', function (req, res) {
 });
 
 
+/*------------------------------------------------------
+     (85)  DELETE MEDIA FROM LIBRARY
+--------------------------------------------------------*/
+router.delete('/delete_media', function(req, res) {
+  Library.deleteLibrary(req.query.media_id, function(err, media) {
+    if (err) {
+      console.log(" error-- ", err);
+    }
+    else {
+      res.json({
+        status: true,
+        message: "Successfully deleted media.",
+        data: media
+      })
+    }
+  })
+})
+
+/*------------------------------------------------------
+     (85)  DELETE LINK FROM LIBRARY
+--------------------------------------------------------*/
+router.delete('/delete_link', function(req, res) {
+  Link.deleteLink(req.query.link_id, function(err, link) {
+    if (err) {
+      console.log(" error-- ", err);
+    }
+    else {
+      res.json({
+        status: true,
+        message: "Successfully deleted lnik.",
+        data: link
+      })
+    }
+  })
+})
 
 
 /*------------------------------------------------------

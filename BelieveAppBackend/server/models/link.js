@@ -24,6 +24,10 @@ var linksSchema = new Schema({
     module.exports.getLinks  = function(callback){
           Link.find({status : 'A'},callback);   
     }
+    
+    module.exports.deleteLink = function (id, callback) {
+      Link.findByIdAndUpdate(id, { status: 'D' }, { new: true }, callback);
+    }
     //  module.exports.getLibraryVideos  = function(callback){
     //       Library.find({media_type : 'V'},callback);   
     // }
