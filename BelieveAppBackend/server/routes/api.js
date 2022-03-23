@@ -2176,7 +2176,7 @@ router.post('/get_small_groups', function (req, res) {
 
 							}
 							result_groups.sort(function (a, b) {
-								return (b.dist < a.dist) ? -1 : ((b.dist > a.dist) ? 1 : 0);
+								return a.dist - b.dist;
 							});
 							res.statusCode = suc;
 							res.json({
