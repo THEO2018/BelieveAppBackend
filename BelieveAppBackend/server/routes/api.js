@@ -3699,6 +3699,7 @@ router.post('/get_events', function (req, res) {
 							groupEvents[i] = allGroupEvents[i].toObject();
 							groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
 							var date = groupEvents[i].date;
+							groupEvents[i].dateForSort = date;
 							groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 							console.log(groupEvents[i].group_id)
 							// for(var j in groupEvents[i].group_id) {
@@ -3711,19 +3712,8 @@ router.post('/get_events', function (req, res) {
 							// 		   }
 							//   }
 						}
-
-						//  			     	var obj = {};
-
-						// for ( var i=0, len=result_events.length; i < len; i++ )
-						//     obj[result_events[i]['_id']] = result_events[i];
-
-						// new_events = [];
-						// for ( var key in obj )
-						//     new_events.push(obj[key]);
-
-						//console.log("allGroupEvents afterrrrr ",new_events)
 						groupEvents.sort(function (a, b) {
-							return a.date - b.date
+							return a.dateForSort - b.dateForSort
 						});
 						res.statusCode = suc;
 						res.json({
