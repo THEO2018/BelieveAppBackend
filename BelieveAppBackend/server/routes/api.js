@@ -3696,12 +3696,13 @@ router.post('/get_events', function (req, res) {
 						var groupEvents = [];
 						for (var i in allGroupEvents) {
 							if (allGroupEvents[i].date.getTime() > new Date().getTime()) {
+								console.log('allGroupEvents[i]', allGroupEvents[i])
 								groupEvents[i] = allGroupEvents[i].toObject();
 								groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
 								var date = groupEvents[i].date;
 								groupEvents[i].dateForSort = date;
 								groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-								console.log(groupEvents.size)
+								console.log(groupEvents.length)
 							}
 						}
 						groupEvents.sort(function (a, b) {
