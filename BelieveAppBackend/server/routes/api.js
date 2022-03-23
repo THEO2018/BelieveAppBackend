@@ -3704,7 +3704,7 @@ router.post('/get_events', function (req, res) {
 
 						for (var j in groupEvents) {
 							if (groupEvents[j].dateForSort.getTime() > new Date().getTime()) {
-								result_events[j] = groupEvents[j]
+								result_events.push(groupEvents[j])
 								console.log('result_events', result_events[j])
 								console.log(result_events.length)
 							}
