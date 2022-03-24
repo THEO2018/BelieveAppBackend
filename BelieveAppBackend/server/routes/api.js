@@ -6751,6 +6751,8 @@ router.post('/get_users', function (req, res) {
 
 				else {
 					console.log("users found ", users)
+					
+					
 					for (var i in users) {
 						users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
 
@@ -6772,6 +6774,76 @@ router.post('/get_users', function (req, res) {
 	})
 
 
+});
+
+
+/*---------------------------------------
+			   (66) get  Users For Engagement
+ ----------------------------------------*/
+ router.post('/get_users_for_engagement', function (req, res) {
+	console.log("hiii get_users_for_engagement")
+	var params = req.body;
+	var baseUrl = req.protocol + '://' + req.get('host');
+	User.getProfile(params, function (err, authUser) {
+		console.log('auth user ', authUser)
+		if (authUser === null) {
+			res.statusCode = ses;
+			res.json({
+				status: 2,
+				message: "It seems like you have logged in from another device. Please Sign in again."
+
+			})
+		}
+		else {
+			params.user_id = authUser._id;
+
+			User.getAllUsers(params, function (err, users) {
+				if (err) {
+					console.log(" error-- ", err);
+					res.statusCode = er;
+					res.json({
+						status: 0,
+						message: "Something went wrong!",
+						data: err
+					})
+				}
+
+				else {
+				
+					Betrothed.getAllBetrotheds(function (err, betrotheds) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						} else {
+							for (var i in users) {
+								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;		
+							}
+
+							console.log("users found ", users)
+							console.log("betrotheds found ", betrotheds)
+							var result = users.filter(function (o1) {
+								return betrotheds.some(function (o2) {
+									return o1._id != o2.first_user_id || o1._id != o2.id ; // return the ones with equal id
+							   });
+							});
+							res.statusCode = suc;
+							res.json({
+								status: 1,
+								message: "Users found successfully",
+								data: users
+							})
+		
+						}
+					})
+				}
+			})
+		}
+	})
 });
 
 
