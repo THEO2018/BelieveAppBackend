@@ -430,7 +430,7 @@ router.post('/login', function (req, res) {
         data: err
       })
     }
-    if (!admin) {
+    else if (!admin) {
       res.json({
         status: false,
         message: "Login failed email mismatch",
