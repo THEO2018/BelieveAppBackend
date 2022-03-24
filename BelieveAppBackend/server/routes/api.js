@@ -6828,7 +6828,7 @@ router.post('/get_users', function (req, res) {
 							console.log("betrotheds found ", betrotheds.length)
 							var result = users.filter(function (o1) {
 								return betrotheds.some(function (o2) {
-									return o1._id != o2.first_user_id._id || o1._id != o2.second_user_id._id ; // return the ones with equal id
+									return String(o1._id) != '614c28a865fb1e0a43a3bc48' || String(o1._id) != '614c28a865fb1e0a43a3bc48' ; // return the ones with equal id
 							   });
 							});
 							res.statusCode = suc;
