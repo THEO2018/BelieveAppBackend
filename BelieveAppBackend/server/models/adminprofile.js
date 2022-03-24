@@ -27,7 +27,9 @@ module.exports                = AdminProfile;
 
 
   module.exports.adminLogin = function (params,callback){         
-   AdminProfile.find({ email: params.email.toLowerCase()},{}, callback);
+   AdminProfile.find({ email: params.email.toLowerCase()},{})
+   .populate('permissions')
+   .exec(callback);
    }
 
    module.exports.checkIfEmailExist = function(params, callback) {
