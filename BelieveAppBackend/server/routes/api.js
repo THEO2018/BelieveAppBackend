@@ -6825,10 +6825,10 @@ router.post('/get_users', function (req, res) {
 							}
 
 							console.log("users found ", users.length)
-							console.log("betrotheds found ", betrotheds.length)
+							console.log("betrotheds found ", betrotheds)
 							var result = users.filter(function (o1) {
 								return betrotheds.some(function (o2) {
-									return String(o1._id) != '614c28a865fb1e0a43a3bc48' || String(o1._id) != '614c28a865fb1e0a43a3bc48' ; // return the ones with equal id
+									return String(o1._id) != String(o2.first_user_id._id) || String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
 							   });
 							});
 							res.statusCode = suc;
