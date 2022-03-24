@@ -6830,7 +6830,7 @@ router.post('/get_users', function (req, res) {
 								return betrotheds.some(function (o2) {
 									console.log('id', String(o1._id))
 									console.log('id', String(o2.second_user_id._id))
-									return String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
+									return String(o1._id) != '614c28a865fb1e0a43a3bc48'; // return the ones with equal id
 							   });
 							});
 							res.statusCode = suc;
