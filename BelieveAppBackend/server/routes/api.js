@@ -6824,18 +6824,18 @@ router.post('/get_users', function (req, res) {
 								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;		
 							}
 
-							console.log("users found ", users)
-							console.log("betrotheds found ", betrotheds)
+							console.log("users found ", users.length)
+							console.log("betrotheds found ", betrotheds.length)
 							var result = users.filter(function (o1) {
 								return betrotheds.some(function (o2) {
-									return o1._id != o2.first_user_id || o1._id != o2.id ; // return the ones with equal id
+									return o1._id != o2.first_user_id._id || o1._id != o2.second_user_id._id ; // return the ones with equal id
 							   });
 							});
 							res.statusCode = suc;
 							res.json({
 								status: 1,
 								message: "Users found successfully",
-								data: users
+								data: result
 							})
 		
 						}
