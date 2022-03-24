@@ -3633,11 +3633,12 @@ router.post('/get_new_members', function (req, res) {
 							newMembers[i].profile_image = baseUrl + profile_image_url + newMembers[i].profile_image;
 
 						}
+						let newMembersListUnderAMonth = newMembers.filter(member => member.daysTillRegister <= 30);
 						res.statusCode = suc;
 						res.json({
 							status: 1,
 							message: "New members's get succesfullly ",
-							data: newMembers
+							data: newMembersListUnderAMonth
 						})
 					})
 

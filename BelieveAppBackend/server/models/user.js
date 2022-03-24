@@ -252,7 +252,7 @@ module.exports        = User;
                                         } 
                                 } 
                 },
-                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 1 } }, {"_id" : { "$ne" : id } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}} ]} }], callback) 
+                { "$match" : {  $and: [ {"daysTillRegister" : { "$lt" : 7 } }, {"_id" : { "$ne" : id } },{"status" : { "$eq" : "A"}},{"profile_status" : { "$eq" : true}} ]} }], callback) 
         }
 
 
