@@ -6828,6 +6828,7 @@ router.post('/get_users', function (req, res) {
 							console.log("betrotheds found ", betrotheds)
 							var result = users.filter(function (o1) {
 								return betrotheds.some(function (o2) {
+									console.log('secondList', o2.second_user_id)
 									console.log('secondListId', String(o2.second_user_id._id))
 									return String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
 							   });
