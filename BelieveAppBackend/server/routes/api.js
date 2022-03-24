@@ -6829,8 +6829,8 @@ router.post('/get_users', function (req, res) {
 							var result = users.filter(function (o1) {
 								return betrotheds.some(function (o2) {
 									console.log('id', String(o1._id))
-									console.log('id', String(o2.first_user_id._id))
-									return String(o1._id) != String(o2.first_user_id._id) || String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
+									console.log('id', String(o2.second_user_id._id))
+									return String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
 							   });
 							});
 							res.statusCode = suc;
