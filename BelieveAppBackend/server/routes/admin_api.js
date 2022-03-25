@@ -5284,55 +5284,31 @@ router.post('/add_news_link', function (req, res) {
 
 	var appVersion = req.get('app_version');
 	console.log("hiiio appversion ", appVersion)
-	checkAppVersion(appVersion, versionCallback)
-	function versionCallback(updateRequired) {
-		if (updateRequired) {
-			res.statusCode = up;
-			res.json({
-				status: 3,
-				message: "New version arrived! Please update your app."
-			})
-		}
-		else {
-			User.getProfile(params, function (err, authUser) {
-				console.log('auth user ', authUser)
-				if (authUser === null) {
-					res.statusCode = ses;
-					res.json({
-						status: 2,
-						message: "It seems like you have logged in from another device. Please Sign in again."
-					})
-				}
-				else {
-					Bible.addBibleLink(params, function(err, bible) {
-						if (err) {
-							console.log(" error-- ", err);
-							res.statusCode = er;
-							res.json({
-								status: 0,
-								message: "Something went wrong!",
-								data: err
-							})
-						} else {
-							res.statusCode = suc;
-							res.json({
-								status: 1,
-								message: "Bible added successfully",
-								data: bible
-							})
-						}
-					})
-				}
-			})
-		}
-	}
+  Bible.addBibleLink(params, function(err, bible) {
+    if (err) {
+      console.log(" error-- ", err);
+      res.statusCode = er;
+      res.json({
+        status: 0,
+        message: "Something went wrong!",
+        data: err
+      })
+    } else {
+      res.statusCode = suc;
+      res.json({
+        status: 1,
+        message: "Bible added successfully",
+        data: bible
+      })
+    }
+  })
 });
 
 /*------------------------------------------------------
      (74)  Edit New Bible Link
 --------------------------------------------------------*/
 
-router.post('/edit_bible_link', function (req, res) {
+router.put('/edit_bible_link', function (req, res) {
   console.log("hiii /admin/edit_bible_link")
 
   console.log("dataaaaaaa in edit_bible_link is ", req.body)
