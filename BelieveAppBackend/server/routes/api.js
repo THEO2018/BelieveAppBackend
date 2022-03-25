@@ -6530,19 +6530,19 @@ router.post('/get_store_urls', function (req, res) {
 router.post('/get_bible', function (req, res) {
 	console.log("hiii get_bible")
 	var params = req.body;
-	var baseUrl = req.protocol + '://' + req.get('host');
-
-	var appVersion = req.get('app_version');
-	console.log("hiiio appversion ", appVersion)
-	checkAppVersion(appVersion, versionCallback)
 	User.getProfile(params, function (err, authUser) {
 		console.log('auth user ', authUser)
-		if (authUser === null) {
+		if (err) {
+			res.json({
+				status: 0,
+				message: "Something went wrong!",
+				data: err
+			})
+		} else if (authUser === null) {
 			res.statusCode = ses;
 			res.json({
 				status: 2,
 				message: "It seems like you have logged in from another device. Please Sign in again."
-
 			})
 		}
 		else {
