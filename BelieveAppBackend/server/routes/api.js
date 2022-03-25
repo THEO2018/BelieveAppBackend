@@ -6812,10 +6812,7 @@ router.post('/get_users_for_engagement', function (req, res) {
 
 							
 
-							var result = users.filter(function (users) {
-								console.log(String(users._id))
-								return String(users._id) == String(betrotheds.second_user_id._id)
-							}).length == 0;
+							var result = getDifference(users, betrotheds)
 
 							res.statusCode = suc;
 							res.json({
@@ -7866,12 +7863,12 @@ router.post('/get_albums_of_artist', function (req, res) {
 });
 
 
-function comparer(otherArray) {
-	return function (current) {
-		return otherArray.filter(function (other) {
-			return String(other._id) == current.value && other.display == current.display
-		}).length == 0;
-	}
-}
+function getDifference(array1, array2) {
+	return array1.filter(object1 => {
+	  return !array2.some(object2 => {
+		return String(object1._id) === String(object2.first_user_id._id);
+	  });
+	});
+  }
 
 module.exports = router;
