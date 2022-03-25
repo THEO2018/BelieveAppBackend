@@ -3221,7 +3221,7 @@ router.post('/add_betrothed', function (req, res) {
 					res.statusCode = suc;
 					res.json({
 						status: 1,
-						message: "Betrothed added successfully",
+						message: "Couple request sent to admin.",
 						data: newBetrothed
 					})
 
