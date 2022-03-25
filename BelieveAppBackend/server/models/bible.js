@@ -21,7 +21,7 @@ module.exports.addBibleLink = function (params, callback) {
     bibleLink.save(callback);
 }
 
-module.exports.getBibleLink = function (callback) {
+module.exports.getBibleLink = function (params, callback) {
     Bible.findOne({ status: 'A' }, callback);
 }
 

@@ -6535,59 +6535,47 @@ router.post('/get_bible', function (req, res) {
 	var appVersion = req.get('app_version');
 	console.log("hiiio appversion ", appVersion)
 	checkAppVersion(appVersion, versionCallback)
-	function versionCallback(updateRequired) {
-		if (updateRequired) {
-			res.statusCode = up;
+	User.getProfile(params, function (err, authUser) {
+		console.log('auth user ', authUser)
+		if (authUser === null) {
+			res.statusCode = ses;
 			res.json({
-				status: 3,
-				message: "New version arrived! Please update your app."
+				status: 2,
+				message: "It seems like you have logged in from another device. Please Sign in again."
+
 			})
 		}
 		else {
-			User.getProfile(params, function (err, authUser) {
-				console.log('auth user ', authUser)
-				if (authUser === null) {
-					res.statusCode = ses;
+			console.log('auth', authUser)
+			// var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
+			// res.statusCode = suc;
+			// res.json({
+			// 	status: 1,
+			// 	message: "Bible found successfully",
+			// 	data: bibleUrl
+			// })
+
+			Bible.getBibleLink(params, function(err, bible) {
+				console.log('bible', bible)
+				if (err) {
+					console.log(" error-- ", err);
+					res.statusCode = er;
 					res.json({
-						status: 2,
-						message: "It seems like you have logged in from another device. Please Sign in again."
-
+						status: 0,
+						message: "Something went wrong!",
+						data: err
 					})
-				}
-				else {
-					console.log('auth', authUser)
-					// var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
-					// res.statusCode = suc;
-					// res.json({
-					// 	status: 1,
-					// 	message: "Bible found successfully",
-					// 	data: bibleUrl
-					// })
-
-					Bible.getBibleLink(params, function(err, bible) {
-					
-						console.log('bible', bible)
-						if (err) {
-							console.log(" error-- ", err);
-							res.statusCode = er;
-							res.json({
-								status: 0,
-								message: "Something went wrong!",
-								data: err
-							})
-						} else {
-							res.statusCode = suc;
-							res.json({
-								status: 1,
-								message: "Bible found successfully",
-								data: bible
-							})
-						}
+				} else {
+					res.statusCode = suc;
+					res.json({
+						status: 1,
+						message: "Bible found successfully",
+						data: bible
 					})
 				}
 			})
 		}
-	}
+	})
 });
 
 
