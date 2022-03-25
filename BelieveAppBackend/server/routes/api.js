@@ -6827,8 +6827,8 @@ router.post('/get_users', function (req, res) {
 							console.log("users found ", users.length)
 							console.log("betrotheds found ", betrotheds)
 						
-							var result = users.filter(function(other){
-								return String(other._id) == String(betrotheds.second_user_id._id)
+							var result = users.filter(function(users){
+								return String(users._id) == String(betrotheds.second_user_id._id)
 							  }).length == 0;
 
 							res.statusCode = suc;
