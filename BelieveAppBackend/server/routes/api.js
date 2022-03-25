@@ -6810,10 +6810,10 @@ router.post('/get_users_for_engagement', function (req, res) {
 								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
 							}
 
-							console.log("users found ", users)
-							console.log("betrotheds found ", betrotheds)
+							
 
 							var result = users.filter(function (users) {
+								console.log(String(users._id))
 								return String(users._id) == String(betrotheds.second_user_id._id)
 							}).length == 0;
 
