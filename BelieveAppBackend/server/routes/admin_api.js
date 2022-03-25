@@ -61,7 +61,7 @@ var SocialShare = require('../models/socialshare');
 var MediaCategory = require('../models/mediacategory');
 var MusicArtist = require('../models/musicartist');
 var IssueCategory = require('../models/issuecategory');
-
+const Bible = require('../models/bible');
 
 
 
@@ -3564,8 +3564,11 @@ router.post('/add_blog', function (req, res) {
 
 });
 
+/*---------------------------------------------------------
+        (44) Update Blog 
+----------------------------------------------------------*/
+
 router.put('/update_blog', function(req, res) {
-  var params = re.body;
   upload_blog(req, res, function (err) {
     if (err) {
       console.log(err);
@@ -5272,6 +5275,89 @@ router.post('/add_news_link', function (req, res) {
 
 
 
+/*---------------------------------------
+			   (63) add_bible 
+ ----------------------------------------*/
+ router.post('/add_bible_link', function (req, res) {
+	var params = req.body;
+	var baseUrl = req.protocol + '://' + req.get('host');
+
+	var appVersion = req.get('app_version');
+	console.log("hiiio appversion ", appVersion)
+	checkAppVersion(appVersion, versionCallback)
+	function versionCallback(updateRequired) {
+		if (updateRequired) {
+			res.statusCode = up;
+			res.json({
+				status: 3,
+				message: "New version arrived! Please update your app."
+			})
+		}
+		else {
+			User.getProfile(params, function (err, authUser) {
+				console.log('auth user ', authUser)
+				if (authUser === null) {
+					res.statusCode = ses;
+					res.json({
+						status: 2,
+						message: "It seems like you have logged in from another device. Please Sign in again."
+					})
+				}
+				else {
+					Bible.addBibleLink(params, function(err, bible) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						} else {
+							res.statusCode = suc;
+							res.json({
+								status: 1,
+								message: "Bible added successfully",
+								data: bible
+							})
+						}
+					})
+				}
+			})
+		}
+	}
+});
+
+/*------------------------------------------------------
+     (74)  Edit New Bible Link
+--------------------------------------------------------*/
+
+router.post('/edit_bible_link', function (req, res) {
+  console.log("hiii /admin/edit_bible_link")
+
+  console.log("dataaaaaaa in edit_bible_link is ", req.body)
+
+  var params = req.body;
+
+  Bible.editBibleLink(params, function (err, bibleUrl) {
+    if (err) {
+      console.log(" error-- ", err);
+      res.json({
+        status: false,
+        message: "Something went wrong!",
+        data: err
+      })
+    }
+    else {
+      res.json({
+        status: true,
+        message: "successfully updated Bible Url",
+        data: bibleUrl
+      })
+    }
+  })
+
+});
 
 /*------------------------------------------------------
      (74)  Edit New Link
@@ -5287,6 +5373,11 @@ router.post('/edit_news_link', function (req, res) {
   NewsUrl.editNewsUrl(params, function (err, newsUrl) {
     if (err) {
       console.log(" error-- ", err);
+      res.json({
+        status: false,
+        message: "Something went wrong!",
+        data: err
+      })
     }
     else {
 

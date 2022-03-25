@@ -71,6 +71,7 @@ var SocialShare = require('../models/socialshare');
 var MediaCategory = require('../models/mediacategory');
 var MusicArtist = require('../models/musicartist');
 var AppVersion = require('../models/appversion');
+const Bible = require('../models/bible');
 
 
 const suc = 200;
@@ -3696,15 +3697,15 @@ router.post('/get_events', function (req, res) {
 						var result_events = [];
 						var groupEvents = [];
 						for (var i in allGroupEvents) {
-								groupEvents[i] = allGroupEvents[i].toObject();
-								groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
-								var date = groupEvents[i].date;
-								groupEvents[i].dateForSort = date;
-								groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+							groupEvents[i] = allGroupEvents[i].toObject();
+							groupEvents[i].event_cover = baseUrl + event_cover_url + groupEvents[i].event_cover;
+							var date = groupEvents[i].date;
+							groupEvents[i].dateForSort = date;
+							groupEvents[i].date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 						}
 
 						for (var j in groupEvents) {
-							const yesterdayTimeStamp = new Date().getTime() - 24*60*60*1000;
+							const yesterdayTimeStamp = new Date().getTime() - 24 * 60 * 60 * 1000;
 							if (groupEvents[j].dateForSort.getTime() > new Date(yesterdayTimeStamp).getTime()) {
 								result_events.push(groupEvents[j])
 							}
@@ -6523,7 +6524,6 @@ router.post('/get_store_urls', function (req, res) {
 
 });
 
-
 /*---------------------------------------
 			   (63) get_bible 
  ----------------------------------------*/
@@ -6556,40 +6556,36 @@ router.post('/get_bible', function (req, res) {
 					})
 				}
 				else {
-					//params.user_id = authUser._id;
-					//           OnlineStore.getStoreUrls(function (err,storeUrls) {
-					// if(err)
-					// {
-					//   console.log(" error-- ",err);
-					//   res.statusCode = er;
-					//    res.json({
-					//       status : 0,
-					//       message : "Something went wrong!",           
-					//        data : err  
-					//       })
-					// }
-
-					// else {
-					//      console.log("storeUrls found ",storeUrls)
-
-					var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
-					res.statusCode = suc;
-					res.json({
-						status: 1,
-						message: "Bible found successfully",
-						data: bibleUrl
-					})
-
-
-					//   }
-
+					// var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
+					// res.statusCode = suc;
+					// res.json({
+					// 	status: 1,
+					// 	message: "Bible found successfully",
+					// 	data: bibleUrl
 					// })
+
+					Bible.getBibleLink(params, function(err, bible) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						} else {
+							res.statusCode = suc;
+							res.json({
+								status: 1,
+								message: "Bible found successfully",
+								data: bible
+							})
+						}
+					})
 				}
 			})
 		}
 	}
-
-
 });
 
 
@@ -6751,8 +6747,8 @@ router.post('/get_users', function (req, res) {
 
 				else {
 					console.log("users found ", users)
-					
-					
+
+
 					for (var i in users) {
 						users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
 
@@ -6780,7 +6776,7 @@ router.post('/get_users', function (req, res) {
 /*---------------------------------------
 			   (66) get  Users For Engagement
  ----------------------------------------*/
- router.post('/get_users_for_engagement', function (req, res) {
+router.post('/get_users_for_engagement', function (req, res) {
 	console.log("hiii get_users_for_engagement")
 	var params = req.body;
 	var baseUrl = req.protocol + '://' + req.get('host');
@@ -6809,7 +6805,7 @@ router.post('/get_users', function (req, res) {
 				}
 
 				else {
-				
+
 					Betrothed.getAllBetrotheds(function (err, betrotheds) {
 						if (err) {
 							console.log(" error-- ", err);
@@ -6821,15 +6817,15 @@ router.post('/get_users', function (req, res) {
 							})
 						} else {
 							for (var i in users) {
-								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;		
+								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
 							}
 
 							console.log("users found ", users.length)
 							console.log("betrotheds found ", betrotheds)
-						
-							var result = users.filter(function(users){
+
+							var result = users.filter(function (users) {
 								return String(users._id) == String(betrotheds.second_user_id._id)
-							  }).length == 0;
+							}).length == 0;
 
 							res.statusCode = suc;
 							res.json({
@@ -6837,7 +6833,7 @@ router.post('/get_users', function (req, res) {
 								message: "Users found successfully",
 								data: result
 							})
-		
+
 						}
 					})
 				}
@@ -7880,12 +7876,12 @@ router.post('/get_albums_of_artist', function (req, res) {
 });
 
 
-function comparer(otherArray){
-	return function(current){
-	  return otherArray.filter(function(other){
-		return String(other._id) == current.value && other.display == current.display
-	  }).length == 0;
+function comparer(otherArray) {
+	return function (current) {
+		return otherArray.filter(function (other) {
+			return String(other._id) == current.value && other.display == current.display
+		}).length == 0;
 	}
-  }
+}
 
 module.exports = router;
