@@ -7867,7 +7867,7 @@ router.post('/get_albums_of_artist', function (req, res) {
 function getDifference(array1, array2) {
 	return array1.filter(object1 => {
 	  return !array2.some(object2 => {
-		return String(object1._id) === String(object2.user_id);
+		return String(object1._id) === String(object2.first_user_id._id);
 	  });
 	});
   }
