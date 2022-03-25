@@ -6544,7 +6544,6 @@ router.post('/get_bible', function (req, res) {
 			})
 		}
 		else {
-
 			User.getProfile(params, function (err, authUser) {
 				console.log('auth user ', authUser)
 				if (authUser === null) {
@@ -6556,6 +6555,7 @@ router.post('/get_bible', function (req, res) {
 					})
 				}
 				else {
+					console.log('auth', authUser)
 					// var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
 					// res.statusCode = suc;
 					// res.json({
