@@ -3564,6 +3564,90 @@ router.post('/add_blog', function (req, res) {
 
 });
 
+router.put('/update_blog', function(req, res) {
+  var params = re.body;
+  upload_blog(req, res, function (err) {
+    if (err) {
+      console.log(err);
+    }
+
+    else {
+      console.log("files in add_blog is ", req.file)
+      console.log("dataaaaaaa in add_blog is ", req.body)
+
+      var params = req.body;
+      // params.status       = 'A';                         
+      var baseUrl = req.protocol + '://' + req.get('host');
+      getBlogImage(callback)
+
+      function callback(blog_image) {
+        params.blog_image = blog_image;
+        // console.log("params after all ",params)
+        Blog.updateBlog(params, function (err, blog) {
+          if (err) {
+            console.log(" error-- ", err);
+            res.json({
+              status: false,
+              message: "Something went wrong!",
+              data: err
+            })
+          }
+          else {
+
+            console.log("blog added ", blog)
+
+            res.json({
+              status: true,
+              message: "Blog Updated successfully",
+              data: blog
+            })
+
+          }
+        })
+      }
+      function getBlogImage(callback) {
+        var blog_image;
+        if (req.file) {
+          blog_image = req.file.filename;
+          var libParams = {
+            image_name: req.file.filename,
+            media_type: 'I',
+            section: 'Blog',
+            path: blog_image_url,
+            thumbnail: '',
+            title: params.blog_title
+          }
+          Library.addNewLibrary(libParams, function (err, library) {
+            console.log(library);
+
+          })
+          callback(blog_image)
+        }
+        else {
+          var local_image = Date.now() + '.jpg';
+          const options = {
+            url: params.blog_image,
+            dest: 'public/images/blog_image/' + local_image                  // Save to /path/to/dest/image.jpg
+          }
+
+          download.image(options)
+            .then(({ filename, image }) => {
+              blog_image = local_image;
+              callback(blog_image)
+              console.log('File saved to', filename)
+            }).catch((err) => {
+              blog_image = "";
+              callback(blog_image)
+              console.log("erorrrrrrrrrrrrrrrrrrrrrr ", err)
+              throw err
+            })
+
+        }
+      }
+    }
+  })
+
+})
 
 
 /*---------------------------------------------------------

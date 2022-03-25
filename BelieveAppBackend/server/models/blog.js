@@ -71,3 +71,16 @@ var blogSchema = new Schema({
           Blog.find({category : giving_id, status : 'A'}, callback)      
     }
 
+    module.exports.updateBlog = function(params, callback) {
+          var update = clean(params)
+          Blog.findByIdAndUpdate(params.blog_id, update, {new: true}, callback)
+    }
+
+    function clean(obj) {
+      for (var data in obj) {
+        if (obj[data] === null || obj[data] === '' || obj[data] === undefined) {
+          delete obj[data];
+        }
+      }
+      return obj;
+    }
