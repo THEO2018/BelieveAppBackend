@@ -5294,7 +5294,7 @@ router.post('/add_news_link', function (req, res) {
         data: err
       })
     } else {
-      res.statusCode = suc;
+      res.statusCode = 200;
       res.json({
         status: 1,
         message: "Bible added successfully",
@@ -5352,7 +5352,7 @@ router.put('/edit_bible_link', function (req, res) {
         data: err
       })
     } else {
-      res.statusCode = suc;
+      res.statusCode = 200;
       res.json({
         status: 1,
         message: "Bible found successfully",
