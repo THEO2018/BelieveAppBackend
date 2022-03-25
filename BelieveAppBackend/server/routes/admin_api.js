@@ -5335,6 +5335,33 @@ router.put('/edit_bible_link', function (req, res) {
 
 });
 
+
+/*---------------------------------------
+			   (63) get_bible 
+ ----------------------------------------*/
+ router.post('/get_bible', function (req, res) {
+	console.log("hiii get_bible")
+	var params = req.body;
+  Bible.getBibleLink(params, function(err, bible) {
+    if (err) {
+      console.log(" error-- ", err);
+      res.statusCode = er;
+      res.json({
+        status: 0,
+        message: "Something went wrong!",
+        data: err
+      })
+    } else {
+      res.statusCode = suc;
+      res.json({
+        status: 1,
+        message: "Bible found successfully",
+        data: bible
+      })
+    }
+  })
+});
+
 /*------------------------------------------------------
      (74)  Edit New Link
 --------------------------------------------------------*/

@@ -6565,6 +6565,8 @@ router.post('/get_bible', function (req, res) {
 					// })
 
 					Bible.getBibleLink(params, function(err, bible) {
+					
+						console.log('bible', bible)
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
