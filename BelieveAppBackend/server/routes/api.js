@@ -6826,13 +6826,11 @@ router.post('/get_users', function (req, res) {
 
 							console.log("users found ", users.length)
 							console.log("betrotheds found ", betrotheds)
-							var result = users.filter(function (o1) {
-								return betrotheds.some(function (o2) {
-									console.log('secondList', o2.second_user_id)
-									console.log('secondListId', String(o2.second_user_id._id))
-									return String(o1._id) != String(o2.second_user_id._id); // return the ones with equal id
-							   });
-							});
+						
+							var result = users.filter(function(other){
+								return String(other._id) == String(betrotheds.second_user_id._id)
+							  }).length == 0;
+
 							res.statusCode = suc;
 							res.json({
 								status: 1,
@@ -7882,5 +7880,12 @@ router.post('/get_albums_of_artist', function (req, res) {
 });
 
 
+function comparer(otherArray){
+	return function(current){
+	  return otherArray.filter(function(other){
+		return String(other._id) == current.value && other.display == current.display
+	  }).length == 0;
+	}
+  }
 
 module.exports = router;
