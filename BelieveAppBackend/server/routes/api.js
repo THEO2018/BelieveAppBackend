@@ -6865,20 +6865,34 @@ router.post('/search_users', function (req, res) {
 				}
 
 				else {
-					console.log("users found ", users)
-					for (var i in users) {
-						users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
+					Betrothed.getAllBetrotheds(function (err, betrotheds) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						} else {
+							for (var i in users) {
+								users[i].profile_image = baseUrl + profile_image_url + users[i].profile_image;
+							}
 
-					}
+							
+							console.log('users', users)
+							console.log('betrotheds', betrotheds)
+							var result = getDifference(users, betrotheds)
 
+							res.statusCode = suc;
+							res.json({
+								status: 1,
+								message: "Users found successfully",
+								data: result
+							})
 
-					res.statusCode = suc;
-					res.json({
-						status: 1,
-						message: "Users found successfully",
-						data: users
+						}
 					})
-
 
 				}
 
