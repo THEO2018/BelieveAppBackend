@@ -6811,7 +6811,8 @@ router.post('/get_users_for_engagement', function (req, res) {
 							}
 
 							
-
+							console.log('users', users)
+							console.log('betrotheds', betrotheds)
 							var result = getDifference(users, betrotheds)
 
 							res.statusCode = suc;
