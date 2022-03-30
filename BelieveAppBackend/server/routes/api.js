@@ -6529,6 +6529,7 @@ router.post('/get_store_urls', function (req, res) {
  ----------------------------------------*/
 router.post('/get_bible', function (req, res) {
 	console.log("hiii get_bible")
+	var baseUrl = req.protocol + '://' + req.get('host');
 	var params = req.body;
 	User.getProfile(params, function (err, authUser) {
 		console.log('auth user ', authUser)
