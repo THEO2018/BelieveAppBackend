@@ -4818,7 +4818,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 											res.json({
 												status: 1,
 												message: "Recommendation Updated successfully",
-												data: newRecommendation
+												data: updateRecommendation
 											})
 										}
 									})
