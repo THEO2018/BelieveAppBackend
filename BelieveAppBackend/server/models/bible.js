@@ -22,7 +22,7 @@ module.exports.addBibleLink = function (params, callback) {
 }
 
 module.exports.getBibleLink = function (params, callback) {
-    Bible.findOne({ status: 'A' }, callback);
+    Bible.find({ status: 'A' }, callback);
 }
 
 module.exports.editBibleLink = function (params, callback) {

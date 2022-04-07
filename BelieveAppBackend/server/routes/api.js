@@ -6548,7 +6548,7 @@ router.post('/get_bible', function (req, res) {
 		}
 		else {
 			console.log('auth', authUser)
-			var bibleUrl = { bible_url: baseUrl + bible_url + 'Believe_Bible.epub' }
+			var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
 			res.statusCode = suc;
 			res.json({
 				status: 1,
