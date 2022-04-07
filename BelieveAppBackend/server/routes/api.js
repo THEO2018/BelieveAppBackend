@@ -4713,7 +4713,7 @@ router.post('/check_if_recommendation_exist', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.findOne({_id: params.user_id, $and:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
+					Recommendation.findOne({_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
@@ -4779,6 +4779,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 				else {
 					params.user_id = String(authUser._id);
 					Recommendation.findOne({_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
+						console.log('recommendationExist', recommendationExist)
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
