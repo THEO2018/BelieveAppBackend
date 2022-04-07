@@ -3,9 +3,9 @@ var Schema     = mongoose.Schema;
 
 var recommendationSchema = new Schema({
   user_id                         : { type: String , ref:'User' },
-  title                           : String,
-  description                     : String,
-  admin_description               : String,
+  title                           : { type: String , default:'' },
+  description                     : { type: String , default:'' },
+  admin_description               : { type: String , default:'' },
   status                          : String
 },
 {
