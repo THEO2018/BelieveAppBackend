@@ -4722,7 +4722,7 @@ router.post('/check_if_recommendation_exist', function (req, res) {
 								message: "Something went wrong!",
 								data: err
 							})
-						} else if(!recommendationExist) {
+						} else if(recommendationExist) {
 							res.json({
 								status: 0,
 								message: "Recommendation Already Exist",
@@ -4790,7 +4790,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 								message: "Something went wrong!",
 								data: err
 							})
-						} else if(!recommendationExist) {
+						} else if(recommendationExist) {
 							res.json({
 								status: 0,
 								message: "Recommendation Request already sent!!",
