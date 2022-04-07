@@ -4778,7 +4778,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.findOne({user_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
+					Recommendation.findOne({user_id: params.user_id, $or:[{status: "P"},{status: "A"}]}, function(err, recommendationExist) {
 						console.log('recommendationExist', recommendationExist)
 						console.log('recommendationExist', !recommendationExist)
 						console.log('recommendationExist', recommendationExist == null)
