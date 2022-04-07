@@ -4778,7 +4778,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.findOne({_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
+					Recommendation.findOne({user_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
 						console.log('recommendationExist', recommendationExist)
 						console.log('recommendationExist', !recommendationExist)
 						console.log('recommendationExist', recommendationExist == null)
@@ -4796,7 +4796,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 								message: "Recommendation Request already sent!!",
 							})
 						} else {
-							Recommendation.addNewRecommendation(params, function (err, newRecommendation) {
+							Recommendation.findOne({user_id: params.user_id}, function(err, recommendationExist) {
 								if (err) {
 									res.statusCode = er;
 									res.json({
@@ -4804,17 +4804,47 @@ router.post('/ask_for_recommendation', function (req, res) {
 										message: "Something went wrong!",
 										data: err
 									})
-								}
-								else {
-									res.statusCode = suc;
-									res.json({
-										status: 1,
-										message: "Recommendation added successfully",
-										data: newRecommendation
+								} else if (recommendationExist) {
+									Recommendation.findOneAndUpdate({user_id: params.user_id}, {status: "P"}, {new: true}, function(err, updateRecommendation) {
+										if (err) {
+											res.statusCode = er;
+											res.json({
+												status: 0,
+												message: "Something went wrong!",
+												data: err
+											})
+										} else {
+											res.statusCode = suc;
+											res.json({
+												status: 1,
+												message: "Recommendation Updated successfully",
+												data: newRecommendation
+											})
+										}
 									})
-		
+								} else {
+									Recommendation.addNewRecommendation(params, function (err, newRecommendation) {
+										if (err) {
+											res.statusCode = er;
+											res.json({
+												status: 0,
+												message: "Something went wrong!",
+												data: err
+											})
+										}
+										else {
+											res.statusCode = suc;
+											res.json({
+												status: 1,
+												message: "Recommendation added successfully",
+												data: newRecommendation
+											})
+				
+										}
+									})
 								}
 							})
+							
 						}
 					})
 					
