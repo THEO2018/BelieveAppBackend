@@ -4680,6 +4680,69 @@ router.post('/get_classified_detail', function (req, res) {
 	})
 });
 
+/*---------------------------------------------------------
+		(42) Check If recommendation exist
+----------------------------------------------------------*/
+router.post('/check_if_recommendation_exist', function (req, res) {
+	console.log("hiii /admin/ask_for_recommendation", req.body)
+
+	var params = req.body;
+	var baseUrl = req.protocol + '://' + req.get('host');
+	var appVersion = req.get('app_version');
+	console.log("hiiio appversion ", appVersion)
+	checkAppVersion(appVersion, versionCallback)
+	function versionCallback(updateRequired) {
+		if (updateRequired) {
+			res.statusCode = up;
+			res.json({
+				status: 3,
+				message: "New version arrived! Please update your app."
+			})
+		}
+		else {
+
+			User.getProfile(params, function (err, authUser) {
+				console.log('auth user ', authUser)
+				if (authUser === null) {
+					res.statusCode = ses;
+					res.json({
+						status: 2,
+						message: "It seems like you have logged in from another device. Please Sign in again."
+
+					})
+				}
+				else {
+					params.user_id = String(authUser._id);
+					Recommendation.findOne({_id: params.user_id, $and:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						} else if(!recommendationExist) {
+							res.json({
+								status: 0,
+								message: "Recommendation Already Exist",
+								isExist: true
+							})
+						} else {
+							res.json({
+								status: 0,
+								message: "Recommendation doesn't Exist",
+								isExist: false
+							})
+						}
+					})
+					
+				}
+			})
+		}
+	}
+
+});
 
 /*---------------------------------------------------------
 		(42) Ask For Recommendation
@@ -4715,7 +4778,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.findOne({_id: params.user_id, status: {$ne: "P"}}, function(err, recommendationExist) {
+					Recommendation.findOne({_id: params.user_id, $or:[{status: {$ne: "P"}},{status: {$ne: "A"}}]}, function(err, recommendationExist) {
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
