@@ -4715,7 +4715,7 @@ router.post('/ask_for_recommendation', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.addNewRecommendation(params, function (err, newRecommendation) {
+					Recommendation.findOne({_id: params.user_id, status: {$ne: "P"}}, function(err, recommendationExist) {
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
@@ -4724,19 +4724,34 @@ router.post('/ask_for_recommendation', function (req, res) {
 								message: "Something went wrong!",
 								data: err
 							})
-						}
-						else {
-
-							console.log("newRecommendation added ", newRecommendation)
-							res.statusCode = suc;
+						} else if(!recommendationExist) {
 							res.json({
-								status: 1,
-								message: "Recommendation added successfully",
-								data: newRecommendation
+								status: 0,
+								message: "Recommendation Request already sent!!",
 							})
-
+						} else {
+							Recommendation.addNewRecommendation(params, function (err, newRecommendation) {
+								if (err) {
+									res.statusCode = er;
+									res.json({
+										status: 0,
+										message: "Something went wrong!",
+										data: err
+									})
+								}
+								else {
+									res.statusCode = suc;
+									res.json({
+										status: 1,
+										message: "Recommendation added successfully",
+										data: newRecommendation
+									})
+		
+								}
+							})
 						}
 					})
+					
 				}
 			})
 		}
