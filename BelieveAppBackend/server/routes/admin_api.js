@@ -4209,7 +4209,7 @@ router.put('/update_recommendation', recommeded_pdf_letter, function (req, res) 
   var baseUrl = req.protocol + '://' + req.get('host');
 
 
-  Recommendation.updateRecommendation(function (err, recommendations) {
+  Recommendation.updateRecommendation(params, function (err, recommendations) {
     if (err) {
       console.log(" error-- ", err);
       res.json({
