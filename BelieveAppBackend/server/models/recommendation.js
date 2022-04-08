@@ -28,10 +28,9 @@ module.exports.getRecommendationRequests = function (callback) {
     .exec(callback);
 }
 
-module.exports.getApprovedRecommendations = function (callback) {
+module.exports.getApprovedRecommendations = function (params, callback) {
   Recommendation.find({ status: 'A' })
-    .sort('-createdAt')
-    .populate('user_id', 'first_name last_name profile_image email')
+  .populate('user_id', 'first_name last_name profile_image email')
     .exec(callback);
 }
 

@@ -4684,7 +4684,7 @@ router.post('/get_classified_detail', function (req, res) {
 		(42) Get list of recommended people
 ----------------------------------------------------------*/
 router.post('/get_list_of_recommended_people', function (req, res) {
-	console.log("hiii /admin/ask_for_recommendation", req.body)
+	console.log("hiii /admin/get_list_of_recommended_people", req.body)
 
 	var params = req.body;
 	var baseUrl = req.protocol + '://' + req.get('host');
