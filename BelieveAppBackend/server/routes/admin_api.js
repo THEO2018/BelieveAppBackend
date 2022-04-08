@@ -4205,7 +4205,7 @@ router.put('/update_recommendation', recommeded_pdf_letter, function (req, res) 
 
   var params = req.body;
   params.status = "A"
-  params.pdf_letter = `/profile/${req.file.filename}`
+  params.pdf_letter = `/${req.file.filename}`
   var baseUrl = req.protocol + '://' + req.get('host');
 
 
