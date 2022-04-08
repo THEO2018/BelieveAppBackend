@@ -28,6 +28,13 @@ module.exports.getRecommendationRequests = function (callback) {
     .exec(callback);
 }
 
+module.exports.getApprovedRecommendations = function (callback) {
+  Recommendation.find({ status: 'A' })
+    .sort('-createdAt')
+    .populate('user_id', 'first_name last_name profile_image email')
+    .exec(callback);
+}
+
 
 module.exports.changeStatusRecommendation = function (params, callback) {
   Recommendation.findByIdAndUpdate(params.recommendation_id, { status: params.approve_status }, { new: true }, callback);
@@ -36,7 +43,6 @@ module.exports.changeStatusRecommendation = function (params, callback) {
 module.exports.updateRecommendation = function (params, callback) {
   var update = clean(params)
   Recommendation.findByIdAndUpdate(params.recommendation_id, update, { new: true })
-    .populate('user_id', 'first_name last_name profile_image email')
     .exec(callback)
 }
 

@@ -4712,7 +4712,7 @@ router.post('/get_list_of_recommended_people', function (req, res) {
 				}
 				else {
 					params.user_id = String(authUser._id);
-					Recommendation.find({status: "A"}, function(err, recommendedPeople) {
+					Recommendation.getApprovedRecommendations(params, function(err, recommendedPeople) {
 						if (err) {
 							console.log(" error-- ", err);
 							res.statusCode = er;
