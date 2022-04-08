@@ -5335,6 +5335,37 @@ router.put('/edit_bible_link', function (req, res) {
 
 });
 
+/*------------------------------------------------------
+     (74) Delete Bible Link
+--------------------------------------------------------*/
+
+router.delete('/delete_bible_link', function (req, res) {
+  console.log("hiii /admin/delete_bible_link")
+
+  console.log("dataaaaaaa in edit_bible_link is ", req.body)
+
+  var params = req.body;
+
+  Bible.deleteBibleUrl(req.query.bible_id, function (err, bibleUrl) {
+    if (err) {
+      console.log(" error-- ", err);
+      res.json({
+        status: false,
+        message: "Something went wrong!",
+        data: err
+      })
+    }
+    else {
+      res.json({
+        status: true,
+        message: "successfully deleted Bible Url",
+        data: bibleUrl
+      })
+    }
+  })
+
+});
+
 
 /*---------------------------------------
 			   (63) get_bible 
