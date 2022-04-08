@@ -36,8 +36,8 @@ module.exports.changeStatusRecommendation = function (params, callback) {
 module.exports.updateRecommendation = function (params, callback) {
   var update = clean(params)
   Recommendation.findByIdAndUpdate(params.recommendation_id, update, { new: true })
-  .populate('user_id', 'first_name last_name profile_image email')
-  .exec(callback)
+    .populate('user_id', 'first_name last_name profile_image email')
+    .exec(callback)
 }
 
 module.exports.getApprovedCanceledRecommendations = function (callback) {
