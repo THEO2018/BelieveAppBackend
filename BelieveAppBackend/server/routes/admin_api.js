@@ -80,6 +80,18 @@ var storage_group = multer.diskStorage({
   }
 })
 
+var recommeded_pdf_letter = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images/')
+  },
+  filename: function (req, file, cb) {
+    var extArray = file.mimetype.split("/");
+    var extension = extArray[extArray.length - 1];
+    grp_img = Date.now() + '.' + extension;
+    cb(null, grp_img)
+  }
+})
+
 var storage_small_group = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/images/small_group/')
@@ -284,6 +296,7 @@ var storage_music_artist = multer.diskStorage({
 
 
 var upload_group = multer({ storage: storage_group }).single('group_image')
+var recommeded_pdf_letter = multer({ storage: recommeded_pdf_letter }).single('pdf_letter')
 var upload_small_group = multer({ storage: storage_small_group }).single('small_group_image')
 var upload_wedding_cover = multer({ storage: storage_wedding_cover }).single('cover_photo')
 var upload_upcoming_wedding_cover = multer({ storage: storage_upcoming_wedding_cover }).single('marriage_cover_photo')
@@ -4182,9 +4195,41 @@ router.get('/get_recommendation_requests', function (req, res) {
 
     }
   })
-
-
 });
+
+/*---------------------------------------------------------
+        (54) Get Recommendation Requests
+----------------------------------------------------------*/
+router.put('/update_recommendation', recommeded_pdf_letter, function (req, res) {
+  console.log("hiii update_recommendation")
+
+  var params = req.body;
+  params.status = "A"
+  params.pdf_letter = `/profile/${req.file.filename}`
+  var baseUrl = req.protocol + '://' + req.get('host');
+
+
+  Recommendation.updateRecommendation(function (err, recommendations) {
+    if (err) {
+      console.log(" error-- ", err);
+      res.json({
+        status: false,
+        message: "Something went wrong!",
+        data: err
+      })
+    }
+    else {
+      res.json({
+        status: true,
+        message: "Recommendations updated Successfully",
+        data: recommendations
+      })
+
+    }
+  })
+});
+
+
 
 
 
