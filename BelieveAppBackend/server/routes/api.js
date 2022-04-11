@@ -3206,7 +3206,7 @@ router.post('/add_betrothed', function (req, res) {
 		}
 		else {
 			params.user_id = String(authUser._id)
-			Betrothed.addNewBetrothed(params, function (err, newBetrothed) {
+			Betrothed.checkIfAlreadyBetrothed(params, function (err, checkAlreadyBethroed) {
 				if (err) {
 					console.log(" error-- ", err);
 					res.statusCode = er;
@@ -3215,23 +3215,39 @@ router.post('/add_betrothed', function (req, res) {
 						message: "Something went wrong!",
 						data: err
 					})
-				}
-				else {
-
-					console.log("newBetrothed added ", newBetrothed)
-					res.statusCode = suc;
+				} else if (checkAlreadyBethroed) {
 					res.json({
-						status: 1,
-						message: "Couple request sent to admin.",
-						data: newBetrothed
+						status: 0,
+						message: "You are already engaged !!",
+						data: err
 					})
-
+				} else {
+					Betrothed.addNewBetrothed(params, function (err, newBetrothed) {
+						if (err) {
+							console.log(" error-- ", err);
+							res.statusCode = er;
+							res.json({
+								status: 0,
+								message: "Something went wrong!",
+								data: err
+							})
+						}
+						else {
+		
+							console.log("newBetrothed added ", newBetrothed)
+							res.statusCode = suc;
+							res.json({
+								status: 1,
+								message: "Couple request sent to admin.",
+								data: newBetrothed
+							})
+		
+						}
+					})
 				}
 			})
 		}
 	})
-
-
 });
 
 

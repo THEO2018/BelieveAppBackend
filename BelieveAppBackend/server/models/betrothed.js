@@ -60,6 +60,10 @@ var betrothedSchema = new Schema({
          Betrothed.findByIdAndUpdate(id, {status : 'A'},{new:true} ,callback);
        }
 
+       module.exports.checkIfAlreadyBetrothed  = function(params,callback){
+        Betrothed.findOne({$or:[{first_user_id: params.user_id},{second_user_id: params.user_id}]} ,callback);
+      }
+
 
 /////////////////////////// APP END /////////////////////////
 
