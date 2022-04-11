@@ -26,7 +26,7 @@ module.exports.getBibleLink = function (params, callback) {
 }
 
 module.exports.editBibleLink = function (params, callback) {
-    Bible.findOneAndUpdate({}, { bible_url: params.bible_url }, { new: true }, callback);
+    Bible.findByIdAndUpdate(params.bible_id, { bible_url: params.bible_url }, { new: true }, callback);
 }
 
 module.exports.deleteBibleUrl = function (id, callback) {

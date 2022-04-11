@@ -5360,6 +5360,7 @@ router.put('/edit_bible_link', function (req, res) {
 
   var params = req.body;
 
+  params.bible_id = req.query.bible_id
   Bible.editBibleLink(params, function (err, bibleUrl) {
     if (err) {
       console.log(" error-- ", err);
