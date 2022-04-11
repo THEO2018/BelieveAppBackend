@@ -3217,7 +3217,7 @@ router.post('/add_betrothed', function (req, res) {
 					})
 				} else if (checkAlreadyBethroed) {
 					res.json({
-						status: 0,
+						status: 400,
 						message: "You are already engaged !!",
 						data: err
 					})
