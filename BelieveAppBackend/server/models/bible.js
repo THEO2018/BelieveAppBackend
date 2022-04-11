@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BibleSchema = new Schema({
+    title: {type: String, default: ''},
     bible_url: String,
     status:{type: String, default: 'A' },
 

@@ -6716,34 +6716,34 @@ router.post('/get_bible', function (req, res) {
 			})
 		}
 		else {
-			console.log('auth', authUser)
-			var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
-			res.statusCode = suc;
-			res.json({
-				status: 1,
-				message: "Bible found successfully",
-				data: bibleUrl
-			})
-
-			// Bible.getBibleLink(params, function(err, bible) {
-			// 	console.log('bible', bible)
-			// 	if (err) {
-			// 		console.log(" error-- ", err);
-			// 		res.statusCode = er;
-			// 		res.json({
-			// 			status: 0,
-			// 			message: "Something went wrong!",
-			// 			data: err
-			// 		})
-			// 	} else {
-			// 		res.statusCode = suc;
-			// 		res.json({
-			// 			status: 1,
-			// 			message: "Bible found successfully",
-			// 			data: bible
-			// 		})
-			// 	}
+			// console.log('auth', authUser)
+			// var bibleUrl = { bible_url: baseUrl + bible_url + '178297329837.pdf' }
+			// res.statusCode = suc;
+			// res.json({
+			// 	status: 1,
+			// 	message: "Bible found successfully",
+			// 	data: bibleUrl
 			// })
+
+			Bible.getBibleLink(params, function(err, bible) {
+				console.log('bible', bible)
+				if (err) {
+					console.log(" error-- ", err);
+					res.statusCode = er;
+					res.json({
+						status: 0,
+						message: "Something went wrong!",
+						data: err
+					})
+				} else {
+					res.statusCode = suc;
+					res.json({
+						status: 1,
+						message: "Bible found successfully",
+						data: bible
+					})
+				}
+			})
 		}
 	})
 });
