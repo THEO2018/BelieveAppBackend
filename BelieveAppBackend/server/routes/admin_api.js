@@ -7084,6 +7084,7 @@ router.get('/get_church_detail', function (req, res) {
     }
     else {
       // churchDetail.logo = baseUrl + logo_image_url + churchDetail.logo;
+      console.log('chruch', churchDetail)
       res.json({
         status: true,
         message: "successfully get Church detail",
