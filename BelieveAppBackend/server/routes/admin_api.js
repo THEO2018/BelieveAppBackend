@@ -7083,7 +7083,7 @@ router.get('/get_church_detail', function (req, res) {
       console.log(" error-- ", err);
     }
     else {
-      churchDetail.logo = baseUrl + logo_image_url + churchDetail.logo;
+      // churchDetail.logo = baseUrl + logo_image_url + churchDetail.logo;
       res.json({
         status: true,
         message: "successfully get Church detail",
