@@ -7073,6 +7073,7 @@ router.post('/edit_church_info', function (req, res) {
      (95)  Get Church Info
 --------------------------------------------------------*/
 
+
 router.get('/get_church_detail', function (req, res) {
   console.log("hiii /admin/get_church_detail")
   var baseUrl = req.protocol + '://' + req.get('host');
