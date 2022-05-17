@@ -2898,9 +2898,46 @@ router.post('/accept_reject_betrothed', function (req, res) {
       })
     }
   })
-
 });
 
+////////////////////////check if user is already engaged////////////////////////////
+router.post('/check_if_already_engaged', function (req, res) {
+  console.log("hiii check_if_already_engaged ", req.body)
+
+  var baseUrl = req.protocol + '://' + req.get('host');
+  var params = req.body;
+
+  Betrothed.checkIfFirstUserIsEngagedBetrothed(params, function(err, firstBetrothed) {
+    if (err) {
+      console.log(" error-- ", err);
+    } else if (firstBetrothed) {
+      var error = firstBetrothed.first_name + " is already engaged!!"
+      res.json({
+        status: 400,
+        message: error,
+        data: err
+      })
+    } else {
+      Betrothed.checkIfSecondUserIsEngagedBetrothed(params, function (err, secondUser) {
+        if (err) {
+          console.log(" error-- ", err);
+        } else if (secondUser) {
+          var error = secondUser.first_name + " is already engaged!!"
+          res.json({
+            status: 400,
+            message: error,
+            data: err
+          })
+        } else {
+          res.json({
+            status: true,
+            message: "Successfull"
+          })
+        }   
+      })
+    }
+  })
+});
 
 
 
