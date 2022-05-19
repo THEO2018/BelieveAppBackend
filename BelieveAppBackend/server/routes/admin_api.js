@@ -2911,6 +2911,7 @@ router.post('/check_if_already_engaged', function (req, res) {
     if (err) {
       console.log(" error-- ", err);
     } else if (firstBetrothed) {
+      console.log('firstBetrothed', firstBetrothed)
       var error = firstBetrothed.first_name + " is already engaged!!"
       res.json({
         status: 400,
@@ -2922,6 +2923,7 @@ router.post('/check_if_already_engaged', function (req, res) {
         if (err) {
           console.log(" error-- ", err);
         } else if (secondUser) {
+          console.log('secondUser', secondUser)
           var error = secondUser.first_name + " is already engaged!!"
           res.json({
             status: 400,
