@@ -67,12 +67,14 @@ var betrothedSchema = new Schema({
        module.exports.checkIfFirstUserIsEngagedBetrothed  = function(params,callback){
         Betrothed.findOne({$or:[{first_user_id: params.first_user_id},{second_user_id: params.first_user_id}], status: "A"})
         .populate('first_user_id')
+        .populate('second_user_id')
         .exec(callback)
        }
 
        module.exports.checkIfSecondUserIsEngagedBetrothed  = function(params,callback){
         Betrothed.findOne({$or:[{first_user_id: params.second_user_id},{second_user_id: params.second_user_id}], status: "A"})
         .populate('first_user_id')
+        .populate('second_user_id')
         .exec(callback)
        }
 
