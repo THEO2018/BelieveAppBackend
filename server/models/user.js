@@ -162,7 +162,7 @@ module.exports        = User;
                 "last_name"  : 1,
                 "profile_image"  : 1, 
                 "dob"  : 1, 
-                "createdAt": 1,
+                "created_at": 1,
                 "todayDayOfYear" : { "$dayOfYear" : new Date() },
                 "dayOfYear" :   
                        { "$cond" : [{"$eq": ["$dob", null]},356, {"$dayOfYear" :"$dob"} ]}
@@ -173,7 +173,7 @@ module.exports        = User;
                   "last_name"  : 1,
                   "profile_image"  : 1, 
                   "dob"  : 1,
-                  "createdAt": 1,
+                  "created_at": 1,
                   "daysTillBirthday" : { "$subtract" : [ 
                       { "$add" : [ "$dayOfYear", { "$cond" : 
                       [{"$lt":["$dayOfYear","$todayDayOfYear"]},365,0 ] } ] },
